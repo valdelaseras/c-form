@@ -1,17 +1,10 @@
 'use strict';
 
-class CEmailInput extends HTMLElement {
+class CTextInput extends CFormGroup {
     constructor() {
         super();
 
         this.isRequired = undefined;
-
-        this.requiredFieldHelperText = 'This field is required';
-        this.invalidFieldHelperText = 'Please use a valid email address';
-    }
-
-    static get observedAttributes() {
-        return ['data-valid'];
     }
 
 
@@ -19,11 +12,11 @@ class CEmailInput extends HTMLElement {
      * connectedCallback
      */
     connectedCallback() {
-        this.isRequired = this.querySelector('input[type="email"]').required;
+        this.isRequired = this.querySelector('input[type="text"]').required;
         this.buildHelperElement();
-        this.setHelperText('error', this.requiredFieldHelperText);
 
         if (this.isRequired) {
+            this.setHelperText('error', 'This field is required');
             this.setAsterisk();
         }
 
@@ -42,18 +35,6 @@ class CEmailInput extends HTMLElement {
 
 
     /**
-     * attribute changed callback
-     */
-    attributeChangedCallback(name) {
-        if (this.hasAttribute(name)) {
-            this.querySelector('small.helper-text').style.visibility = 'hidden';
-        } else {
-            this.querySelector('small.helper-text').style.visibility = 'visible';
-        }
-    }
-
-
-    /**
      * handle key up events
      * */
     handleKeyup(){
@@ -62,22 +43,19 @@ class CEmailInput extends HTMLElement {
 
 
     /**
-     * add and remove the custom 'data-valid' attribute
+     * Add and remove the custom 'data-valid' attribute
      */
     updateIsValid() {
-        if (this.querySelector('input[type="email"]').value) {
-            if (this.querySelector('input[type="email"]').validity.valid ) {
+        if (this.isRequired){
+            if (this.querySelector('input[type="text"]').value) {
                 this.setAttribute('data-valid', '');
             } else {
-                this.removeAttribute('data-valid');
-                this.setHelperText('error', this.invalidFieldHelperText);
+                this.removeAttribute('data-valid')
             }
         } else {
-            this.removeAttribute('data-valid');
-            this.setHelperText('error', this.requiredFieldHelperText);
+            this.setAttribute('data-valid', '');
         }
     }
-
 
 
     /**
@@ -107,4 +85,4 @@ class CEmailInput extends HTMLElement {
     }
 }
 
-customElements.define('c-email-input', CEmailInput);
+customElements.define('c-text-input', CTextInput);

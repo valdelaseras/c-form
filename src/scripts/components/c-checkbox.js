@@ -1,14 +1,10 @@
 'use strict';
 
-class CCheckbox extends HTMLElement {
+class CCheckbox extends CFormGroup {
     constructor() {
         super();
 
         this.isRequired = undefined;
-    }
-
-    static get observedAttributes() {
-        return ['data-valid'];
     }
 
 
@@ -37,18 +33,6 @@ class CCheckbox extends HTMLElement {
     disconnectedCallback() {
         this.removeEventListener('click', this.handleClick.bind(this));
         this.removeEventListener('keyup', this.handleKeyup.bind(this));
-    }
-
-
-    /**
-     * attribute changed callback
-     */
-    attributeChangedCallback(name) {
-        if (this.hasAttribute(name)) {
-            this.querySelector('small.helper-text').style.visibility = 'hidden';
-        } else {
-            this.querySelector('small.helper-text').style.visibility = 'visible';
-        }
     }
 
 

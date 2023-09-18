@@ -1,14 +1,10 @@
 'use strict';
 
-class CTextarea extends HTMLElement {
+class CTextarea extends CFormGroup {
     constructor() {
         super();
 
         this.isRequired = undefined;
-    }
-
-    static get observedAttributes() {
-        return ['data-valid'];
     }
 
 
@@ -38,18 +34,6 @@ class CTextarea extends HTMLElement {
      */
     disconnectedCallback() {
         this.querySelector('textarea').removeEventListener('keyup', this.handleKeyup.bind(this));
-    }
-
-
-    /**
-     * attribute changed callback
-     */
-    attributeChangedCallback(name) {
-        if (this.hasAttribute(name)) {
-            this.querySelector('small.helper-text').style.visibility = 'hidden';
-        } else {
-            this.querySelector('small.helper-text').style.visibility = 'visible';
-        }
     }
 
 

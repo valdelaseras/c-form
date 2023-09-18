@@ -1,0 +1,56 @@
+@use '../../../node_modules/@valdelaseras/pedestal/scss/index.scss' with (
+    ///* variables *///
+
+    //* base *//
+    /* layout */
+    $breakpoint: 1024px,
+    $padding: 20px,
+    $grid: 50vw, /* for min-width $breakpoint screens */
+    $max-grid: 1440px,  /* optional fixed maximum grid width ( for really large screens for example ) */
+
+    /* borders */
+    $border-width: 1px,
+    $border-radius: 0,
+
+    //* colors (rgba) *//
+    /* base */
+    $color-primary: rgb(0,0,0),
+    $color-secondary: rgb(232,232,232),
+
+    /* accent */
+    $accent-color-primary: rgb(69,180,134),
+    $accent-color-secondary: rgb(180,69,115),
+
+    /* utility */
+    $color-success: rgb(19,190,108),
+    $color-warning: rgb(224,107,27),
+    $color-error: rgb(196,78,78),
+    $color-disabled: rgb(125,125,125),
+
+     /* lighten value for utility element background-color, derived from the utility base colours */
+    $lighten: 32,
+
+    //* typography *//
+    /* stack */
+    $font-stack-primary: #{Barlow, Helvetica-Neue, Arial, sans-serif},
+    $font-stack-secondary: #{Garamond, serif},
+
+    /* colors */
+    $accent-font-color-primary: rgb(69,180,134),
+    $accent-font-color-secondary: rgb(180,69,115),
+
+    /* size */
+    $font-size-mobile: 16px,
+    $heading-base-font-size-mobile: 1, /* assuming 'rem' as suffix */
+    $font-size-desktop: 18px,
+    $heading-base-font-size-desktop: 1, /* in 'rem' */
+
+    //* scrollbar *//
+    $scrollbar-width: 4px,
+    $background-color-scrollbar-thumb: rgb(255,255,255),
+    $background-color-scrollbar-thumb-hover: rgb(180,69,115),
+);
+
+@import "./form/c-form";
+@import "./form/c-checkbox";
+

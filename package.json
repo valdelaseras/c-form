@@ -1,0 +1,19 @@
+{
+  "name": "c-form",
+  "version": "1.0.0",
+  "description": "flexible vanilla JS forms with native web components",
+  "scripts": {
+    "serve": "http-server .",
+    "sass-watch": "sass --watch src/styles/scss/index.scss src/styles/css/index.css"
+  },
+  "author": "robin.on.branch@gmail.com",
+  "license": "ISC",
+  "keywords": [
+    "SCSS", "native web compoments", "form", "vanilla JS", "pedestal"
+  ],
+  "devDependencies": {
+    "@valdelaseras/pedestal": "^2.0.13",
+    "http-server": "^14.1.1",
+    "sass": "^1.67.0"
+  }
+}

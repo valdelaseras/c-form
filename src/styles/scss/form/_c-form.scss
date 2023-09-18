@@ -1,0 +1,43 @@
+@use '../../../../node_modules/@valdelaseras/pedestal/scss/index.scss' as pedestal;
+
+c-form,
+.form-section,
+.c-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+c-form {
+    gap: 40px;
+}
+
+.form-section {
+    gap: 30px;
+}
+
+.c-form-group {
+    gap: 20px;
+}
+
+.form-header,
+.form-footer {
+    padding: pedestal.$padding;
+}
+
+input,
+textarea {
+    padding: 10px;
+}
+
+input:hover,
+input:focus,
+input:focus-within,
+select:hover,
+select:focus,
+select:focus-within,
+textarea:hover,
+textarea:focus,
+textarea:focus-within {
+    //border: 1px solid pedestal.$color-focus;
+    border: 1px solid red;
+}

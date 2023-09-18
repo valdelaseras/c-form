@@ -12,6 +12,7 @@ class CInputGroup extends HTMLElement {
         this.checkedInputs = [];
     }
 
+
     static get observedAttributes() {
         return ['data-valid'];
     }
@@ -23,7 +24,7 @@ class CInputGroup extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.hasAttribute('data-required');
         this.buildHelperElement();
-        this.setHelperText('error', 'Please pick one or more options');
+        this.setHelperText('error', 'This field is required');
 
         if (this.isRequired) {
             this.setAsterisk();

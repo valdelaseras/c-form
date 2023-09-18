@@ -13,6 +13,7 @@
     <script src="./src/scripts/components/c-text-input.js" defer></script>
     <script src="./src/scripts/components/c-email-input.js" defer></script>
     <script src="./src/scripts/components/c-checkbox.js" defer></script>
+    <script src="./src/scripts/components/c-radio.js" defer></script>
     <script src="./src/scripts/components/c-textarea.js" defer></script>
     <script src="./src/scripts/components/c-form.js" defer></script>
 </head>
@@ -97,6 +98,57 @@
                                        class="theme-secondary bordered"
                                        id="email-input-demo"/>
                             </c-email-input>
+                            <c-input-group class="c-form-group"
+                                           data-name="radio-group-demo"
+                                           data-required>
+                                <label class="form-group-label">
+                                    Choose one
+                                </label>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-a"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="radio-group-demo"
+                                           value="radio-a"/>
+                                    <label for="radio-a">
+                                        Radio A
+                                    </label>
+                                </c-radio>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-b"
+                                           class="bordered"
+                                           name="radio-group-demo"
+                                           tabindex="0"
+                                           value="radio-b"/>
+                                    <label for="radio-b">
+                                        Radio B
+                                    </label>
+                                </c-radio>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-c"
+                                           class="bordered"
+                                           name="radio-group-demo"
+                                           tabindex="0"
+                                           value="radio-c"/>
+                                    <label for="radio-c">
+                                        Radio C
+                                    </label>
+                                </c-radio>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-d"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="radio-group-demo"
+                                           value="radio-d"/>
+                                    <label for="radio-d">
+                                        Radio D
+                                    </label>
+                                </c-radio>
+                            </c-input-group>
                             <c-textarea class="c-form-group">
                                 <label class="form-group-label" for="textarea-demo">
                                     A textarea

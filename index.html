@@ -7,12 +7,15 @@
 
     <link rel="stylesheet" href="./src/styles/css/index.css"/>
 
-    <script src="./src/components/c-input-group.js" defer></script>
-    <script src="./src/components/c-text-input.js" defer></script>
-    <script src="./src/components/c-email-input.js" defer></script>
-    <script src="./src/components/c-checkbox.js" defer></script>
-    <script src="./src/components/c-textarea.js" defer></script>
-    <script src="./src/components/c-form.js" defer></script>
+    <script src="./src/scripts/CFormGroup.js" defer></script>
+
+    <script src="./src/scripts/components/c-input-group.js" defer></script>
+    <script src="./src/scripts/components/c-text-input.js" defer></script>
+    <script src="./src/scripts/components/c-email-input.js" defer></script>
+    <script src="./src/scripts/components/c-checkbox.js" defer></script>
+    <script src="./src/scripts/components/c-radio.js" defer></script>
+    <script src="./src/scripts/components/c-textarea.js" defer></script>
+    <script src="./src/scripts/components/c-form.js" defer></script>
 </head>
 <body>
 <main>
@@ -95,12 +98,64 @@
                                        class="theme-secondary bordered"
                                        id="email-input-demo"/>
                             </c-email-input>
+                            <c-input-group class="c-form-group"
+                                           data-name="radio-group-demo"
+                                           data-required>
+                                <label class="form-group-label">
+                                    Choose one
+                                </label>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-a"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="radio-group-demo"
+                                           value="radio-a"/>
+                                    <label for="radio-a">
+                                        Radio A
+                                    </label>
+                                </c-radio>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-b"
+                                           class="bordered"
+                                           name="radio-group-demo"
+                                           tabindex="0"
+                                           value="radio-b"/>
+                                    <label for="radio-b">
+                                        Radio B
+                                    </label>
+                                </c-radio>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-c"
+                                           class="bordered"
+                                           name="radio-group-demo"
+                                           tabindex="0"
+                                           value="radio-c"/>
+                                    <label for="radio-c">
+                                        Radio C
+                                    </label>
+                                </c-radio>
+                                <c-radio>
+                                    <input type="radio"
+                                           id="radio-d"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="radio-group-demo"
+                                           value="radio-d"/>
+                                    <label for="radio-d">
+                                        Radio D
+                                    </label>
+                                </c-radio>
+                            </c-input-group>
                             <c-textarea class="c-form-group">
                                 <label class="form-group-label" for="textarea-demo">
                                     A textarea
                                 </label>
                                 <textarea id="textarea-demo"
                                           tabindex="0"
+                                          required
                                           class="theme-secondary bordered"
                                           maxlength="200"
                                           rows="4"></textarea>
@@ -109,16 +164,12 @@
                                 </div>
                             </c-textarea>
                         </section>
-                        <section class="form-section">
-                            <h3 class="form-section-title">Form section title</h3>
-                        </section>
                         <footer class="form-footer" role="contentinfo">
-                            <a class="button button-compact bordered form-submit-btn btn-disabled"
+                            <a class="button button-compact bordered form-submit-btn button-disabled"
                                tabindex="0"
                                aria-label="submit form"
                                role="button"
-                               id="demo-form-submit-btn">
-                                Submit <i class="icon icon-arrow-up-right"></i>
+                               id="demo-form-submit-btn">Submit
                             </a>
                         </footer>
                     </c-form>

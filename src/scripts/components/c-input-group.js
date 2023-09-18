@@ -3,6 +3,8 @@
 /**
  * A parent component to a group of c-checkbox, c-radio r regular checkbox / radio inputs
  * used to check the validity of this group before form submission.
+ *
+ * @todo: slightly different as its a group of c-whatever elements
  */
 class CInputGroup extends HTMLElement {
     constructor() {
@@ -11,6 +13,7 @@ class CInputGroup extends HTMLElement {
         this.isRequired = undefined;
         this.checkedInputs = [];
     }
+
 
     static get observedAttributes() {
         return ['data-valid'];
@@ -23,7 +26,7 @@ class CInputGroup extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.hasAttribute('data-required');
         this.buildHelperElement();
-        this.setHelperText('error', 'Please pick one or more options');
+        this.setHelperText('error', 'This field is required');
 
         if (this.isRequired) {
             this.setAsterisk();

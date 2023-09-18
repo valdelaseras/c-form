@@ -455,8 +455,8 @@ nav, footer {
 
 @media only screen and (min-width: 1024px) {
   .grid {
-    width: 50vw;
-    max-width: 50vw;
+    width: 60vw;
+    max-width: 60vw;
   }
   .grid.max-grid {
     max-width: 1440px;
@@ -1252,8 +1252,8 @@ nav, footer {
 
 @media only screen and (min-width: 1024px) {
   .grid {
-    width: 50vw;
-    max-width: 50vw;
+    width: 60vw;
+    max-width: 60vw;
   }
   .grid.max-grid {
     max-width: 1440px;

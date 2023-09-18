@@ -21,7 +21,7 @@ class CEmailInput extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.querySelector('input[type="email"]').required;
         this.buildHelperElement();
-        this.setHelperText('danger', this.requiredFieldHelperText);
+        this.setHelperText('error', this.requiredFieldHelperText);
 
         if (this.isRequired) {
             this.setAsterisk();
@@ -70,11 +70,11 @@ class CEmailInput extends HTMLElement {
                 this.setAttribute('data-valid', '');
             } else {
                 this.removeAttribute('data-valid');
-                this.setHelperText('danger', this.invalidFieldHelperText);
+                this.setHelperText('error', this.invalidFieldHelperText);
             }
         } else {
             this.removeAttribute('data-valid');
-            this.setHelperText('danger', this.requiredFieldHelperText);
+            this.setHelperText('error', this.requiredFieldHelperText);
         }
     }
 
@@ -98,7 +98,7 @@ class CEmailInput extends HTMLElement {
     }
 
     /**
-     * @param { string } status - pick one of 'success', 'warning', 'danger' etc.
+     * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {

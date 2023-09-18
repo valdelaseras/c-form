@@ -18,7 +18,7 @@ class CTextInput extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.querySelector('input[type="text"]').required;
         this.buildHelperElement();
-        this.setHelperText('danger', 'This field is required');
+        this.setHelperText('error', 'This field is required');
 
         if (this.isRequired) {
             this.setAsterisk();
@@ -92,7 +92,7 @@ class CTextInput extends HTMLElement {
     }
 
     /**
-     * @param { string } status - pick one of 'success', 'warning', 'danger' etc.
+     * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {

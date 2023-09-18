@@ -23,7 +23,7 @@ class CInputGroup extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.hasAttribute('data-required');
         this.buildHelperElement();
-        this.setHelperText('danger', 'Please pick one or more options');
+        this.setHelperText('error', 'Please pick one or more options');
 
         if (this.isRequired) {
             this.setAsterisk();
@@ -140,7 +140,7 @@ class CInputGroup extends HTMLElement {
 
 
     /**
-     * @param { string } status - pick one of 'success', 'warning', 'danger' etc.
+     * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {

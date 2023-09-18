@@ -18,7 +18,7 @@ class CCheckbox extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.querySelector('input').required;
         this.buildHelperElement();
-        this.setHelperText('danger', 'You must check this box');
+        this.setHelperText('error', 'You must check this box');
 
         if (this.isRequired) {
             this.setAsterisk();
@@ -109,7 +109,7 @@ class CCheckbox extends HTMLElement {
 
 
     /**
-     * @param { string } status - pick one of 'success', 'warning', 'danger' etc.
+     * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {

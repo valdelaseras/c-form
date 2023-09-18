@@ -18,7 +18,7 @@ class CTextarea extends HTMLElement {
     connectedCallback() {
         this.isRequired = this.querySelector('textarea').required;
         this.buildHelperElement();
-        this.setHelperText('danger', 'This textarea is required');
+        this.setHelperText('error', 'This textarea is required');
 
         if (this.isRequired) {
             this.setAsterisk();
@@ -108,7 +108,7 @@ class CTextarea extends HTMLElement {
 
 
     /**
-     * @param { string } status - pick one of 'success', 'warning', 'danger' etc.
+     * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {

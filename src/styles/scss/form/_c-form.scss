@@ -13,6 +13,8 @@ c-form {
 
 .form-section {
     gap: 30px;
+    padding-right: pedestal.$padding;
+    padding-left: pedestal.$padding;
 }
 
 .c-form-group {

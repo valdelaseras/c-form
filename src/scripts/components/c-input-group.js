@@ -3,6 +3,8 @@
 /**
  * A parent component to a group of c-checkbox, c-radio r regular checkbox / radio inputs
  * used to check the validity of this group before form submission.
+ *
+ * @todo: slightly different as its a group of c-whatever elements
  */
 class CInputGroup extends HTMLElement {
     constructor() {

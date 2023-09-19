@@ -1,6 +1,6 @@
 'use strict';
 
-class CTextInput extends CFormGroup {
+class CTextInput extends CFormQuestion {
     constructor() {
         super();
     }

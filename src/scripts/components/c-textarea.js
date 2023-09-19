@@ -1,6 +1,6 @@
 'use strict';
 
-class CTextarea extends CFormGroup {
+class CTextarea extends CFormQuestion {
     constructor() {
         super();
     }

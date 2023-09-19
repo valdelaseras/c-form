@@ -1,6 +1,6 @@
 'use strict';
 
-class CEmailInput extends CFormGroup {
+class CEmailInput extends CFormQuestion {
     constructor() {
         super();
 

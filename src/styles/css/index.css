@@ -1566,7 +1566,7 @@ textarea.theme-secondary.bordered {
 
 c-form,
 .form-section,
-.c-form-group {
+.form-question {
   display: flex;
   flex-direction: column;
 }
@@ -1581,7 +1581,7 @@ c-form {
   padding-left: 20px;
 }
 
-.c-form-group {
+.form-question {
   gap: 20px;
 }
 
@@ -1593,18 +1593,6 @@ c-form {
 input,
 textarea {
   padding: 10px;
-}
-
-input:hover,
-input:focus,
-input:focus-within,
-select:hover,
-select:focus,
-select:focus-within,
-textarea:hover,
-textarea:focus,
-textarea:focus-within {
-  border: 1px solid red;
 }
 
 c-checkbox label:hover,

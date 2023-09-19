@@ -1,4 +1,4 @@
-class CRadio extends CFormGroup {
+class CRadio extends CFormQuestion {
     constructor() {
         super();
     }

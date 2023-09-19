@@ -1,6 +1,6 @@
 'use strict';
 
-class CCheckbox extends CFormGroup {
+class CCheckbox extends CFormQuestion {
     constructor() {
         super();
     }

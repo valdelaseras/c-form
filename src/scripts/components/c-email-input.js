@@ -10,14 +10,6 @@ class CEmailInput extends CFormQuestion {
 
 
     /**
-     * connectedCallback
-     */
-    connectedCallback() {
-        super.connectedCallback();
-    }
-
-
-    /**
      * handle key up events
      * */
     handleKeyup(){
@@ -29,16 +21,25 @@ class CEmailInput extends CFormQuestion {
      * add and remove the custom 'data-valid' attribute
      */
     updateIsValid() {
-        if (this.querySelector('input[type="email"]').value) {
-            if (this.querySelector('input[type="email"]').validity.valid ) {
-                this.setAttribute('data-valid', '');
-            } else {
+        const input = this.querySelector('input[type="email"]');
+        const isValid = input.validity.valid;
+        const hasValue = input.value;
+
+        if (this.isRequired) {
+            if (!hasValue) {
+                this.removeAttribute('data-valid');
+                super.setHelperText('error', this.requiredFieldHelperText);
+            } else if (!isValid) {
                 this.removeAttribute('data-valid');
                 super.setHelperText('error', this.invalidFieldHelperText);
+            } else {
+                this.setAttribute('data-valid', '');
             }
-        } else {
+        } else if (hasValue && !isValid) {
             this.removeAttribute('data-valid');
-            super.setHelperText('error', this.requiredFieldHelperText);
+            super.setHelperText('error', this.invalidFieldHelperText);
+        } else {
+            this.setAttribute('data-valid', '');
         }
     }
 }

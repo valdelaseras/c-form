@@ -61,6 +61,7 @@ class CInputGroup extends CFormQuestion {
         // if the form group is required...
         if (this.isRequired){
             // ...at least one selection must have been made, so this.checkedInputs.length will have to be true
+            // whether they are checkboxes or radios
             if (this.checkedInputs.length) {
                 this.setAttribute('data-valid', '');
             } else {

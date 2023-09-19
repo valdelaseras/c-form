@@ -11,6 +11,7 @@
 
     <script src="./src/scripts/components/c-input-group.js" defer></script>
     <script src="./src/scripts/components/c-text-input.js" defer></script>
+    <script src="./src/scripts/components/c-tel-input.js" defer></script>
     <script src="./src/scripts/components/c-email-input.js" defer></script>
     <script src="./src/scripts/components/c-checkbox.js" defer></script>
     <script src="./src/scripts/components/c-radio.js" defer></script>
@@ -29,6 +30,16 @@
                         </header>
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
+                            <c-tel-input class="form-question">
+                                <label for="tel-input-demo">
+                                    A type tel input
+                                </label>
+                                <input type="tel"
+                                       tabindex="0"
+                                       class="theme-secondary bordered"
+                                       required
+                                       id="tel-input-demo"/>
+                            </c-tel-input>
                             <c-input-group class="form-question"
                                            data-name="checkbox-group-demo"
                                            data-required>
@@ -103,9 +114,17 @@
                                     A type email input
                                 </label>
                                 <input type="email"
-                                       required
                                        class="theme-secondary bordered"
                                        id="email-input-demo"/>
+                            </c-email-input>
+                            <c-email-input class="form-question">
+                                <label for="required-email-input-demo">
+                                    A type email input
+                                </label>
+                                <input type="email"
+                                       required
+                                       class="theme-secondary bordered"
+                                       id="required-email-input-demo"/>
                             </c-email-input>
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo"

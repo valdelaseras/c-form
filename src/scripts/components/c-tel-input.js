@@ -1,3 +1,5 @@
+import {CFormQuestion} from "../CFormQuestion.js";
+
 class CTelInput extends CFormQuestion {
     constructor() {
         super();

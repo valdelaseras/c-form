@@ -1,5 +1,7 @@
 'use strict';
 
+import {CFormQuestion} from "../CFormQuestion.js";
+
 class CCheckbox extends CFormQuestion {
     constructor() {
         super();
@@ -38,8 +40,8 @@ class CCheckbox extends CFormQuestion {
      * @param { KeyboardEvent } e
      */
     handleKeyup(e) {
-        if ( document.activeElement === this.querySelector('label' )) {
-            if ( e.code === 'Space' ) {
+        if (document.activeElement === this.querySelector('label')) {
+            if (e.code === 'Space') {
                 this.querySelector('input[type="checkbox"]').checked = !this.querySelector('input[type="checkbox"]').checked;
             }
         }

@@ -1,9 +1,8 @@
-'use strict';
-
-class CTextInput extends CFormQuestion {
+class CTelInput extends CFormQuestion {
     constructor() {
         super();
     }
+
 
     /**
      * handle key up events
@@ -18,7 +17,7 @@ class CTextInput extends CFormQuestion {
      */
     updateIsValid() {
         if (this.isRequired){
-            if (this.querySelector('input[type="text"]').value) {
+            if (this.querySelector('input[type="tel"]').value) {
                 this.setAttribute('data-valid', '');
             } else {
                 this.removeAttribute('data-valid')
@@ -29,4 +28,4 @@ class CTextInput extends CFormQuestion {
     }
 }
 
-customElements.define('c-text-input', CTextInput);
+customElements.define('c-tel-input', CTelInput);

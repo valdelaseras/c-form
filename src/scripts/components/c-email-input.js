@@ -1,19 +1,11 @@
 'use strict';
 
-class CEmailInput extends CFormGroup {
+class CEmailInput extends CFormQuestion {
     constructor() {
         super();
 
         this.requiredFieldHelperText = 'This field is required';
         this.invalidFieldHelperText = 'Please use a valid email address';
-    }
-
-
-    /**
-     * connectedCallback
-     */
-    connectedCallback() {
-        super.connectedCallback();
     }
 
 
@@ -29,16 +21,25 @@ class CEmailInput extends CFormGroup {
      * add and remove the custom 'data-valid' attribute
      */
     updateIsValid() {
-        if (this.querySelector('input[type="email"]').value) {
-            if (this.querySelector('input[type="email"]').validity.valid ) {
-                this.setAttribute('data-valid', '');
-            } else {
+        const input = this.querySelector('input[type="email"]');
+        const isValid = input.validity.valid;
+        const hasValue = input.value;
+
+        if (this.isRequired) {
+            if (!hasValue) {
+                this.removeAttribute('data-valid');
+                super.setHelperText('error', this.requiredFieldHelperText);
+            } else if (!isValid) {
                 this.removeAttribute('data-valid');
                 super.setHelperText('error', this.invalidFieldHelperText);
+            } else {
+                this.setAttribute('data-valid', '');
             }
-        } else {
+        } else if (hasValue && !isValid) {
             this.removeAttribute('data-valid');
-            super.setHelperText('error', this.requiredFieldHelperText);
+            super.setHelperText('error', this.invalidFieldHelperText);
+        } else {
+            this.setAttribute('data-valid', '');
         }
     }
 }

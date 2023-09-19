@@ -1,4 +1,4 @@
-class CFormGroup extends HTMLElement {
+class CFormQuestion extends HTMLElement {
     constructor() {
         super();
 
@@ -11,16 +11,19 @@ class CFormGroup extends HTMLElement {
 
 
     connectedCallback(){
-        this.isRequired = !!this.querySelector('*[required]');
+        this.isRequired = !!this.querySelector('*[required]') || this.hasAttribute('data-required');
 
-        this.buildHelperElement();
+        if (!this.getAttribute('data-group')) {
+            this.buildHelperElement();
 
-        if (this.isRequired) {
-            this.setHelperText('error', 'This field is required');
-            this.setAsterisk();
+            if (this.isRequired) {
+                this.setHelperText('error', 'This field is required');
+                this.setAsterisk();
+            }
         }
 
         this.updateIsValid();
+
         this.addEventListener('keyup', this.handleKeyup.bind(this));
     }
 
@@ -37,11 +40,15 @@ class CFormGroup extends HTMLElement {
      * attribute changed callback
      */
     attributeChangedCallback(name) {
-        if (this.hasAttribute(name)) {
-            this.querySelector('small.helper-text').style.visibility = 'hidden';
-        } else {
-            this.querySelector('small.helper-text').style.visibility = 'visible';
+        if (!this.getAttribute('data-group')){
+            if (this.hasAttribute(name)) {
+                this.querySelector('small.helper-text').style.visibility = 'hidden';
+            } else {
+                this.querySelector('small.helper-text').style.visibility = 'visible';
+            }
         }
+
+        this.dispatchEvent(new Event('onValidityChange'));
     }
 
 
@@ -59,7 +66,7 @@ class CFormGroup extends HTMLElement {
      * set asterisk at the end of the label if it is a required field
      */
     setAsterisk() {
-        this.querySelector('.form-group-label').innerText += '*';
+        this.querySelector('label').innerText += '*';
     }
 
 

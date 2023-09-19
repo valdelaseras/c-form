@@ -1,19 +1,33 @@
 {
   "name": "c-form",
   "version": "1.0.0",
-  "description": "flexible vanilla JS forms with native web components",
+  "description": "Flexible vanilla JS forms, build with native web components",
   "scripts": {
     "serve": "http-server .",
-    "sass-watch": "sass --watch src/styles/scss/index.scss src/styles/css/index.css"
+    "sass-watch": "sass --watch src/styles/scss/index.scss src/styles/css/index.css",
+    "test": "jest"
   },
   "author": "robin.on.branch@gmail.com",
   "license": "ISC",
   "keywords": [
-    "SCSS", "native web compoments", "form", "vanilla JS", "pedestal"
+    "SCSS",
+    "native web compoments",
+    "form",
+    "jest",
+    "composition",
+    "vanilla JS",
+    "pedestal"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.22.20",
+    "@types/jest": "^29.5.5",
     "@valdelaseras/pedestal": "^2.0.14",
     "http-server": "^14.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "sass": "^1.67.0"
+  },
+  "dependencies": {
+    "node": "^20.6.0"
   }
 }

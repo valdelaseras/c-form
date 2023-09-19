@@ -1,4 +1,4 @@
-class CFormQuestion extends HTMLElement {
+export class CFormQuestion extends HTMLElement {
     constructor() {
         super();
 

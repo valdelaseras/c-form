@@ -1,3 +1,5 @@
+import {CFormQuestion} from "../CFormQuestion.js";
+
 class CRadio extends CFormQuestion {
     constructor() {
         super();

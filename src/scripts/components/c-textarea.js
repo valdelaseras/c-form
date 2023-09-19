@@ -1,5 +1,7 @@
 'use strict';
 
+import {CFormQuestion} from "../CFormQuestion.js";
+
 class CTextarea extends CFormQuestion {
     constructor() {
         super();

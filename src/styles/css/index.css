@@ -1601,4 +1601,8 @@ c-checkbox label:focus-within {
   cursor: pointer;
 }
 
+c-select select {
+  padding: 10px;
+}
+
 /*# sourceMappingURL=index.css.map */

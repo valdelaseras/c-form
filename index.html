@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/styles/css/index.css"/>
 
     <script type="module" src="./src/scripts/components/c-input-group.js" defer></script>
+    <script type="module" src="./src/scripts/components/c-select.js" defer></script>
     <script type="module" src="./src/scripts/components/c-text-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-tel-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-email-input.js" defer></script>
@@ -28,6 +29,30 @@
                         </header>
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
+                            <c-select class="form-question">
+                                <label for="select-demo">A select element</label>
+                                <select id="select-demo"
+                                        tabindex="0"
+                                        class="theme-secondary bordered">
+                                    <option value="select-a">Select A</option>
+                                    <option value="select-b">Select B</option>
+                                    <option value="select-c">Select C</option>
+                                    <option value="select-d">Select D</option>
+                                </select>
+                            </c-select>
+                            <c-select class="form-question">
+                                <label for="required-select-demo">A required select element</label>
+                                <select id="required-select-demo"
+                                        tabindex="0"
+                                        required
+                                        class="theme-secondary bordered">
+                                    <option selected disabled>Choose one</option>
+                                    <option value="select-a">Select A</option>
+                                    <option value="select-b">Select B</option>
+                                    <option value="select-c">Select C</option>
+                                    <option value="select-d">Select D</option>
+                                </select>
+                            </c-select>
                             <c-tel-input class="form-question">
                                 <label for="tel-input-demo">
                                     A type tel input

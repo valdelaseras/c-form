@@ -10,6 +10,9 @@ export class CFormQuestion extends HTMLElement {
     }
 
 
+    /**
+     * connected callback
+     */
     connectedCallback(){
         this.isRequired = !!this.querySelector('*[required]') || this.hasAttribute('data-required');
 
@@ -24,15 +27,19 @@ export class CFormQuestion extends HTMLElement {
 
         this.updateIsValid();
 
-        this.addEventListener('keyup', this.handleKeyup.bind(this));
+        if (this.handleKeyup){
+            this.addEventListener('keyup', this.handleKeyup.bind(this));
+        }
     }
 
 
     /**
-     * Remove any listeners on disconnected callback
+     * remove any listeners on disconnected callback
      */
     disconnectedCallback() {
-        this.removeEventListener('keyup', this.handleKeyup.bind(this));
+        if (this.handleKeyup){
+            this.removeEventListener('keyup', this.handleKeyup.bind(this));
+        }
     }
 
 

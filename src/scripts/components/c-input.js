@@ -1,13 +1,17 @@
-'use strict';
-
 import {CFormQuestion} from "../CFormQuestion.js";
 
-class CUrlInput extends CFormQuestion {
+class CInput extends CFormQuestion {
     constructor() {
         super();
 
         this.requiredFieldHelperText = 'This field is required';
-        this.invalidFieldHelperText = 'Please insert a valid url';
+        this.invalidFieldHelperText = '';
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.setInvalidFieldHelperText(this.querySelector('input').getAttribute('type'));
     }
 
 
@@ -23,9 +27,8 @@ class CUrlInput extends CFormQuestion {
      * add and remove the custom 'data-valid' attribute
      */
     updateIsValid() {
-        const input = this.querySelector('input[type="url"]');
-        const isValid = input.validity.valid;
-        const hasValue = input.value;
+        const isValid = this.querySelector('input').validity.valid;
+        const hasValue = this.querySelector('input').value;
 
         if (this.isRequired) {
             if (!hasValue) {
@@ -44,6 +47,17 @@ class CUrlInput extends CFormQuestion {
             this.setAttribute('data-valid', '');
         }
     }
+
+
+    setInvalidFieldHelperText(type){
+        switch(type) {
+            case 'email':
+                this.invalidFieldHelperText = 'Please use a valid email address';
+                break;
+            case 'url':
+                this.invalidFieldHelperText = 'Please insert a valid url';
+        }
+    }
 }
 
-customElements.define('c-url-input', CUrlInput);
+customElements.define('c-input', CInput);

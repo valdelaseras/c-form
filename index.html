@@ -11,12 +11,11 @@
     <script type="module" src="./src/scripts/components/c-select.js" defer></script>
     <script type="module" src="./src/scripts/components/c-text-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-tel-input.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-email-input.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-url-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-checkbox.js" defer></script>
     <script type="module" src="./src/scripts/components/c-radio.js" defer></script>
     <script type="module" src="./src/scripts/components/c-textarea.js" defer></script>
     <script type="module" src="./src/scripts/components/c-form.js" defer></script>
+    <script type="module" src="./src/scripts/components/c-input.js" defer></script>
 </head>
 <body>
 <main>
@@ -30,12 +29,36 @@
                         </header>
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
-                            <c-url-input class="form-question">
+                            <c-input class="form-question">
                                 <label for="url-input-demo">A type url input</label>
                                 <input id="url-input-demo"
                                        type="url"
                                        class="theme-secondary bordered"/>
-                            </c-url-input>
+                            </c-input>
+                            <c-input class="form-question">
+                                <label for="required-url-input-demo">A type url input</label>
+                                <input id="required-url-input-demo"
+                                       type="url"
+                                       required
+                                       class="theme-secondary bordered"/>
+                            </c-input>
+                            <c-input class="form-question">
+                                <label for="email-input-demo">
+                                    A type email input
+                                </label>
+                                <input type="email"
+                                       class="theme-secondary bordered"
+                                       id="email-input-demo"/>
+                            </c-input>
+                            <c-input class="form-question">
+                                <label for="required-email-input-demo">
+                                    A type email input
+                                </label>
+                                <input type="email"
+                                       required
+                                       class="theme-secondary bordered"
+                                       id="required-email-input-demo"/>
+                            </c-input>
                             <c-select class="form-question">
                                 <label for="select-demo">A select element</label>
                                 <select id="select-demo"
@@ -139,23 +162,6 @@
                                        class="theme-secondary bordered"
                                        id="text-input-demo"/>
                             </c-text-input>
-                            <c-email-input class="form-question">
-                                <label for="email-input-demo">
-                                    A type email input
-                                </label>
-                                <input type="email"
-                                       class="theme-secondary bordered"
-                                       id="email-input-demo"/>
-                            </c-email-input>
-                            <c-email-input class="form-question">
-                                <label for="required-email-input-demo">
-                                    A type email input
-                                </label>
-                                <input type="email"
-                                       required
-                                       class="theme-secondary bordered"
-                                       id="required-email-input-demo"/>
-                            </c-email-input>
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo"
                                            data-required>

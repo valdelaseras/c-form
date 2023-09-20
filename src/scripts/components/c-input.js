@@ -53,6 +53,13 @@ class CInput extends CFormQuestion {
     }
 
 
+    /**
+     * Set the correct value for invalid field helper text: this is not the default
+     * 'this field is required' text, but things like the email or url value not being
+     * valid.
+     *
+     * @param { string } type
+     */
     setInvalidFieldHelperText(type){
         switch(type) {
             case 'email':
@@ -61,7 +68,7 @@ class CInput extends CFormQuestion {
             case 'url':
                 this.invalidFieldHelperText = 'Please insert a valid url';
                 break;
-            // if types are 'text', default to an empty string
+            // some types don't required additional helper texts, and we default to an empty string
             default:
                 this.invalidFieldHelperText = '';
         }

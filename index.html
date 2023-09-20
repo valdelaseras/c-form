@@ -27,43 +27,68 @@
                         </header>
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
+
+<!--                        url type-->
                             <c-input class="form-question">
-                                <label for="c-input-demo">A c-input</label>
-                                <input id="c-input-demo"
-                                       type="url"
-                                       required
-                                       class="theme-secondary bordered"/>
-                            </c-input>
-                            <c-input class="form-question">
-                                <label for="url-input-demo">A type url input</label>
-                                <input id="url-input-demo"
-                                       type="url"
-                                       class="theme-secondary bordered"/>
-                            </c-input>
-                            <c-input class="form-question">
-                                <label for="required-url-input-demo">A type url input</label>
+                                <label for="required-url-input-demo">A required url c-input</label>
                                 <input id="required-url-input-demo"
                                        type="url"
                                        required
                                        class="theme-secondary bordered"/>
                             </c-input>
                             <c-input class="form-question">
-                                <label for="email-input-demo">
-                                    A type email input
-                                </label>
-                                <input type="email"
-                                       class="theme-secondary bordered"
-                                       id="email-input-demo"/>
+                                <label for="url-input-demo">A url c-input</label>
+                                <input id="url-input-demo"
+                                       type="url"
+                                       class="theme-secondary bordered"/>
+                            </c-input>
+
+<!--                        email type-->
+                            <c-input class="form-question">
+                                <label for="required-email-input-demo">A required email c-input</label>
+                                <input id="required-email-input-demo"
+                                       type="email"
+                                       required
+                                       class="theme-secondary bordered"/>
                             </c-input>
                             <c-input class="form-question">
-                                <label for="required-email-input-demo">
-                                    A type email input
-                                </label>
-                                <input type="email"
-                                       required
-                                       class="theme-secondary bordered"
-                                       id="required-email-input-demo"/>
+                                <label for="email-input-demo">An email c-input</label>
+                                <input id="email-input-demo"
+                                       type="email"
+                                       class="theme-secondary bordered"/>
                             </c-input>
+
+<!--                        text type-->
+                            <c-input class="form-question">
+                                <label for="required-text-input-demo">A required text c-input</label>
+                                <input id="required-text-input-demo"
+                                       type="text"
+                                       required
+                                       class="theme-secondary bordered"/>
+                            </c-input>
+                            <c-input class="form-question">
+                                <label for="text-input-demo">A text c-input</label>
+                                <input id="text-input-demo"
+                                       type="text"
+                                       class="theme-secondary bordered"/>
+                            </c-input>
+
+<!--                        type tel-->
+                            <c-input class="form-question">
+                                <label for="required-tel-input-demo">A required tel c-input</label>
+                                <input id="required-tel-input-demo"
+                                       type="tel"
+                                       required
+                                       class="theme-secondary bordered"/>
+                            </c-input>
+                            <c-input class="form-question">
+                                <label for="tel-input-demo">A tel c-input</label>
+                                <input id="tel-input-demo"
+                                       type="tel"
+                                       class="theme-secondary bordered"/>
+                            </c-input>
+
+<!--                        select-->
                             <c-select class="form-question">
                                 <label for="select-demo">A select element</label>
                                 <select id="select-demo"
@@ -88,6 +113,8 @@
                                     <option value="select-d">Select D</option>
                                 </select>
                             </c-select>
+
+<!--                        input group-->
                             <c-input-group class="form-question"
                                            data-name="checkbox-group-demo"
                                            data-required>
@@ -139,15 +166,6 @@
                                     </label>
                                 </c-checkbox>
                             </c-input-group>
-                            <c-checkbox>
-                                <input type="checkbox"
-                                       id="checkbox-solo"
-                                       class="bordered"
-                                       tabindex="0"
-                                       required
-                                       value="checkbox-solo"/>
-                                <label for="checkbox-solo">Solo checkbox</label>
-                            </c-checkbox>
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo"
                                            data-required>
@@ -199,6 +217,8 @@
                                     </label>
                                 </c-radio>
                             </c-input-group>
+
+<!--                        textarea-->
                             <c-textarea class="form-question">
                                 <label for="textarea-demo">
                                     A textarea
@@ -213,6 +233,17 @@
                                     <span class="counter"></span> /  <span class="maxlength"></span>
                                 </div>
                             </c-textarea>
+
+<!--                        checkbox-->
+                            <c-checkbox>
+                                <input type="checkbox"
+                                       id="checkbox-solo"
+                                       class="bordered"
+                                       tabindex="0"
+                                       required
+                                       value="checkbox-solo"/>
+                                <label for="checkbox-solo">Solo checkbox</label>
+                            </c-checkbox>
                         </section>
                         <footer class="form-footer" role="contentinfo">
                             <a class="button button-compact bordered form-submit-btn button-disabled"

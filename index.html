@@ -9,8 +9,6 @@
 
     <script type="module" src="./src/scripts/components/c-input-group.js" defer></script>
     <script type="module" src="./src/scripts/components/c-select.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-text-input.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-tel-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-checkbox.js" defer></script>
     <script type="module" src="./src/scripts/components/c-radio.js" defer></script>
     <script type="module" src="./src/scripts/components/c-textarea.js" defer></script>
@@ -29,6 +27,13 @@
                         </header>
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
+                            <c-input class="form-question">
+                                <label for="c-input-demo">A c-input</label>
+                                <input id="c-input-demo"
+                                       type="url"
+                                       required
+                                       class="theme-secondary bordered"/>
+                            </c-input>
                             <c-input class="form-question">
                                 <label for="url-input-demo">A type url input</label>
                                 <input id="url-input-demo"
@@ -83,16 +88,6 @@
                                     <option value="select-d">Select D</option>
                                 </select>
                             </c-select>
-                            <c-tel-input class="form-question">
-                                <label for="tel-input-demo">
-                                    A type tel input
-                                </label>
-                                <input type="tel"
-                                       tabindex="0"
-                                       class="theme-secondary bordered"
-                                       required
-                                       id="tel-input-demo"/>
-                            </c-tel-input>
                             <c-input-group class="form-question"
                                            data-name="checkbox-group-demo"
                                            data-required>
@@ -153,15 +148,6 @@
                                        value="checkbox-solo"/>
                                 <label for="checkbox-solo">Solo checkbox</label>
                             </c-checkbox>
-                            <c-text-input class="form-question">
-                                <label for="text-input-demo">
-                                    A type text input
-                                </label>
-                                <input type="text"
-                                       required
-                                       class="theme-secondary bordered"
-                                       id="text-input-demo"/>
-                            </c-text-input>
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo"
                                            data-required>

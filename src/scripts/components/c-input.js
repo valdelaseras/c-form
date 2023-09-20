@@ -1,5 +1,9 @@
 import {CFormQuestion} from "../CFormQuestion.js";
 
+/**
+ * Intended for input types: email, url, text, tel
+ * For input types checkbox and radio, please use c-checkbox / c-radio
+ */
 class CInput extends CFormQuestion {
     constructor() {
         super();
@@ -56,6 +60,10 @@ class CInput extends CFormQuestion {
                 break;
             case 'url':
                 this.invalidFieldHelperText = 'Please insert a valid url';
+                break;
+            // if types are 'text', default to an empty string
+            default:
+                this.invalidFieldHelperText = '';
         }
     }
 }

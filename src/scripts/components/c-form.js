@@ -6,8 +6,8 @@
  *
  * formQuestions: the .form-question class should be applied to all c-${form component} that
  * represent a single 'question'. So, note that a form question could have several c-${form component}
- * elements nested ( like a group of checkboxes ), which should *not* receive the form-question
- * class.
+ * elements nested ( like a group of checkboxes ), which should *not* individually receive the
+ * form-question class.
  */
 class CForm extends HTMLElement {
     constructor() {
@@ -42,6 +42,7 @@ class CForm extends HTMLElement {
 
     handleKeyup(e){}
 
+    // @todo: temp, properly validate
     updateIsValid() {
         this.toggleSubmitBtn(this.formQuestions.length === this.querySelectorAll('.form-question[data-valid]').length);
     }

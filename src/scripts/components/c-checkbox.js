@@ -7,7 +7,6 @@ class CCheckbox extends CFormQuestion {
         super();
     }
 
-
     /**
      * connectedCallback
      */
@@ -52,14 +51,16 @@ class CCheckbox extends CFormQuestion {
      * Add and remove the custom 'data-valid' attribute
      */
     updateIsValid() {
-        if (this.isRequired){
-            if (this.querySelector('input').checked) {
-                this.setAttribute('data-valid', '');
+        if (!this.getAttribute('data-group')){
+            if (this.isRequired){
+                if (this.querySelector('input').checked) {
+                    this.setAttribute('data-valid', '');
+                } else {
+                    this.removeAttribute('data-valid')
+                }
             } else {
-                this.removeAttribute('data-valid')
+                this.setAttribute('data-valid', '');
             }
-        } else {
-            this.setAttribute('data-valid', '');
         }
     }
 }

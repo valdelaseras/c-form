@@ -12,6 +12,7 @@
     <script type="module" src="./src/scripts/components/c-text-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-tel-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-email-input.js" defer></script>
+    <script type="module" src="./src/scripts/components/c-url-input.js" defer></script>
     <script type="module" src="./src/scripts/components/c-checkbox.js" defer></script>
     <script type="module" src="./src/scripts/components/c-radio.js" defer></script>
     <script type="module" src="./src/scripts/components/c-textarea.js" defer></script>
@@ -29,6 +30,12 @@
                         </header>
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
+                            <c-url-input class="form-question">
+                                <label for="url-input-demo">A type url input</label>
+                                <input id="url-input-demo"
+                                       type="url"
+                                       class="theme-secondary bordered"/>
+                            </c-url-input>
                             <c-select class="form-question">
                                 <label for="select-demo">A select element</label>
                                 <select id="select-demo"

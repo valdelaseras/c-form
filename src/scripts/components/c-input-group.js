@@ -79,7 +79,7 @@ class CInputGroup extends CFormQuestion {
 
 
     /**
-     *
+     * Add any input to this.checkedInputs if it's checked, or remove it if isn't ( anymore )
      */
     updateCheckedInputs(){
         this.querySelectorAll('input').forEach((input) => {

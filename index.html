@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./src/styles/css/index.css"/>
 
+    <script type="module" src="./src/scripts/components/c-duplicable-field.js" defer></script>
     <script type="module" src="./src/scripts/components/c-input-group.js" defer></script>
     <script type="module" src="./src/scripts/components/c-select.js" defer></script>
     <script type="module" src="./src/scripts/components/c-checkbox.js" defer></script>
@@ -28,11 +29,164 @@
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
 
+<!--                        duplicable field-->
+                            <c-duplicable-field data-max="2">
+                                <a class="duplicate-field-btn button button-compact bordered"
+                                   tabindex="0"
+                                   role="button">Duplicate field</a>
+
+                                <c-input class="form-question duplicable-field">
+                                    <label for="dupe-field-demo">Url</label>
+                                    <input id="dupe-field-demo"
+                                           tabindex="0"
+                                           type="url"
+                                           name="dupe-fields-demo"
+                                           class="theme-secondary bordered"/>
+                                </c-input>
+                            </c-duplicable-field>
+
+<!--                        input group-->
+                            <c-input-group class="form-question"
+                                           data-name="checkbox-group-demo"
+                                           data-required>
+                                <label>
+                                    Pick some of these
+                                </label>
+                                <c-checkbox data-group="checkbox-group-demo">
+                                    <input type="checkbox"
+                                           id="checkbox-a"
+                                           class="bordered"
+                                           tabindex="0"
+                                           checked
+                                           name="checkbox-group-demo"
+                                           value="checkbox-a"/>
+                                    <label for="checkbox-a">
+                                        Checkbox A
+                                    </label>
+                                </c-checkbox>
+                                <c-checkbox data-group="checkbox-group-demo">
+                                    <input type="checkbox"
+                                           id="checkbox-b"
+                                           class="bordered"
+                                           checked
+                                           name="checkbox-group-demo"
+                                           tabindex="0"
+                                           value="checkbox-b"/>
+                                    <label for="checkbox-b">
+                                        Checkbox B
+                                    </label>
+                                </c-checkbox>
+                                <c-checkbox data-group="checkbox-group-demo">
+                                    <input type="checkbox"
+                                           id="checkbox-c"
+                                           class="bordered"
+                                           name="checkbox-group-demo"
+                                           tabindex="0"
+                                           value="checkbox-c"/>
+                                    <label for="checkbox-c">
+                                        Checkbox C
+                                    </label>
+                                </c-checkbox>
+                                <c-checkbox data-group="checkbox-group-demo">
+                                    <input type="checkbox"
+                                           id="checkbox-d"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="checkbox-group-demo"
+                                           value="checkbox-d"/>
+                                    <label for="checkbox-d">
+                                        Checkbox D
+                                    </label>
+                                </c-checkbox>
+                            </c-input-group>
+                            <c-input-group class="form-question"
+                                           data-name="radio-group-demo"
+                                           data-required>
+                                <label>
+                                    Choose one
+                                </label>
+                                <c-radio data-group="radio-group-demo">
+                                    <input type="radio"
+                                           id="radio-a"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="radio-group-demo"
+                                           value="radio-a"/>
+                                    <label for="radio-a">
+                                        Radio A
+                                    </label>
+                                </c-radio>
+                                <c-radio data-group="radio-group-demo">
+                                    <input type="radio"
+                                           id="radio-b"
+                                           class="bordered"
+                                           name="radio-group-demo"
+                                           tabindex="0"
+                                           value="radio-b"/>
+                                    <label for="radio-b">
+                                        Radio B
+                                    </label>
+                                </c-radio>
+                                <c-radio data-group="radio-group-demo">
+                                    <input type="radio"
+                                           id="radio-c"
+                                           class="bordered"
+                                           name="radio-group-demo"
+                                           tabindex="0"
+                                           value="radio-c"/>
+                                    <label for="radio-c">
+                                        Radio C
+                                    </label>
+                                </c-radio>
+                                <c-radio data-group="radio-group-demo">
+                                    <input type="radio"
+                                           id="radio-d"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="radio-group-demo"
+                                           value="radio-d"/>
+                                    <label for="radio-d">
+                                        Radio D
+                                    </label>
+                                </c-radio>
+                            </c-input-group>
+                            <c-input-group class="form-question"
+                                           data-name="radio-group-demo-two"
+                                           data-required>
+                                <label>
+                                    Choose one
+                                </label>
+                                <c-radio data-group="radio-group-demo-two">
+                                    <input type="radio"
+                                           id="radio-two-a"
+                                           class="bordered"
+                                           tabindex="0"
+                                           checked
+                                           name="radio-group-demo-two"
+                                           value="radio-two-a"/>
+                                    <label for="radio-two-a">
+                                        Radio A
+                                    </label>
+                                </c-radio>
+                                <c-radio data-group="radio-group-demo-two">
+                                    <input type="radio"
+                                           id="radio-two-b"
+                                           class="bordered"
+                                           name="radio-group-demo-two"
+                                           tabindex="0"
+                                           value="radio-two-b"/>
+                                    <label for="radio-two-b">
+                                        Radio B
+                                    </label>
+                                </c-radio>
+                            </c-input-group>
+
 <!--                        url type-->
                             <c-input class="form-question">
                                 <label for="required-url-input-demo">A required url c-input</label>
                                 <input id="required-url-input-demo"
                                        type="url"
+                                       tabindex="0"
                                        required
                                        class="theme-secondary bordered"/>
                             </c-input>
@@ -113,144 +267,6 @@
                                     <option value="select-d">Select D</option>
                                 </select>
                             </c-select>
-
-<!--                        input group-->
-                            <c-input-group class="form-question"
-                                           data-name="checkbox-group-demo"
-                                           data-required>
-                                <label>
-                                    Pick some of these
-                                </label>
-                                <c-checkbox data-group="checkbox-group-demo">
-                                    <input type="checkbox"
-                                           id="checkbox-a"
-                                           class="bordered"
-                                           tabindex="0"
-                                           checked
-                                           name="checkbox-group-demo"
-                                           value="checkbox-a"/>
-                                    <label for="checkbox-a">
-                                        Checkbox A
-                                    </label>
-                                </c-checkbox>
-                                <c-checkbox data-group="checkbox-group-demo">
-                                    <input type="checkbox"
-                                           id="checkbox-b"
-                                           class="bordered"
-                                           checked
-                                           name="checkbox-group-demo"
-                                           tabindex="0"
-                                           value="checkbox-b"/>
-                                    <label for="checkbox-b">
-                                        Checkbox B
-                                    </label>
-                                </c-checkbox>
-                                <c-checkbox data-group="checkbox-group-demo">
-                                    <input type="checkbox"
-                                           id="checkbox-c"
-                                           class="bordered"
-                                           name="checkbox-group-demo"
-                                           tabindex="0"
-                                           value="checkbox-c"/>
-                                    <label for="checkbox-c">
-                                        Checkbox C
-                                    </label>
-                                </c-checkbox>
-                                <c-checkbox data-group="checkbox-group-demo">
-                                    <input type="checkbox"
-                                           id="checkbox-d"
-                                           class="bordered"
-                                           tabindex="0"
-                                           name="checkbox-group-demo"
-                                           value="checkbox-d"/>
-                                    <label for="checkbox-d">
-                                        Checkbox D
-                                    </label>
-                                </c-checkbox>
-                            </c-input-group>
-
-                            <c-input-group class="form-question"
-                                           data-name="radio-group-demo"
-                                           data-required>
-                                <label>
-                                    Choose one
-                                </label>
-                                <c-radio data-group="radio-group-demo">
-                                    <input type="radio"
-                                           id="radio-a"
-                                           class="bordered"
-                                           tabindex="0"
-                                           name="radio-group-demo"
-                                           value="radio-a"/>
-                                    <label for="radio-a">
-                                        Radio A
-                                    </label>
-                                </c-radio>
-                                <c-radio data-group="radio-group-demo">
-                                    <input type="radio"
-                                           id="radio-b"
-                                           class="bordered"
-                                           name="radio-group-demo"
-                                           tabindex="0"
-                                           value="radio-b"/>
-                                    <label for="radio-b">
-                                        Radio B
-                                    </label>
-                                </c-radio>
-                                <c-radio data-group="radio-group-demo">
-                                    <input type="radio"
-                                           id="radio-c"
-                                           class="bordered"
-                                           name="radio-group-demo"
-                                           tabindex="0"
-                                           value="radio-c"/>
-                                    <label for="radio-c">
-                                        Radio C
-                                    </label>
-                                </c-radio>
-                                <c-radio data-group="radio-group-demo">
-                                    <input type="radio"
-                                           id="radio-d"
-                                           class="bordered"
-                                           tabindex="0"
-                                           name="radio-group-demo"
-                                           value="radio-d"/>
-                                    <label for="radio-d">
-                                        Radio D
-                                    </label>
-                                </c-radio>
-                            </c-input-group>
-
-                            <c-input-group class="form-question"
-                                           data-name="radio-group-demo-two"
-                                           data-required>
-                                <label>
-                                    Choose one
-                                </label>
-                                <c-radio data-group="radio-group-demo-two">
-                                    <input type="radio"
-                                           id="radio-two-a"
-                                           class="bordered"
-                                           tabindex="0"
-                                           checked
-                                           name="radio-group-demo-two"
-                                           value="radio-two-a"/>
-                                    <label for="radio-two-a">
-                                        Radio A
-                                    </label>
-                                </c-radio>
-                                <c-radio data-group="radio-group-demo-two">
-                                    <input type="radio"
-                                           id="radio-two-b"
-                                           class="bordered"
-                                           name="radio-group-demo-two"
-                                           tabindex="0"
-                                           value="radio-two-b"/>
-                                    <label for="radio-two-b">
-                                        Radio B
-                                    </label>
-                                </c-radio>
-                            </c-input-group>
 
 <!--                        textarea-->
                             <c-textarea class="form-question">

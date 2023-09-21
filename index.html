@@ -126,6 +126,7 @@
                                            id="checkbox-a"
                                            class="bordered"
                                            tabindex="0"
+                                           checked
                                            name="checkbox-group-demo"
                                            value="checkbox-a"/>
                                     <label for="checkbox-a">
@@ -136,6 +137,7 @@
                                     <input type="checkbox"
                                            id="checkbox-b"
                                            class="bordered"
+                                           checked
                                            name="checkbox-group-demo"
                                            tabindex="0"
                                            value="checkbox-b"/>
@@ -166,6 +168,7 @@
                                     </label>
                                 </c-checkbox>
                             </c-input-group>
+
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo"
                                            data-required>
@@ -218,6 +221,37 @@
                                 </c-radio>
                             </c-input-group>
 
+                            <c-input-group class="form-question"
+                                           data-name="radio-group-demo-two"
+                                           data-required>
+                                <label>
+                                    Choose one
+                                </label>
+                                <c-radio data-group="radio-group-demo-two">
+                                    <input type="radio"
+                                           id="radio-two-a"
+                                           class="bordered"
+                                           tabindex="0"
+                                           checked
+                                           name="radio-group-demo-two"
+                                           value="radio-two-a"/>
+                                    <label for="radio-two-a">
+                                        Radio A
+                                    </label>
+                                </c-radio>
+                                <c-radio data-group="radio-group-demo-two">
+                                    <input type="radio"
+                                           id="radio-two-b"
+                                           class="bordered"
+                                           name="radio-group-demo-two"
+                                           tabindex="0"
+                                           value="radio-two-b"/>
+                                    <label for="radio-two-b">
+                                        Radio B
+                                    </label>
+                                </c-radio>
+                            </c-input-group>
+
 <!--                        textarea-->
                             <c-textarea class="form-question">
                                 <label for="textarea-demo">
@@ -241,6 +275,7 @@
                                        class="bordered"
                                        tabindex="0"
                                        required
+                                       name="foo"
                                        value="checkbox-solo"/>
                                 <label for="checkbox-solo">Solo checkbox</label>
                             </c-checkbox>

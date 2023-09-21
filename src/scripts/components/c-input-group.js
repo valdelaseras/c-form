@@ -18,6 +18,8 @@ class CInputGroup extends CFormQuestion {
      * connectedCallback
      */
     connectedCallback() {
+        this.updateCheckedInputs();
+
         super.connectedCallback();
 
         this.addEventListener('click', this.handleClick.bind(this));
@@ -34,11 +36,9 @@ class CInputGroup extends CFormQuestion {
 
     /**
      * handle click events
-     *
-     * @param { Event } e
      */
-    handleClick(e){
-        this.updateCheckedInputs(e.target);
+    handleClick(){
+        this.updateCheckedInputs();
         this.updateIsValid();
     }
 
@@ -50,7 +50,7 @@ class CInputGroup extends CFormQuestion {
      * */
     handleKeyup(e){
         if (e.code === 'Space') {
-            this.updateCheckedInputs(e.target);
+            this.updateCheckedInputs();
             this.updateIsValid();
         }
     }
@@ -79,18 +79,20 @@ class CInputGroup extends CFormQuestion {
 
 
     /**
-     * @param { HTMLInputElement } input
+     *
      */
-    updateCheckedInputs(input){
-        for (let i = 0; i < this.checkedInputs.length; i++){
-            if (this.checkedInputs[i] === input.value){
-                this.checkedInputs.splice(i, 1);
+    updateCheckedInputs(){
+        this.querySelectorAll('input').forEach((input) => {
+            for (let i = 0; i < this.checkedInputs.length; i++){
+                if (this.checkedInputs[i] === input.value){
+                    this.checkedInputs.splice(i, 1);
+                }
             }
-        }
 
-        if (input.checked) {
-            this.checkedInputs.push(input.value)
-        }
+            if (input.checked) {
+                this.checkedInputs.push(input.value);
+            }
+        })
     }
 }
 

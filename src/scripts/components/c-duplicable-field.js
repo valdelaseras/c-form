@@ -1,8 +1,13 @@
 'use strict';
 
+import {CInput} from "./c-input.js";
+
 /**
- * Let the user duplicate an input field ( as indicated by a 'duplicable-field' class ).
- * Use on input[type=text,tel,email,url]
+ * Required CSS classes:
+ *
+ * - duplicate-field-btn: a button ( or element of choice ) that will duplicate the field
+ * - remove-field-btn: a button ( or element of choice ) that will remove a duplicated field
+ * - duplicable-field: the field to duplicate. The field must be a c-input element
  */
 class CDuplicableField extends HTMLElement {
     constructor() {
@@ -23,7 +28,7 @@ class CDuplicableField extends HTMLElement {
      */
     connectedCallback() {
         // set the data-max value to the attribute value, unless the set value is 0
-        // the 0 check is just to prevent accidental infinite duplicates
+        // the 0 check is to prevent accidental infinite duplicates
         if (this.hasAttribute('data-max') && this.getAttribute('data-max') !== '0') {
             this.max = this.getAttribute('data-max');
         } else {
@@ -50,7 +55,7 @@ class CDuplicableField extends HTMLElement {
      * attribute changed callback
      */
     attributeChangedCallback(count) {
-        if (this.max - this.getAttribute(count) === 0) {
+        if (this.max - this.getAttribute(count) <= 0) {
             this.querySelector('.duplicate-field-btn').classList.add('button-disabled');
         } else if (this.querySelector('.duplicate-field-btn.button-disabled')) {
             this.querySelector('.duplicate-field-btn').classList.remove('button-disabled');
@@ -62,11 +67,8 @@ class CDuplicableField extends HTMLElement {
      * @param { Event } e
      */
     handleClick(e){
-        if ( e.target === this.querySelector('.duplicate-field-btn')) {
+        if (e.target === this.querySelector('.duplicate-field-btn')) {
             this.addDuplicate();
-        }
-        if (e.target === this.querySelector('.remove-field-btn')) {
-            this.removeDuplicate();
         }
     }
 
@@ -77,10 +79,12 @@ class CDuplicableField extends HTMLElement {
     handleKeyup(e){
         if (e.code === 'Enter') {
             if (e.target === this.querySelector('.duplicate-field-btn')) {
-                this.addDuplicate();
+                if (!this.querySelector('.duplicate-field-btn.button-disabled')) {
+                    this.addDuplicate();
+                }
             }
-            if (e.target === this.querySelector('.remove-field-btn')) {
-                this.removeDuplicate();
+            if(e.target === this.querySelector('.remove-field-btn')) {
+                this.removeDuplicate(e);
             }
         }
     }
@@ -106,22 +110,21 @@ class CDuplicableField extends HTMLElement {
     /**
      * Remove duplicated field
      */
-    removeDuplicate(){
+    removeDuplicate( e ){
+        e.target.closest('c-input').remove();
+
         this.updateCount();
     }
 
 
     /**
-     * Build a duplicate field element:
-     *
-     * - clone the original duplicable field
-     * - update to a unique id and label[for] by suffixing `-${this.count}`
-     * - clear any values of the original field
-     * - @todo small element fix ( don't want elements jumping around )
-     * - append it
+     * Build a duplicate field element
      */
     buildDuplicate() {
+        // clone the original duplicable field
         const clonedNode = this.duplicableField.cloneNode(true);
+
+        clonedNode.querySelector('small').remove();
 
         clonedNode.classList.remove('duplicable-field');
         clonedNode.classList.add('duplicate-field');
@@ -131,11 +134,37 @@ class CDuplicableField extends HTMLElement {
         clonedNode.querySelector('input').id = dupeId;
         clonedNode.querySelector('label').setAttribute('for', dupeId);
 
+        // clear any values of the original field
         clonedNode.querySelector('input').value = '';
 
-        clonedNode.querySelector('small').remove();
+        // add a button to remove the duplicate field if desired
+        const removalBtn = this.buildRemovalBtn( clonedNode );
+        // append it
+        clonedNode.append(removalBtn);
+        // attach listeners to the button
+        removalBtn.addEventListener('click', this.removeDuplicate.bind(this));
+        removalBtn.addEventListener('keyup', this.handleKeyup.bind(this));
 
+        // append the duplicated and updated field
         this.appendChild(clonedNode);
+    }
+
+
+    /**
+     * Build a simple field removal button:
+     *
+     * <a role="button" class="remove-field-btn">
+     *     x
+     * </a>
+     */
+    buildRemovalBtn() {
+        const btn = document.createElement('a');
+        btn.setAttribute('role', 'button');
+        btn.setAttribute('tabindex', '0');
+        btn.classList.add('remove-field-btn');
+        btn.innerText = "x";
+
+        return btn;
     }
 
 

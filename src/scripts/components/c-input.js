@@ -4,9 +4,10 @@ import {CFormQuestion} from "../CFormQuestion.js";
  * Intended for input types: email, url, text, tel
  * For input types checkbox and radio, please use c-checkbox / c-radio
  */
-class CInput extends CFormQuestion {
+export class CInput extends CFormQuestion {
     constructor() {
         super();
+
 
         this.requiredFieldHelperText = 'This field is required';
         this.invalidFieldHelperText = '';

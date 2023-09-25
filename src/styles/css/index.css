@@ -1565,8 +1565,7 @@ textarea.theme-secondary.bordered {
 }
 
 c-form,
-.form-section,
-.form-question {
+.form-section {
   display: flex;
   flex-direction: column;
 }
@@ -1581,10 +1580,6 @@ c-form {
   padding-left: 20px;
 }
 
-.form-question {
-  gap: 20px;
-}
-
 .form-header,
 .form-footer {
   padding: 20px;
@@ -1592,7 +1587,22 @@ c-form {
 
 input,
 textarea {
+  width: 100%;
   padding: 10px;
+}
+
+.form-question > label,
+small.helper-text {
+  display: block;
+}
+
+.form-question > label {
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+small.helper-text {
+  padding-top: 10px;
 }
 
 c-checkbox label:hover,

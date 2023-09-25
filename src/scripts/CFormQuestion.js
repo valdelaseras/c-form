@@ -87,4 +87,25 @@ export class CFormQuestion extends HTMLElement {
         this.querySelector('small.helper-text').classList.add(`font-color-${status}`);
         this.querySelector('small.helper-text').innerText = message;
     }
+
+
+    /**
+     * Create a duplicate of an element
+     *
+     * IMPORTANT: the target element must have the 'duplicable' class
+     */
+    createDupe() {
+        // clone the original duplicable field
+        const clonedNode = this.cloneNode(true);
+
+        // a new small.helper-text will be instantiated, so remove the cloned one
+        if (clonedNode.querySelector('small')) {
+            clonedNode.querySelector('small').remove();
+        }
+
+        clonedNode.classList.remove('duplicable');
+        clonedNode.classList.add('dupe');
+
+        return clonedNode;
+    }
 }

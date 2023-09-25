@@ -74,6 +74,27 @@ export class CInput extends CFormQuestion {
                 this.invalidFieldHelperText = '';
         }
     }
+
+
+    /**
+     * Set a "unique" id for input and label ( @todo: perhaps later look into generating actual UIDs )
+     * Clear any potential input value
+     *
+     * @return { CInput }
+     */
+    createDupe() {
+        const clonedNode = super.createDupe();
+
+        const dupeId = clonedNode.querySelector('input').id = Math.floor(Math.random() * 1000000).toString(10);
+
+        clonedNode.querySelector('input').id = dupeId;
+        clonedNode.querySelector('label').setAttribute('for', dupeId);
+
+        // clear any values of the original field
+        clonedNode.querySelector('input').value = '';
+
+        return clonedNode;
+    }
 }
 
 customElements.define('c-input', CInput);

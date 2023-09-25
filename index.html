@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="./src/styles/css/index.css"/>
 
-    <script type="module" src="./src/scripts/components/c-duplicable-field.js" defer></script>
+    <script type="module" src="./src/scripts/components/c-duplicable-form-question.js" defer></script>
     <script type="module" src="./src/scripts/components/c-input-group.js" defer></script>
     <script type="module" src="./src/scripts/components/c-select.js" defer></script>
     <script type="module" src="./src/scripts/components/c-checkbox.js" defer></script>
@@ -29,13 +29,13 @@
                         <section class="form-section">
                             <h3 class="form-section-title">Form section title</h3>
 
-<!--                        duplicable field-->
-                            <c-duplicable-field data-max="4">
-                                <a class="duplicate-field-btn button button-compact bordered"
+<!--                        duplicable form question-->
+                            <c-duplicable-form-question data-max="4">
+                                <a class="add-dupe-btn button button-compact bordered"
                                    tabindex="0"
                                    role="button">Duplicate field</a>
 
-                                <c-input class="form-question duplicable-field">
+                                <c-input class="form-question duplicable">
                                     <label for="dupe-field-demo">Url</label>
                                     <input id="dupe-field-demo"
                                            tabindex="0"
@@ -43,7 +43,7 @@
                                            name="dupe-fields-demo"
                                            class="theme-secondary bordered"/>
                                 </c-input>
-                            </c-duplicable-field>
+                            </c-duplicable-form-question>
 
 <!--                        input group-->
                             <c-input-group class="form-question"

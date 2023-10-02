@@ -92,10 +92,10 @@ class CForm extends HTMLElement {
      */
     toggleSubmitBtn(isValid) {
         if (isValid) {
-            this.querySelector('.form-submit-btn').classList.remove('btn-disabled');
+            this.querySelector('.form-submit-btn').classList.remove('button-disabled');
             this.querySelector('.form-submit-btn').setAttribute('tabindex', '0');
         } else {
-            this.querySelector('.form-submit-btn').classList.add('btn-disabled');
+            this.querySelector('.form-submit-btn').classList.add('button-disabled');
             this.querySelector('.form-submit-btn').setAttribute('tabindex', '-1');
         }
     }

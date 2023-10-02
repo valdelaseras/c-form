@@ -42,7 +42,8 @@ class CForm extends HTMLElement {
      * Handle click events
      */
     handleClick(e){
-        if (e.target === this.querySelector('.form-submit-btn')) {
+        // todo: rename to form-submit-button > need update in pedestal ( version + 1 )
+        if (e.target === this.querySelector('.form-submit-button')) {
             this.getFormValues();
         }
     }
@@ -55,8 +56,8 @@ class CForm extends HTMLElement {
      */
     handleKeyup(e){
         if (e.code === 'Enter'){
-            if (e.target === this.querySelector('.form-submit-btn')) {
-                if (!this.querySelector('.form-submit-btn.button-disabled')) {
+            if (e.target === this.querySelector('.form-submit-button')) {
+                if (!this.querySelector('.form-submit-button.button-disabled')) {
                     this.getFormValues();
                 }
             }
@@ -81,7 +82,7 @@ class CForm extends HTMLElement {
      * Update overall form validity
      */
     updateIsValid() {
-        this.toggleSubmitBtn(this.formQuestions.length === this.querySelectorAll('.form-question[data-valid]').length);
+        this.toggleSubmitButton(this.formQuestions.length === this.querySelectorAll('.form-question[data-valid]').length);
     }
 
 
@@ -90,13 +91,13 @@ class CForm extends HTMLElement {
      *
      * @param { boolean } isValid
      */
-    toggleSubmitBtn(isValid) {
+    toggleSubmitButton(isValid) {
         if (isValid) {
-            this.querySelector('.form-submit-btn').classList.remove('button-disabled');
-            this.querySelector('.form-submit-btn').setAttribute('tabindex', '0');
+            this.querySelector('.form-submit-button').classList.remove('button-disabled');
+            this.querySelector('.form-submit-button').setAttribute('tabindex', '0');
         } else {
-            this.querySelector('.form-submit-btn').classList.add('button-disabled');
-            this.querySelector('.form-submit-btn').setAttribute('tabindex', '-1');
+            this.querySelector('.form-submit-button').classList.add('button-disabled');
+            this.querySelector('.form-submit-button').setAttribute('tabindex', '-1');
         }
     }
 }

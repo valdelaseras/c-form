@@ -41,8 +41,8 @@ small.helper-text {
     font-weight: bold;
 }
 
-.add-dupe-btn,
-.remove-dupe-btn {
+.add-dupe-button,
+.remove-dupe-button {
     background-color: pedestal.$accent-color-primary;
     height: 35px;
     width: 35px;
@@ -55,14 +55,14 @@ small.helper-text {
     transition: background-color 100ms;
 }
 
-.remove-dupe-btn {
+.remove-dupe-button {
     margin: 5px 0 5px 5px;
 }
 
-.remove-dupe-btn:hover,
-.remove-dupe-btn:focus,
-.remove-dupe-btn:focus-within,
-.remove-dupe-btn:active {
+.remove-dupe-button:hover,
+.remove-dupe-button:focus,
+.remove-dupe-button:focus-within,
+.remove-dupe-button:active {
     background-color: pedestal.$accent-color-secondary;
     color: pedestal.$font-color-primary;
 }

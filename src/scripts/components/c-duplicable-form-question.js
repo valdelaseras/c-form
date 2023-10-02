@@ -4,7 +4,7 @@
  * Required CSS classes:
  *
  * .duplicable: the ( form-question ) element to allow duplicates for
- * .add-dupe-btn: a focusable element that will duplicate the 'duplicable' element on click / keyup
+ * .add-dupe-button: a focusable element that will duplicate the 'duplicable' element on click / keyup
  */
 class CDuplicableFormQuestion extends HTMLElement {
     constructor() {
@@ -53,9 +53,9 @@ class CDuplicableFormQuestion extends HTMLElement {
      */
     attributeChangedCallback(count) {
         if (this.max - this.getAttribute(count) <= 0) {
-            this.querySelector('.add-dupe-btn').classList.add('btn-disabled');
-        } else if (this.querySelector('.add-dupe-btn.button-disabled')) {
-            this.querySelector('.add-dupe-btn').classList.remove('btn-disabled');
+            this.querySelector('.add-dupe-button').classList.add('button-disabled');
+        } else if (this.querySelector('.add-dupe-button.button-disabled')) {
+            this.querySelector('.add-dupe-button').classList.remove('button-disabled');
         }
     }
 
@@ -66,7 +66,7 @@ class CDuplicableFormQuestion extends HTMLElement {
      * @param { Event } e
      */
     handleClick(e){
-        if (e.target === this.querySelector('.add-dupe-btn')) {
+        if (e.target === this.querySelector('.add-dupe-button')) {
             this.addDuplicate();
         }
     }
@@ -79,12 +79,12 @@ class CDuplicableFormQuestion extends HTMLElement {
      */
     handleKeyup(e){
         if (e.code === 'Enter') {
-            if (e.target === this.querySelector('.add-dupe-btn')) {
-                if (!this.querySelector('.add-dupe-btn.button-disabled')) {
+            if (e.target === this.querySelector('.add-dupe-button')) {
+                if (!this.querySelector('.add-dupe-button.button-disabled')) {
                     this.addDuplicate();
                 }
             }
-            if (e.target === this.querySelector('.remove-dupe-btn')) {
+            if (e.target === this.querySelector('.remove-dupe-button')) {
                 this.removeDuplicate(e);
             }
         }
@@ -125,9 +125,9 @@ class CDuplicableFormQuestion extends HTMLElement {
      */
     buildDuplicate() {
         const clonedNode = this.duplicableElement.createDupe();
-        const removalBtn = this.buildRemovalBtn();
+        const removalButton = this.buildRemovalButton();
 
-        clonedNode.append(removalBtn);
+        clonedNode.append(removalButton);
 
         this.appendChild(clonedNode);
     }
@@ -138,18 +138,18 @@ class CDuplicableFormQuestion extends HTMLElement {
      *
      * @return { HTMLAnchorElement }
      */
-    buildRemovalBtn() {
-        const btn = document.createElement('a');
+    buildRemovalButton() {
+        const button = document.createElement('a');
 
-        btn.setAttribute('role', 'button');
-        btn.setAttribute('tabindex', '0');
-        btn.classList.add('remove-dupe-btn');
-        btn.innerText = "×";
+        button.setAttribute('role', 'button');
+        button.setAttribute('tabindex', '0');
+        button.classList.add('remove-dupe-button');
+        button.innerText = "×";
 
-        btn.addEventListener('click', this.removeDuplicate.bind(this));
-        btn.addEventListener('keyup', this.handleKeyup.bind(this));
+        button.addEventListener('click', this.removeDuplicate.bind(this));
+        button.addEventListener('keyup', this.handleKeyup.bind(this));
 
-        return btn;
+        return button;
     }
 
 

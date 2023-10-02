@@ -6,7 +6,7 @@ class CSelect extends CFormQuestion {
     }
 
     /**
-     * connected callback
+     * Connected callback
      */
     connectedCallback() {
         super.connectedCallback();
@@ -15,37 +15,36 @@ class CSelect extends CFormQuestion {
     }
 
     /**
-     * remove any listeners on disconnected callback
+     * Disconnected callback
      */
     disconnectedCallback() {
-        super.disconnectedCallback();
-
         this.removeEventListener('change', this.handleChange.bind(this));
     }
 
 
     /**
-     * handle change events
+     * Handle change events
      */
     handleChange(){
-        this.updateIsValid()
+        this.updateState();
     }
 
 
     /**
-     * add and remove the custom 'data-valid' attribute
+     * Add and remove the custom 'data-valid' attribute
      */
     updateIsValid() {
         if (this.isRequired) {
-
             // if there is a disabled option...
             if (!!this.querySelector('option[disabled]')){
+                // if there were to be no check for a pristine state...
+                super.updateHelperText('error', 'This field is required');
                 // when the value is no longer the disabled option value, a selection has been made
                 if (this.querySelector('select').value !== this.querySelector('option[disabled]').value){
                     this.setAttribute('data-valid', '');
                 }
 
-            // if no disabled option is present, even if the select is required, there already is a valid value selected
+                // if no disabled option is present, even if the select is required, there already is a valid value selected
             } else {
                 this.setAttribute('data-valid', '');
             }

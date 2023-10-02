@@ -13,28 +13,38 @@ class CTextarea extends CFormQuestion {
     connectedCallback() {
         super.connectedCallback();
 
-        this.setCounter('.maxlength', this.querySelector( 'textarea' ).getAttribute('maxlength' ));
-        this.setCounter('.counter', this.querySelector( 'textarea' ).getAttribute('maxlength' ));
+        this.updateCounter('.maxlength', this.querySelector('textarea').getAttribute('maxlength'));
+        this.updateCounter('.counter', this.querySelector('textarea').getAttribute('maxlength'));
+
+        this.addEventListener('input', this.handleInput.bind(this));
     }
 
 
     /**
-     * Handle keyup event
+     * Disconnected callback
      */
-    handleKeyup(){
-        this.setCounter( '.counter', (this.querySelector( 'textarea' ).getAttribute('maxlength' ) - this.querySelector( 'textarea' ).value.length ).toString() );
-        this.updateIsValid();
+    disconnectedCallback() {
+        this.removeEventListener('input', this.handleInput.bind(this));
     }
 
 
     /**
-     * Set a counter value in a target element
+     * Handle input event
+     */
+    handleInput() {
+        this.updateCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
+        this.updateState();
+    }
+
+
+    /**
+     * Update the target element's count
      *
-     * @param { string } targetSelector
-     * @param { string } count - the (string) number to set in the target element
+     * @param { string } targetElement
+     * @param { string } count - a number
      */
-    setCounter( targetSelector, count ) {
-        this.querySelector( targetSelector ).innerText = count;
+    updateCounter(targetElement, count) {
+        this.querySelector(targetElement).innerText = count;
     }
 
 
@@ -46,7 +56,8 @@ class CTextarea extends CFormQuestion {
             if (this.querySelector('textarea').value) {
                 this.setAttribute('data-valid', '');
             } else {
-                this.removeAttribute('data-valid')
+                this.removeAttribute('data-valid');
+                super.updateHelperText('error', 'This field is required');
             }
         } else {
             this.setAttribute('data-valid', '');

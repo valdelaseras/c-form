@@ -1565,7 +1565,8 @@ textarea.theme-secondary.bordered {
 }
 
 c-form,
-.form-section {
+.form-section,
+.form-question {
   display: flex;
   flex-direction: column;
 }
@@ -1578,6 +1579,10 @@ c-form {
   gap: 30px;
   padding-right: 20px;
   padding-left: 20px;
+}
+
+.form-question {
+  gap: 15px;
 }
 
 .form-header,
@@ -1597,12 +1602,55 @@ small.helper-text {
 }
 
 .form-question > label {
-  padding: 10px 0;
   font-weight: bold;
 }
 
-small.helper-text {
-  padding-top: 10px;
+.add-dupe-btn,
+.remove-dupe-btn {
+  background-color: rgb(69, 180, 134);
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 100ms;
+}
+
+.remove-dupe-btn {
+  margin: 5px 0 5px 5px;
+}
+
+.remove-dupe-btn:hover,
+.remove-dupe-btn:focus,
+.remove-dupe-btn:focus-within,
+.remove-dupe-btn:active {
+  background-color: rgb(180, 69, 115);
+  color: rgb(232, 232, 232);
+}
+
+.duplicable {
+  margin-bottom: 30px;
+}
+
+.dupe {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 60px;
+  gap: 15px;
+  position: relative;
+}
+
+.dupe label {
+  display: none;
+}
+
+.dupe small.helper-text {
+  position: absolute;
+  left: 0;
+  bottom: -30px;
 }
 
 c-checkbox label:hover,

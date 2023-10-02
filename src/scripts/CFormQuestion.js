@@ -8,12 +8,12 @@ export class CFormQuestion extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['data-valid'];
+        return ['data-valid', 'data-pristine'];
     }
 
 
     /**
-     * connected callback
+     * Connected callback
      */
     connectedCallback(){
         this.isRequired = !!this.querySelector('*[required]') || this.hasAttribute('data-required');
@@ -22,47 +22,35 @@ export class CFormQuestion extends HTMLElement {
             this.buildHelperElement();
 
             if (this.isRequired) {
-                this.setHelperText('error', 'This field is required');
                 this.setAsterisk();
             }
         }
 
+        this.setAttribute('data-pristine', '');
         this.updateIsValid();
-
-        if (this.handleKeyup){
-            this.addEventListener('keyup', this.handleKeyup.bind(this));
-        }
     }
 
 
     /**
-     * remove any listeners on disconnected callback
-     */
-    disconnectedCallback() {
-        if (this.handleKeyup){
-            this.removeEventListener('keyup', this.handleKeyup.bind(this));
-        }
-    }
-
-
-    /**
-     * attribute changed callback
+     * Attribute changed callback
      */
     attributeChangedCallback(name) {
         if (!this.getAttribute('data-group')){
-            if (this.hasAttribute(name)) {
-                this.querySelector('small.helper-text').style.visibility = 'hidden';
+            if (this.getIsPristine() || this.getIsValid()) {
+                this.updateHelperTextVisibility(false);
             } else {
-                this.querySelector('small.helper-text').style.visibility = 'visible';
+                this.updateHelperTextVisibility(true);
             }
         }
 
-        this.dispatchEvent(new Event('onValidityChange'));
+        if (name === 'data-valid') {
+            this.dispatchEvent(new Event('onValidityChange'));
+        }
     }
 
 
     /**
-     * build the form field helper element and append it to the end of this (c-form-group)
+     * Build the helper-text element and append it
      */
     buildHelperElement(){
         const small = document.createElement('small');
@@ -72,7 +60,7 @@ export class CFormQuestion extends HTMLElement {
 
 
     /**
-     * set asterisk at the end of the label if it is a required field
+     * Set an asterisk at the end of the label
      */
     setAsterisk() {
         this.querySelector('label').innerText += '*';
@@ -83,9 +71,19 @@ export class CFormQuestion extends HTMLElement {
      * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
-    setHelperText(status, message) {
+    updateHelperText(status, message) {
         this.querySelector('small.helper-text').classList.add(`font-color-${status}`);
         this.querySelector('small.helper-text').innerText = message;
+    }
+
+
+    /**
+     * Update helper text visibility to hidden or visible
+     *
+     * @param { boolean } isVisible
+     */
+    updateHelperTextVisibility(isVisible){
+        this.querySelector('small.helper-text').style.visibility = isVisible ? 'visible' : 'hidden';
     }
 
 
@@ -107,5 +105,48 @@ export class CFormQuestion extends HTMLElement {
         clonedNode.classList.add('dupe');
 
         return clonedNode;
+    }
+
+
+    /**
+     * Update 'data-pristine' attribute
+     *
+     * It only removes the attribute now, but later on we might want
+     * an option to reset a form element to pristine state, hence
+     * 'update'
+     */
+    updateIsPristine(){
+        if (this.getIsPristine()){
+            this.removeAttribute('data-pristine');
+        }
+    }
+
+
+    /**
+     * Check if this has 'data-pristine' attribute
+     *
+     * @return { boolean }
+     */
+    getIsPristine(){
+        return this.hasAttribute('data-pristine');
+    }
+
+
+    /**
+     * Check if this has 'data-valid' attribute
+     *
+     * @return { boolean }
+     */
+    getIsValid(){
+        return this.hasAttribute('data-valid');
+    }
+
+
+    /**
+     * Update state
+     */
+    updateState() {
+        this.updateIsPristine();
+        this.updateIsValid();
     }
 }

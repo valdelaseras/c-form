@@ -8,33 +8,35 @@ class CCheckbox extends CFormQuestion {
     }
 
     /**
-     * connectedCallback
+     * Connected callback
      */
     connectedCallback() {
         super.connectedCallback();
 
+        this.addEventListener('keyup', this.handleKeyup.bind(this));
         this.addEventListener('click', this.handleClick.bind(this));
     }
 
 
     /**
-     * remove listeners on disconnected callback
+     * Disconnected callback
      */
     disconnectedCallback() {
+        this.removeEventListener('keyup', this.handleKeyup.bind(this));
         this.removeEventListener('click', this.handleClick.bind(this));
     }
 
 
     /**
-     * handle click
+     * Handle click events
      */
     handleClick() {
-        this.updateIsValid();
+        this.updateState();
     }
 
 
     /**
-     * handle key up
+     * Handle keyup event
      *
      * @param { KeyboardEvent } e
      */
@@ -42,6 +44,7 @@ class CCheckbox extends CFormQuestion {
         if (document.activeElement === this.querySelector('label')) {
             if (e.code === 'Space') {
                 this.querySelector('input[type="checkbox"]').checked = !this.querySelector('input[type="checkbox"]').checked;
+                this.updateState();
             }
         }
     }
@@ -56,7 +59,8 @@ class CCheckbox extends CFormQuestion {
                 if (this.querySelector('input').checked) {
                     this.setAttribute('data-valid', '');
                 } else {
-                    this.removeAttribute('data-valid')
+                    this.removeAttribute('data-valid');
+                    super.updateHelperText('error', 'This field is required');
                 }
             } else {
                 this.setAttribute('data-valid', '');

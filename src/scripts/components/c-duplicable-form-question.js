@@ -21,7 +21,7 @@ class CDuplicableFormQuestion extends HTMLElement {
 
 
     /**
-     * on connected callback
+     * Connected callback
      */
     connectedCallback() {
         // set the data-max value to the attribute value, unless the set value is 0
@@ -34,33 +34,35 @@ class CDuplicableFormQuestion extends HTMLElement {
 
         this.duplicableElement = this.getDuplicableElement();
 
-        this.addEventListener('click', this.handleClick.bind(this));
         this.addEventListener('keyup', this.handleKeyup.bind(this));
+        this.addEventListener('click', this.handleClick.bind(this));
     }
 
 
     /**
-     * on disconnected callback
+     * Disconnected callback
      */
     disconnectedCallback() {
-        this.removeEventListener('click', this.handleClick.bind(this));
         this.removeEventListener('keyup', this.handleKeyup.bind(this));
+        this.removeEventListener('click', this.handleClick.bind(this));
     }
 
 
     /**
-     * attribute changed callback
+     * Attribute changed callback
      */
     attributeChangedCallback(count) {
         if (this.max - this.getAttribute(count) <= 0) {
-            this.querySelector('.add-dupe-btn').classList.add('button-disabled');
+            this.querySelector('.add-dupe-btn').classList.add('btn-disabled');
         } else if (this.querySelector('.add-dupe-btn.button-disabled')) {
-            this.querySelector('.add-dupe-btn').classList.remove('button-disabled');
+            this.querySelector('.add-dupe-btn').classList.remove('btn-disabled');
         }
     }
 
 
     /**
+     * Handle click events
+     *
      * @param { Event } e
      */
     handleClick(e){
@@ -71,6 +73,8 @@ class CDuplicableFormQuestion extends HTMLElement {
 
 
     /**
+     * Handle keyup events
+     *
      * @param { KeyboardEvent } e
      */
     handleKeyup(e){
@@ -88,7 +92,7 @@ class CDuplicableFormQuestion extends HTMLElement {
 
 
     /**
-     * Get the target element to duplicate
+     * Get the element to duplicate
      *
      * @return { HTMLElement }
      */
@@ -98,7 +102,7 @@ class CDuplicableFormQuestion extends HTMLElement {
 
 
     /**
-     * Add dupe element
+     * Add a dupe element
      */
     addDuplicate() {
         this.buildDuplicate();

@@ -1,8 +1,10 @@
+'use strict';
+
 import {CFormQuestion} from "../CFormQuestion.js";
 
 /**
- * Intended for input types: email, url, text, tel
- * For input types checkbox and radio, please use c-checkbox / c-radio
+ * Intended for input types[email, url, text, tel]
+ * For input type[checkbox, radio], please use c-checkbox / c-radio
  */
 export class CInput extends CFormQuestion {
     constructor() {
@@ -13,23 +15,37 @@ export class CInput extends CFormQuestion {
         this.invalidFieldHelperText = '';
     }
 
+
+    /**
+     * Connected callback
+     */
     connectedCallback() {
         super.connectedCallback();
+
+        this.addEventListener('input', this.handleInput.bind(this));
 
         this.setInvalidFieldHelperText(this.querySelector('input').getAttribute('type'));
     }
 
 
     /**
-     * handle key up events
-     * */
-    handleKeyup(){
-        this.updateIsValid();
+     * Disconnected callback
+     */
+    disconnectedCallback() {
+        this.removeEventListener('input', this.handleInput.bind(this));
     }
 
 
     /**
-     * add and remove the custom 'data-valid' attribute
+     * Handle input event
+     */
+    handleInput() {
+        this.updateState();
+    }
+
+
+    /**
+     * Add and remove the custom 'data-valid' attribute, update helper texts
      */
     updateIsValid() {
         const isValid = this.querySelector('input').validity.valid;
@@ -38,16 +54,16 @@ export class CInput extends CFormQuestion {
         if (this.isRequired) {
             if (!hasValue) {
                 this.removeAttribute('data-valid');
-                super.setHelperText('error', this.requiredFieldHelperText);
+                super.updateHelperText('error', this.requiredFieldHelperText);
             } else if (!isValid) {
                 this.removeAttribute('data-valid');
-                super.setHelperText('error', this.invalidFieldHelperText);
+                super.updateHelperText('error', this.invalidFieldHelperText);
             } else {
                 this.setAttribute('data-valid', '');
             }
         } else if (hasValue && !isValid) {
             this.removeAttribute('data-valid');
-            super.setHelperText('error', this.invalidFieldHelperText);
+            super.updateHelperText('error', this.invalidFieldHelperText);
         } else {
             this.setAttribute('data-valid', '');
         }
@@ -55,11 +71,9 @@ export class CInput extends CFormQuestion {
 
 
     /**
-     * Set the correct value for invalid field helper text: this is not the default
-     * 'this field is required' text, but things like the email or url value not being
-     * valid.
+     * Set the correct value for invalid field helper texts
      *
-     * @param { string } type
+     * @param { string } type - the input[type]
      */
     setInvalidFieldHelperText(type){
         switch(type) {

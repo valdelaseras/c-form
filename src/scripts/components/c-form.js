@@ -1,14 +1,5 @@
 'use strict';
 
-/**
- *
- * Some instructions on how to use c-form:
- *
- * formQuestions: the .form-question class should be applied to all c-${form component} that
- * represent a single 'question'. So, note that a form question could have several c-${form component}
- * elements nested ( like a group of checkboxes ), which should *not* individually receive the
- * form-question class.
- */
 class CForm extends HTMLElement {
     constructor() {
         super();
@@ -16,6 +7,10 @@ class CForm extends HTMLElement {
         this.formQuestions = [];
     }
 
+
+    /**
+     * Connected callback
+     */
     connectedCallback(){
         this.formQuestions = this.querySelectorAll('.form-question');
 
@@ -29,6 +24,10 @@ class CForm extends HTMLElement {
         })
     }
 
+
+    /**
+     * Disconnected callback
+     */
     disconnectedCallback(){
         this.removeEventListener('click', this.handleClick.bind(this));
         this.removeEventListener('keyup', this.handleKeyup.bind(this));
@@ -38,23 +37,66 @@ class CForm extends HTMLElement {
         })
     }
 
-    handleClick(e){}
 
-    handleKeyup(e){}
+    /**
+     * Handle click events
+     */
+    handleClick(e){
+        if (e.target === this.querySelector('.form-submit-btn')) {
+            this.getFormValues();
+        }
+    }
+
+
+    /**
+     * Handle key up
+     *
+     * @param { KeyboardEvent } e
+     */
+    handleKeyup(e){
+        if (e.code === 'Enter'){
+            if (e.target === this.querySelector('.form-submit-btn')) {
+                if (!this.querySelector('.form-submit-btn.button-disabled')) {
+                    this.getFormValues();
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Get form values
+     */
+    getFormValues() {
+        console.log(this.formQuestions);
+
+        this.formQuestions.forEach((question) => {
+            console.log(question)
+        })
+    }
+
 
     // @todo: temp, properly validate
+    /**
+     * Update overall form validity
+     */
     updateIsValid() {
         this.toggleSubmitBtn(this.formQuestions.length === this.querySelectorAll('.form-question[data-valid]').length);
     }
 
+
     /**
+     * Toggle submit button state
+     *
      * @param { boolean } isValid
      */
     toggleSubmitBtn(isValid) {
         if (isValid) {
-            this.querySelector('.form-submit-btn').classList.remove('button-disabled');
+            this.querySelector('.form-submit-btn').classList.remove('btn-disabled');
+            this.querySelector('.form-submit-btn').setAttribute('tabindex', '0');
         } else {
-            this.querySelector('.form-submit-btn').classList.add('button-disabled');
+            this.querySelector('.form-submit-btn').classList.add('btn-disabled');
+            this.querySelector('.form-submit-btn').setAttribute('tabindex', '-1');
         }
     }
 }

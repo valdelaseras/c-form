@@ -15,43 +15,45 @@ class CInputGroup extends CFormQuestion {
 
 
     /**
-     * connectedCallback
+     * Connected callback
      */
     connectedCallback() {
         this.updateCheckedInputs();
 
         super.connectedCallback();
 
+        this.addEventListener('keyup', this.handleKeyup.bind(this));
         this.addEventListener('click', this.handleClick.bind(this));
     }
 
 
     /**
-     * remove listeners on disconnected callback
+     * Disconnected callback
      */
     disconnectedCallback() {
+        this.removeEventListener('keyup', this.handleKeyup.bind(this));
         this.removeEventListener('click', this.handleClick.bind(this));
     }
 
 
     /**
-     * handle click events
+     * Handle click events
      */
     handleClick(){
         this.updateCheckedInputs();
-        this.updateIsValid();
+        this.updateState();
     }
 
 
     /**
-     * handle keyup events
+     * Handle keyup events
      *
      * @param { KeyboardEvent } e
      * */
     handleKeyup(e){
         if (e.code === 'Space') {
             this.updateCheckedInputs();
-            this.updateIsValid();
+            this.updateState();
         }
     }
 
@@ -67,7 +69,8 @@ class CInputGroup extends CFormQuestion {
             if (this.checkedInputs.length) {
                 this.setAttribute('data-valid', '');
             } else {
-                this.removeAttribute('data-valid')
+                this.removeAttribute('data-valid');
+                super.updateHelperText('error', 'This field is required');
             }
         }
 

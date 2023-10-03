@@ -51,19 +51,19 @@ class CCheckbox extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-valid' attribute
+     * Add and remove the custom 'data-is-valid' attribute
      */
-    updateIsValid() {
-        if (!this.getAttribute('data-group')){
+    setValidityState() {
+        if (!this.hasAttribute('data-group')){
             if (this.isRequired){
                 if (this.querySelector('input').checked) {
-                    this.setAttribute('data-valid', '');
+                    this.setAttribute('data-is-valid', '');
                 } else {
-                    this.removeAttribute('data-valid');
-                    super.updateHelperText('error', 'This field is required');
+                    this.removeAttribute('data-is-valid');
+                    super.setHelperText('error', 'This field is required');
                 }
             } else {
-                this.setAttribute('data-valid', '');
+                this.setAttribute('data-is-valid', '');
             }
         }
     }

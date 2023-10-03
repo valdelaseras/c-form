@@ -30,11 +30,11 @@
                             <h3 class="form-section-title">Form section title</h3>
 
                             <c-duplicable-form-question data-max="4">
-                                <a class="add-dupe-button"
+                                <a class="button add-dupe-button"
                                    tabindex="0"
                                    role="button">+</a>
 
-                                <c-input class="form-question duplicable">
+                                <c-input class="form-question duplicable-element">
                                     <label for="dupe-field-demo">Url</label>
                                     <input id="dupe-field-demo"
                                            tabindex="0"
@@ -46,7 +46,7 @@
 
                             <c-input-group class="form-question"
                                            data-name="checkbox-group-demo"
-                                           data-required>
+                                           data-is-required>
                                 <label>
                                     Pick some of these
                                 </label>
@@ -100,7 +100,7 @@
 
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo"
-                                           data-required>
+                                           data-is-required>
                                 <label>
                                     Choose one
                                 </label>
@@ -151,7 +151,7 @@
                             </c-input-group>
                             <c-input-group class="form-question"
                                            data-name="radio-group-demo-two"
-                                           data-required>
+                                           data-is-required>
                                 <label>
                                     Choose one
                                 </label>
@@ -290,7 +290,7 @@
                         </section>
 
                         <footer class="form-footer" role="contentinfo">
-                            <a class="button button-compact bordered form-submit-btn button-disabled"
+                            <a class="button button-compact bordered form-submit-button button-disabled"
                                tabindex="-1"
                                aria-label="submit form"
                                role="button"

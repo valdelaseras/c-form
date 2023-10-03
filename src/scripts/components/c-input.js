@@ -45,27 +45,27 @@ export class CInput extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-valid' attribute, update helper texts
+     * Add and remove the custom 'data-is-valid' attribute, update helper texts
      */
-    updateIsValid() {
+    setValidityState() {
         const isValid = this.querySelector('input').validity.valid;
         const hasValue = this.querySelector('input').value;
 
         if (this.isRequired) {
             if (!hasValue) {
-                this.removeAttribute('data-valid');
-                super.updateHelperText('error', this.requiredFieldHelperText);
+                this.removeAttribute('data-is-valid');
+                super.setHelperText('error', this.requiredFieldHelperText);
             } else if (!isValid) {
-                this.removeAttribute('data-valid');
-                super.updateHelperText('error', this.invalidFieldHelperText);
+                this.removeAttribute('data-is-valid');
+                super.setHelperText('error', this.invalidFieldHelperText);
             } else {
-                this.setAttribute('data-valid', '');
+                this.setAttribute('data-is-valid', '');
             }
         } else if (hasValue && !isValid) {
-            this.removeAttribute('data-valid');
-            super.updateHelperText('error', this.invalidFieldHelperText);
+            this.removeAttribute('data-is-valid');
+            super.setHelperText('error', this.invalidFieldHelperText);
         } else {
-            this.setAttribute('data-valid', '');
+            this.setAttribute('data-is-valid', '');
         }
     }
 

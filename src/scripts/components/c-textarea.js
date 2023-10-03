@@ -13,8 +13,8 @@ class CTextarea extends CFormQuestion {
     connectedCallback() {
         super.connectedCallback();
 
-        this.updateCounter('.maxlength', this.querySelector('textarea').getAttribute('maxlength'));
-        this.updateCounter('.counter', this.querySelector('textarea').getAttribute('maxlength'));
+        this.setCounter('.maxlength', this.querySelector('textarea').getAttribute('maxlength'));
+        this.setCounter('.counter', this.querySelector('textarea').getAttribute('maxlength'));
 
         this.addEventListener('input', this.handleInput.bind(this));
     }
@@ -32,35 +32,35 @@ class CTextarea extends CFormQuestion {
      * Handle input event
      */
     handleInput() {
-        this.updateCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
+        this.setCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
         this.updateState();
     }
 
 
     /**
-     * Update the target element's count
+     * Set the target element's count
      *
      * @param { string } targetElement
      * @param { string } count - a number
      */
-    updateCounter(targetElement, count) {
+    setCounter(targetElement, count) {
         this.querySelector(targetElement).innerText = count;
     }
 
 
     /**
-     * Add and remove the custom 'data-valid' attribute
+     * Add and remove the custom 'data-is-valid' attribute
      */
-    updateIsValid() {
+    setValidityState() {
         if (this.isRequired){
             if (this.querySelector('textarea').value) {
-                this.setAttribute('data-valid', '');
+                this.setAttribute('data-is-valid', '');
             } else {
-                this.removeAttribute('data-valid');
-                super.updateHelperText('error', 'This field is required');
+                this.removeAttribute('data-is-valid');
+                super.setHelperText('error', 'This field is required');
             }
         } else {
-            this.setAttribute('data-valid', '');
+            this.setAttribute('data-is-valid', '');
         }
     }
 }

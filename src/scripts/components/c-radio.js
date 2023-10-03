@@ -7,7 +7,7 @@ class CRadio extends CFormQuestion {
 
     // @todo: a radio will always? be in a group so think this component through carefully
 
-    updateIsValid(){
+    setValidityState(){
         console.log('todo: isvalid');
     }
 

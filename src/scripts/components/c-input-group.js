@@ -59,24 +59,24 @@ class CInputGroup extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-valid' attribute
+     * Add and remove the custom 'data-is-valid' attribute
      */
-    updateIsValid() {
+    setValidityState() {
         // if the form group is required...
         if (this.isRequired){
             // ...at least one selection must have been made, so this.checkedInputs.length will have to be true
             // whether they are checkboxes or radios
             if (this.checkedInputs.length) {
-                this.setAttribute('data-valid', '');
+                this.setAttribute('data-is-valid', '');
             } else {
-                this.removeAttribute('data-valid');
-                super.updateHelperText('error', 'This field is required');
+                this.removeAttribute('data-is-valid');
+                super.setHelperText('error', 'This field is required');
             }
         }
 
         // if the form group is not required, it is valid
         else {
-            this.setAttribute('data-valid', '');
+            this.setAttribute('data-is-valid', '');
         }
     }
 

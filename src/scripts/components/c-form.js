@@ -14,13 +14,13 @@ class CForm extends HTMLElement {
     connectedCallback(){
         this.formQuestions = this.querySelectorAll('.form-question');
 
-        this.updateIsValid();
+        this.setValidityState();
 
         this.addEventListener('click', this.handleClick.bind(this));
         this.addEventListener('keyup', this.handleKeyup.bind(this));
 
         this.formQuestions.forEach((formQuestion) => {
-            formQuestion.addEventListener('onValidityChange', this.updateIsValid.bind(this));
+            formQuestion.addEventListener('onValidityChange', this.setValidityState.bind(this));
         })
     }
 
@@ -33,7 +33,7 @@ class CForm extends HTMLElement {
         this.removeEventListener('keyup', this.handleKeyup.bind(this));
 
         this.formQuestions.forEach((formQuestion) => {
-            formQuestion.removeEventListener('onValidityChange', this.updateIsValid.bind(this));
+            formQuestion.removeEventListener('onValidityChange', this.setValidityState.bind(this));
         })
     }
 
@@ -81,17 +81,17 @@ class CForm extends HTMLElement {
     /**
      * Update overall form validity
      */
-    updateIsValid() {
-        this.toggleSubmitButton(this.formQuestions.length === this.querySelectorAll('.form-question[data-valid]').length);
+    setValidityState() {
+        this.setSubmitButtonState(this.formQuestions.length === this.querySelectorAll('.form-question[data-is-valid]').length);
     }
 
 
     /**
-     * Toggle submit button state
+     * Set submit button state 
      *
      * @param { boolean } isValid
      */
-    toggleSubmitButton(isValid) {
+    setSubmitButtonState(isValid) {
         if (isValid) {
             this.querySelector('.form-submit-button').classList.remove('button-disabled');
             this.querySelector('.form-submit-button').setAttribute('tabindex', '0');

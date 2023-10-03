@@ -8,7 +8,7 @@ export class CFormQuestion extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['data-valid', 'data-pristine'];
+        return ['data-is-valid', 'data-is-pristine'];
     }
 
 
@@ -16,18 +16,18 @@ export class CFormQuestion extends HTMLElement {
      * Connected callback
      */
     connectedCallback(){
-        this.isRequired = !!this.querySelector('*[required]') || this.hasAttribute('data-required');
+        this.isRequired = !!this.querySelector('*[required]') || this.hasAttribute('data-is-required');
 
-        if (!this.getAttribute('data-group')) {
-            this.buildHelperElement();
+        if (!this.hasAttribute('data-group')) {
+            this.append(this.buildHelperElement());
 
             if (this.isRequired) {
                 this.setAsterisk();
             }
         }
 
-        this.setAttribute('data-pristine', '');
-        this.updateIsValid();
+        this.setAttribute('data-is-pristine', '');
+        this.setValidityState();
     }
 
 
@@ -35,27 +35,30 @@ export class CFormQuestion extends HTMLElement {
      * Attribute changed callback
      */
     attributeChangedCallback(name) {
-        if (!this.getAttribute('data-group')){
+        if (!this.hasAttribute('data-group')){
             if (this.getIsPristine() || this.getIsValid()) {
-                this.updateHelperTextVisibility(false);
+                this.setHelperTextVisibility(false);
             } else {
-                this.updateHelperTextVisibility(true);
+                this.setHelperTextVisibility(true);
             }
         }
 
-        if (name === 'data-valid') {
+        if (name === 'data-is-valid') {
             this.dispatchEvent(new Event('onValidityChange'));
         }
     }
 
 
     /**
-     * Build the helper-text element and append it
+     * Build and return the helper-text element
+     *
+     * @return { HTMLElement } small
      */
     buildHelperElement(){
         const small = document.createElement('small');
         small.classList.add('helper-text');
-        this.appendChild(small);
+
+        return small;
     }
 
 
@@ -71,29 +74,29 @@ export class CFormQuestion extends HTMLElement {
      * @param { string } status - pick one of 'success', 'warning', 'error' etc.
      * @param { string } message - the message to display
      */
-    updateHelperText(status, message) {
+    setHelperText(status, message) {
         this.querySelector('small.helper-text').classList.add(`font-color-${status}`);
         this.querySelector('small.helper-text').innerText = message;
     }
 
 
     /**
-     * Update helper text visibility to hidden or visible
+     * Set helper text visibility to hidden or visible
      *
      * @param { boolean } isVisible
      */
-    updateHelperTextVisibility(isVisible){
+    setHelperTextVisibility(isVisible){
         this.querySelector('small.helper-text').style.visibility = isVisible ? 'visible' : 'hidden';
     }
 
 
     /**
-     * Create a duplicate of an element
+     * Create a duplicate of the target '.duplicable-element'
      *
-     * IMPORTANT: the target element must have the 'duplicable' class
+     * @return { HTMLElement } clonedNode
      */
     createDupe() {
-        // clone the original duplicable field
+        // clone the original 'duplicable-element' field
         const clonedNode = this.cloneNode(true);
 
         // a new small.helper-text will be instantiated, so remove the cloned one
@@ -101,7 +104,7 @@ export class CFormQuestion extends HTMLElement {
             clonedNode.querySelector('small').remove();
         }
 
-        clonedNode.classList.remove('duplicable');
+        clonedNode.classList.remove('duplicable-element');
         clonedNode.classList.add('dupe');
 
         return clonedNode;
@@ -109,44 +112,45 @@ export class CFormQuestion extends HTMLElement {
 
 
     /**
-     * Update 'data-pristine' attribute
+     * Set 'data-is-pristine'
      *
      * It only removes the attribute now, but later on we might want
      * an option to reset a form element to pristine state, hence
      * 'update'
      */
-    updateIsPristine(){
+    setPristineState(){
         if (this.getIsPristine()){
-            this.removeAttribute('data-pristine');
+            this.removeAttribute('data-is-pristine');
         }
     }
 
 
     /**
-     * Check if this has 'data-pristine' attribute
+     * Check if this has 'data-is-pristine' attribute
      *
      * @return { boolean }
      */
     getIsPristine(){
-        return this.hasAttribute('data-pristine');
+        return this.hasAttribute('data-is-pristine');
     }
 
 
     /**
-     * Check if this has 'data-valid' attribute
+     * Check if this has 'data-is-valid' attribute
      *
      * @return { boolean }
      */
     getIsValid(){
-        return this.hasAttribute('data-valid');
+        return this.hasAttribute('data-is-valid');
     }
 
 
     /**
      * Update state
+     * @todo: need a better name for this
      */
     updateState() {
-        this.updateIsPristine();
-        this.updateIsValid();
+        this.setPristineState();
+        this.setValidityState();
     }
 }

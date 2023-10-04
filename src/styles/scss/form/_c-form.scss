@@ -1,29 +1,22 @@
 @use '../../../../node_modules/@valdelaseras/pedestal/scss/index.scss' as pedestal;
 
-c-form,
+.c-form,
 .form-section,
 .form-question {
     display: flex;
     flex-direction: column;
 }
 
-c-form {
+.c-form {
     gap: 40px;
 }
 
 .form-section {
     gap: 30px;
-    padding-right: pedestal.$padding;
-    padding-left: pedestal.$padding;
 }
 
 .form-question {
     gap: 15px;
-}
-
-.form-header,
-.form-footer {
-    padding: pedestal.$padding;
 }
 
 input,
@@ -32,62 +25,24 @@ textarea {
     padding: 10px;
 }
 
-.form-question > label,
-small.helper-text {
-    display: block;
-}
-
-.form-question > label {
+label, legend {
     font-weight: bold;
 }
 
-.add-dupe-button,
-.remove-dupe-button {
-    background-color: pedestal.$accent-color-primary;
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 100ms;
+legend {
+    margin: 15px 0;
 }
 
-.remove-dupe-button {
-    margin: 5px 0 5px 5px;
+
+.row c-select select {
+    width: auto;
 }
 
-.remove-dupe-button:hover,
-.remove-dupe-button:focus,
-.remove-dupe-button:focus-within,
-.remove-dupe-button:active {
-    background-color: pedestal.$accent-color-secondary;
-    color: pedestal.$font-color-primary;
+.row c-input {
+    width: 100%;
 }
 
-.duplicable-element {
-    margin-bottom: 30px;
-}
 
-.dupe {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 60px;
-    gap: 15px;
-    position: relative;
-}
-
-.dupe label {
-    display: none;
-}
-
-.dupe small.helper-text {
-    position: absolute;
-    left: 0;
-    bottom: -30px;
-}
 
 
 

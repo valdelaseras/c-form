@@ -41,7 +41,7 @@ class CTextarea extends CFormQuestion {
      * Set the target element's count
      *
      * @param { string } targetElement
-     * @param { string } count - a number
+     * @param { string } count ( a number )
      */
     setCounter(targetElement, count) {
         this.querySelector(targetElement).innerText = count;
@@ -57,7 +57,9 @@ class CTextarea extends CFormQuestion {
                 this.setAttribute('data-is-valid', '');
             } else {
                 this.removeAttribute('data-is-valid');
-                super.setHelperText('error', 'This field is required');
+                if (this.querySelector('.helper-text')) {
+                    this.setHelperText('error', 'This field is required');
+                }
             }
         } else {
             this.setAttribute('data-is-valid', '');

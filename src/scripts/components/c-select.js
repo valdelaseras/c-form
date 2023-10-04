@@ -38,7 +38,9 @@ class CSelect extends CFormQuestion {
             // if there is a disabled option...
             if (!!this.querySelector('option[disabled]')){
                 // if there were to be no check for a pristine state...
-                super.setHelperText('error', 'This field is required');
+                if (this.querySelector('.helper-text')){
+                    this.setHelperText('error', 'This field is required');
+                }
                 // when the value is no longer the disabled option value, a selection has been made
                 if (this.querySelector('select').value !== this.querySelector('option[disabled]').value){
                     this.setAttribute('data-is-valid', '');

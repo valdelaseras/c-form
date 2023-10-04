@@ -3,9 +3,13 @@
 import {CFormQuestion} from "../CFormQuestion.js";
 
 /**
- * A parent component to a group of c-checkbox, c-radio r regular checkbox / radio inputs
- * used to check the validity of this group before form submission.
+ * A parent component to a group of c-checkbox, c-radio or regular checkbox / radio inputs
+ *
+ * Note: if you need to group multiple other types of inputs, use c-fieldset instead
  */
+
+// @todo: a more descriptive name would be preferable here.
+//  Something that indicates the radio/checkbox purpose. c-select could potentially be part of this
 class CInputGroup extends CFormQuestion {
     constructor() {
         super();
@@ -70,7 +74,9 @@ class CInputGroup extends CFormQuestion {
                 this.setAttribute('data-is-valid', '');
             } else {
                 this.removeAttribute('data-is-valid');
-                super.setHelperText('error', 'This field is required');
+                if (this.querySelector('.helper-text')){
+                    this.setHelperText('error', 'This field is required');
+                }
             }
         }
 

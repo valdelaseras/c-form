@@ -10,7 +10,6 @@ export class CInput extends CFormQuestion {
     constructor() {
         super();
 
-
         this.requiredFieldHelperText = 'This field is required';
         this.invalidFieldHelperText = '';
     }
@@ -54,16 +53,22 @@ export class CInput extends CFormQuestion {
         if (this.isRequired) {
             if (!hasValue) {
                 this.removeAttribute('data-is-valid');
-                super.setHelperText('error', this.requiredFieldHelperText);
+                if (this.querySelector('.helper-text')){
+                    this.setHelperText('error', this.requiredFieldHelperText);
+                }
             } else if (!isValid) {
                 this.removeAttribute('data-is-valid');
-                super.setHelperText('error', this.invalidFieldHelperText);
+                if (this.querySelector('.helper-text')){
+                    this.setHelperText('error', this.invalidFieldHelperText);
+                }
             } else {
                 this.setAttribute('data-is-valid', '');
             }
         } else if (hasValue && !isValid) {
             this.removeAttribute('data-is-valid');
-            super.setHelperText('error', this.invalidFieldHelperText);
+            if (this.querySelector('.helper-text')){
+                this.setHelperText('error', this.invalidFieldHelperText);
+            }
         } else {
             this.setAttribute('data-is-valid', '');
         }

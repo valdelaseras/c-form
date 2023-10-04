@@ -14,14 +14,12 @@ class CForm extends HTMLElement {
     connectedCallback(){
         this.formQuestions = this.querySelectorAll('.form-question');
 
-        this.setValidityState();
-
         this.addEventListener('click', this.handleClick.bind(this));
         this.addEventListener('keyup', this.handleKeyup.bind(this));
 
         this.formQuestions.forEach((formQuestion) => {
             formQuestion.addEventListener('onValidityChange', this.setValidityState.bind(this));
-        })
+        });
     }
 
 
@@ -42,7 +40,6 @@ class CForm extends HTMLElement {
      * Handle click events
      */
     handleClick(e){
-        // todo: rename to form-submit-button > need update in pedestal ( version + 1 )
         if (e.target === this.querySelector('.form-submit-button')) {
             this.getFormValues();
         }
@@ -87,7 +84,7 @@ class CForm extends HTMLElement {
 
 
     /**
-     * Set submit button state 
+     * Set submit button state
      *
      * @param { boolean } isValid
      */

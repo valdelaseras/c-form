@@ -153,7 +153,7 @@ class CDuplicableFormQuestion extends HTMLElement {
 
         button.setAttribute('role', 'button');
         button.setAttribute('tabindex', '0');
-        button.setAttribute('data-index', this.count);
+        // button.setAttribute('data-index', this.count);
         button.classList.add('button');
         button.classList.add('remove-dupe-button');
         button.innerText = "×";

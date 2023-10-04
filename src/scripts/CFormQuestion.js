@@ -18,12 +18,8 @@ export class CFormQuestion extends HTMLElement {
     connectedCallback(){
         this.isRequired = !!this.querySelector('*[required]') || this.hasAttribute('data-is-required');
 
-        if (!this.hasAttribute('data-group')) {
-            this.append(this.buildHelperElement());
-
-            if (this.isRequired) {
-                this.setAsterisk();
-            }
+        if (this.isRequired) {
+            this.setAsterisk();
         }
 
         this.setAttribute('data-is-pristine', '');
@@ -36,29 +32,18 @@ export class CFormQuestion extends HTMLElement {
      */
     attributeChangedCallback(name) {
         if (!this.hasAttribute('data-group')){
-            if (this.getIsPristine() || this.getIsValid()) {
-                this.setHelperTextVisibility(false);
-            } else {
-                this.setHelperTextVisibility(true);
+            if (this.querySelector('.helper-text')) {
+                if (this.getIsPristine() || this.getIsValid()) {
+                    this.setHelperTextVisibility(false);
+                } else {
+                    this.setHelperTextVisibility(true);
+                }
             }
         }
 
         if (name === 'data-is-valid') {
             this.dispatchEvent(new Event('onValidityChange'));
         }
-    }
-
-
-    /**
-     * Build and return the helper-text element
-     *
-     * @return { HTMLElement } small
-     */
-    buildHelperElement(){
-        const small = document.createElement('small');
-        small.classList.add('helper-text');
-
-        return small;
     }
 
 
@@ -75,8 +60,8 @@ export class CFormQuestion extends HTMLElement {
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {
-        this.querySelector('small.helper-text').classList.add(`font-color-${status}`);
-        this.querySelector('small.helper-text').innerText = message;
+        this.querySelector('.helper-text').classList.add(`font-color-${status}`);
+        this.querySelector('.helper-text').innerText = message;
     }
 
 
@@ -86,7 +71,7 @@ export class CFormQuestion extends HTMLElement {
      * @param { boolean } isVisible
      */
     setHelperTextVisibility(isVisible){
-        this.querySelector('small.helper-text').style.visibility = isVisible ? 'visible' : 'hidden';
+        this.querySelector('.helper-text').style.visibility = isVisible ? 'visible' : 'hidden';
     }
 
 
@@ -96,13 +81,7 @@ export class CFormQuestion extends HTMLElement {
      * @return { HTMLElement } clonedNode
      */
     createDupe() {
-        // clone the original 'duplicable-element' field
         const clonedNode = this.cloneNode(true);
-
-        // a new small.helper-text will be instantiated, so remove the cloned one
-        if (clonedNode.querySelector('small')) {
-            clonedNode.querySelector('small').remove();
-        }
 
         clonedNode.classList.remove('duplicable-element');
         clonedNode.classList.add('dupe');

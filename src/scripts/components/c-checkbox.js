@@ -60,7 +60,9 @@ class CCheckbox extends CFormQuestion {
                     this.setAttribute('data-is-valid', '');
                 } else {
                     this.removeAttribute('data-is-valid');
-                    super.setHelperText('error', 'This field is required');
+                    if (this.querySelector('.helper-text')) {
+                        this.setHelperText('error', 'This field is required');
+                    }
                 }
             } else {
                 this.setAttribute('data-is-valid', '');

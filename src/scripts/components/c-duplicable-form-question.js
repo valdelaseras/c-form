@@ -70,12 +70,6 @@ class CDuplicableFormQuestion extends HTMLElement {
             this.addDuplicate();
             this.setCount();
         }
-
-        // todo: only queries the first dupes remove-dupe-button
-        if (e.target === this.querySelector('.remove-dupe-button')) {
-            this.removeDuplicate(e);
-            this.setCount();
-        }
     }
 
 
@@ -91,12 +85,6 @@ class CDuplicableFormQuestion extends HTMLElement {
                     this.addDuplicate();
                     this.setCount();
                 }
-            }
-
-            // todo: only queries the first dupes remove-dupe-button
-            if (e.target === this.querySelector('.remove-dupe-button')) {
-                this.removeDuplicate(e);
-                this.setCount();
             }
         }
     }
@@ -124,7 +112,10 @@ class CDuplicableFormQuestion extends HTMLElement {
      * Remove duped element
      */
     removeDuplicate(e){
-        e.target.closest('.dupe').remove();
+        if (e.code === 'Enter' || e.type === 'click') {
+            e.target.closest('.dupe').remove();
+            this.setCount();
+        }
     }
 
 
@@ -153,10 +144,13 @@ class CDuplicableFormQuestion extends HTMLElement {
 
         button.setAttribute('role', 'button');
         button.setAttribute('tabindex', '0');
-        // button.setAttribute('data-index', this.count);
         button.classList.add('button');
         button.classList.add('remove-dupe-button');
         button.innerText = "×";
+
+        // listeners must be attached to the button
+        button.addEventListener('click', this.removeDuplicate.bind(this));
+        button.addEventListener('keyup', this.removeDuplicate.bind(this));
 
         return button;
     }

@@ -23,17 +23,20 @@ class CSelect extends CFormQuestion {
     connectedCallback() {
         super.connectedCallback();
 
-        // a c-select may have an external source of options
         if (this.hasAttribute('data-external-options')) {
             const dataSource = DataSource[this.getAttribute('data-external-options')];
 
             if ( typeof dataSource === "function" ) {
                 // we might use a Promise
-                dataSource().then(response => {
-                    this.populateSelect(response);
-                });
+                dataSource()
+                    .then(response => {
+                        this.populateSelect(response);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
             } else {
-                // or we have a regular hardcoded array
+                // or data comes from a variable ( array )
                 this.populateSelect(dataSource);
             }
         }

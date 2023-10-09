@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Demo</title>
 
-    <link rel="stylesheet" href="./src/styles/css/index.css"/>
+    <link rel="stylesheet" href="/styles/css/index.css"/>
 
-    <script type="module" src="./src/scripts/components/c-duplicable-form-question.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-input-group.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-select.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-checkbox.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-radio.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-textarea.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-form.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-input.js" defer></script>
-    <script type="module" src="./src/scripts/components/c-fieldset.js" defer></script>
+    <script type="module" src="/scripts/components/c-duplicable-form-question.js" defer></script>
+    <script type="module" src="/scripts/components/c-choice-group.js" defer></script>
+    <script type="module" src="/scripts/components/c-select.js" defer></script>
+    <script type="module" src="/scripts/components/c-checkbox.js" defer></script>
+    <script type="module" src="/scripts/components/c-radio.js" defer></script>
+    <script type="module" src="/scripts/components/c-textarea.js" defer></script>
+    <script type="module" src="/scripts/components/c-form.js" defer></script>
+    <script type="module" src="/scripts/components/c-input.js" defer></script>
+    <script type="module" src="/scripts/components/c-fieldset.js" defer></script>
 </head>
 <body>
 <main>
@@ -35,23 +35,17 @@
                                     <legend>Phone number</legend>
 
                                     <div class="row">
-                                        <c-select class="form-question">
-                                            <label for="calling-codes-demo"
-                                                   class="hidden">Country code</label>
-                                            <select id="calling-codes-demo"
+                                        <c-select class="form-question" data-external-options="getSampleData">
+                                            <label for="json-sample-data-demo">JSON data select sample</label>
+                                            <select id="json-sample-data-demo"
                                                     tabindex="0"
                                                     required
                                                     class="theme-secondary bordered">
-                                                <option value="+00">+00</option>
-                                                <option value="+01">+01</option>
-                                                <option value="+02">+02</option>
-                                                <option value="+03">+03</option>
                                             </select>
                                             <small class="helper-text"></small>
                                         </c-select>
                                         <c-input class="form-question">
-                                            <label for="tel-demo"
-                                                   class="hidden">Phone number</label>
+                                            <label for="tel-demo">Phone number</label>
                                             <input type="tel"
                                                    tabindex="0"
                                                    required
@@ -62,6 +56,30 @@
                                         </c-input>
                                     </div>
                                 </c-fieldset>
+
+                                <c-select class="form-question" data-options="sampleData">
+                                    <label for="js-sample-data-demo">JS array sample data select</label>
+                                    <select id="js-sample-data-demo"
+                                            tabindex="0"
+                                            required
+                                            class="theme-secondary bordered">
+                                    </select>
+                                    <small class="helper-text"></small>
+                                </c-select>
+
+                                <c-select class="form-question">
+                                    <label for="foo-demo">No ext data source select</label>
+                                    <select id="foo-demo"
+                                            tabindex="0"
+                                            required
+                                            class="theme-secondary bordered">
+                                        <option value="foo">foo</option>
+                                        <option value="faa">faa</option>
+                                        <option value="fuu">fuu</option>
+                                        <option value="fee">fee</option>
+                                    </select>
+                                    <small class="helper-text"></small>
+                                </c-select>
 
                                 <c-duplicable-form-question data-max="4">
                                     <a class="button add-dupe-button"
@@ -79,7 +97,7 @@
                                     </c-input>
                                 </c-duplicable-form-question>
 
-                                <c-input-group class="form-question"
+                                <c-choice-group class="form-question"
                                                data-name="checkbox-group-demo"
                                                data-is-required>
                                     <label>
@@ -133,9 +151,9 @@
                                     </c-checkbox>
 
                                     <small class="helper-text"></small>
-                                </c-input-group>
+                                </c-choice-group>
 
-                                <c-input-group class="form-question"
+                                <c-choice-group class="form-question"
                                                data-name="radio-group-demo"
                                                data-is-required>
                                     <label>
@@ -187,9 +205,9 @@
                                     </c-radio>
 
                                     <small class="helper-text"></small>
-                                </c-input-group>
+                                </c-choice-group>
 
-                                <c-input-group class="form-question"
+                                <c-choice-group class="form-question"
                                                data-name="radio-group-demo-two"
                                                data-is-required>
                                     <label>
@@ -220,7 +238,7 @@
                                     </c-radio>
 
                                     <small class="helper-text"></small>
-                                </c-input-group>
+                                </c-choice-group>
 
                                 <c-input class="form-question">
                                     <label for="required-url-input-demo">A required url c-input</label>

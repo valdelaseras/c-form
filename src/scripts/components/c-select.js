@@ -38,9 +38,6 @@ class CSelect extends CFormQuestion {
             }
         }
 
-        // alternatively, the options are just hardcoded in the template as normal,
-        // in which case we don't have to do anything special
-
         this.addEventListener('change', this.handleChange.bind(this));
     }
 

@@ -3,6 +3,14 @@
 import {CFormQuestion} from "../CFormQuestion.js";
 import {DataSource} from "../DataSource.js";
 
+/**
+ * Add optional data-attribute 'data-external-options' to build, populate and append
+ * option[]:HTMLOptionElement[] to the select element. The value can either be a variable name
+ * of an array or a function name, either must be exported in DataSource.js
+ *
+ * If no data-external-options data-attribute is provided, it is assumed the select option
+ * has 'regular' hardcoded option elements
+ */
 class CSelect extends CFormQuestion {
     constructor() {
         super();

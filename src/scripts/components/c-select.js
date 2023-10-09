@@ -1,9 +1,13 @@
+'use strict';
+
 import {CFormQuestion} from "../CFormQuestion.js";
+import {DataSource} from "../DataSource.js";
 
 class CSelect extends CFormQuestion {
     constructor() {
         super();
     }
+
 
     /**
      * Connected callback
@@ -11,8 +15,27 @@ class CSelect extends CFormQuestion {
     connectedCallback() {
         super.connectedCallback();
 
+        // a c-select may have an external source of options
+        if (this.hasAttribute('data-external-options')) {
+            const dataSource = DataSource[this.getAttribute('data-external-options')];
+
+            if ( typeof dataSource === "function" ) {
+                // we might use a Promise
+                dataSource().then(response => {
+                    this.populateSelect(response);
+                });
+            } else {
+                // or we have a regular hardcoded array
+                this.populateSelect(dataSource);
+            }
+        }
+
+        // alternatively, the options are just hardcoded in the template as normal,
+        // in which case we don't have to do anything special
+
         this.addEventListener('change', this.handleChange.bind(this));
     }
+
 
     /**
      * Disconnected callback
@@ -53,6 +76,37 @@ class CSelect extends CFormQuestion {
         } else {
             this.setAttribute('data-is-valid', '');
         }
+    }
+
+
+    /**
+     * Maps the array elements and builds the option : HTMLOptionElement,
+     * then appends all of them at once to select : HTMLSelectElement
+     *
+     * @param { {label: string, value: string }[] } elements
+     */
+    populateSelect(elements) {
+        this.querySelector('select').append(
+            ...elements.map(({label, value}) => this.buildOption(label, value))
+        );
+    }
+
+
+    /**
+     * Build an option element
+     *
+     * @param { string } label
+     * @param { string } value
+     *
+     * @return { HTMLOptionElement }
+     */
+    buildOption(label, value) {
+        const option = document.createElement('option');
+
+        option.setAttribute('value', value);
+        option.innerText = label;
+
+        return option;
     }
 }
 

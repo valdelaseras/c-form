@@ -3,14 +3,9 @@
 import {CFormQuestion} from "../CFormQuestion.js";
 
 /**
- * A parent component to a group of c-checkbox, c-radio or regular checkbox / radio inputs
- *
- * Note: if you need to group multiple other types of inputs, use c-fieldset instead
+ * A parent component to a group of checkboxes or radios
  */
-
-// @todo: a more descriptive name would be preferable here.
-//  Something that indicates the radio/checkbox purpose. c-select could potentially be part of this
-class CInputGroup extends CFormQuestion {
+class CChoiceGroup extends CFormQuestion {
     constructor() {
         super();
 
@@ -105,4 +100,4 @@ class CInputGroup extends CFormQuestion {
     }
 }
 
-customElements.define('c-input-group', CInputGroup);
+customElements.define('c-choice-group', CChoiceGroup);

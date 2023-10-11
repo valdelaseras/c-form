@@ -28,10 +28,12 @@ export class CFileInput extends CFormQuestion {
 
 
     /**
-     * Set asterisk for required c-file-input
+     * Set asterisks on all .file-input-title for required c-file-input
      */
     setAsterisk() {
-        this.querySelector('.file-input-title').innerText += '*';
+        this.querySelectorAll('.file-input-title').forEach((title) => {
+            title.innerText += '*';
+        })
     }
 
 

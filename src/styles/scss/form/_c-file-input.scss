@@ -28,12 +28,16 @@ c-file-input label {
     bottom: 0;
 }
 
+c-file-input.dragover,
 c-file-input label:hover,
 c-file-input label:focus,
 c-file-input label:focus-within,
 c-file-input label:active {
-    border: 1px dashed rgba(255,255,255,1);
+    border: 1px dashed black;
+    //border: 1px dashed rgba(255,255,255,1);
     background-color: var(--quinary-color);
     cursor: pointer;
 }
+
+
 

@@ -16,6 +16,7 @@
     <script type="module" src="/scripts/components/c-form.js" defer></script>
     <script type="module" src="/scripts/components/c-input.js" defer></script>
     <script type="module" src="/scripts/components/c-fieldset.js" defer></script>
+    <script type="module" src="/scripts/components/c-file-input.js" defer></script>
 </head>
 <body>
 <main>
@@ -30,6 +31,28 @@
                             </header>
                             <section class="form-section">
                                 <h3 class="form-section-title">Form section title</h3>
+
+
+                                <c-file-input class="form-question" data-max-size="5242880">
+                                    <label tabindex="0" for="upload-demo"></label>
+                                    <input type="file"
+                                           required
+                                           accept=".pdf,.doc,.docx"
+                                           id="upload-demo"/>
+
+                                    <div class="c-file-input-step file-selection-step">
+                                        <h4 class="file-input-title">Upload</h4>
+                                        <span class="file-input-subtitle">.pdf, .doc and .docx</span>
+                                    </div>
+
+                                    <div class="c-file-input-step file-selected-step hidden">
+                                        <h4 class="file-input-title">Your file</h4>
+                                        <span class="file-input-subtitle"></span>
+                                    </div>
+
+                                    <small class="helper-text"></small>
+                                </c-file-input>
+
 
                                 <c-fieldset data-is-required>
                                     <legend>Phone number</legend>
@@ -58,15 +81,14 @@
                                 </c-fieldset>
 
                                 <c-select class="form-question" data-external-options="sampleData">
-                                    <label for="js-sample-data-demo">JS array sample data select</label>
-                                    <select id="js-sample-data-demo"
+                                    <label for="sample-data-demo">Array sample data select</label>
+                                    <select id="sample-data-demo"
                                             tabindex="0"
                                             required
                                             class="theme-secondary bordered">
                                     </select>
                                     <small class="helper-text"></small>
                                 </c-select>
-
                                 <c-select class="form-question">
                                     <label for="foo-demo">No ext data source select</label>
                                     <select id="foo-demo"
@@ -152,7 +174,6 @@
 
                                     <small class="helper-text"></small>
                                 </c-choice-group>
-
                                 <c-choice-group class="form-question"
                                                data-name="radio-group-demo"
                                                data-is-required>
@@ -206,7 +227,6 @@
 
                                     <small class="helper-text"></small>
                                 </c-choice-group>
-
                                 <c-choice-group class="form-question"
                                                data-name="radio-group-demo-two"
                                                data-is-required>
@@ -287,7 +307,6 @@
                                            class="theme-secondary bordered"/>
                                     <small class="helper-text"></small>
                                 </c-input>
-
                                 <c-input class="form-question">
                                     <label for="required-tel-input-demo">A required tel c-input</label>
                                     <input id="required-tel-input-demo"
@@ -303,6 +322,7 @@
                                            class="theme-secondary bordered"/>
                                     <small class="helper-text"></small>
                                 </c-input>
+
                                 <c-select class="form-question">
                                     <label for="select-demo">A select element</label>
                                     <select id="select-demo"

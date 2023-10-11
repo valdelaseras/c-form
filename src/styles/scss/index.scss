@@ -54,10 +54,15 @@
 @import "./form/c-form";
 @import "./form/c-checkbox";
 @import "./form/c-select";
+@import "./form/c-file-input";
 @import "./form/c-duplicable-form-question";
 
 .row {
     display: flex;
     flex-direction: row;
     gap: 15px;
+}
+
+.hidden {
+    display: none;
 }

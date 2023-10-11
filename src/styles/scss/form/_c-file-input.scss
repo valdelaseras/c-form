@@ -1,0 +1,39 @@
+c-file-input input[type='file'] {
+    display: none;
+}
+
+
+/* c-file-input */
+c-file-input {
+    border: 1px dashed rgba(255,255,255,.5);
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width: 960px){
+    c-file-input {
+        padding: 50px;
+    }
+}
+
+
+/* label */
+c-file-input label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+c-file-input label:hover,
+c-file-input label:focus,
+c-file-input label:focus-within,
+c-file-input label:active {
+    border: 1px dashed rgba(255,255,255,1);
+    background-color: var(--quinary-color);
+    cursor: pointer;
+}
+

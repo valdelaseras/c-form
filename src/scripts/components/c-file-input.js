@@ -97,8 +97,6 @@ export class CFileInput extends CFormQuestion {
      * Handle change
      */
     handleChange() {
-        // @todo: if previously dropped an invalid file, the input value and helper text is not reset
-
         if (this.querySelector('input[type="file"]').files.length) {
             this.fileName = this.querySelector('input[type="file"]').files[0].name;
 

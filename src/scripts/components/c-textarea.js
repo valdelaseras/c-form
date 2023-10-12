@@ -13,8 +13,10 @@ class CTextarea extends CFormQuestion {
     connectedCallback() {
         super.connectedCallback();
 
-        this.setCounter('.maxlength', this.querySelector('textarea').getAttribute('maxlength'));
-        this.setCounter('.counter', this.querySelector('textarea').getAttribute('maxlength'));
+        if (this.querySelector('.char-counter')) {
+            this.setCounter('.maxlength', this.querySelector('textarea').getAttribute('maxlength'));
+            this.setCounter('.counter', this.querySelector('textarea').getAttribute('maxlength'));
+        }
 
         this.addEventListener('input', this.handleInput.bind(this));
     }
@@ -32,7 +34,10 @@ class CTextarea extends CFormQuestion {
      * Handle input event
      */
     handleInput() {
-        this.setCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
+        if (this.querySelector('.char-counter')) {
+            this.setCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
+        }
+
         this.updateState();
     }
 

@@ -128,11 +128,18 @@ export class CFileInput extends CFormQuestion {
     }
 
 
+    /**
+    * Wipe the selected file & (re)set to the 'selection' step
+    */
     setFileSelectionStep(){
         this.selectedFile = null;
         this.displayStep('.file-selection-step');
     }
 
+
+    /**
+     *  Evaluate the type and size validity and set the 'selected' step
+     */
     setFileSelectedStep() {
         this.validType = this.querySelector('input[type="file"]').hasAttribute('accept') ? this.isValidType() : true;
         this.validSize = this.hasAttribute('data-max-size') ? this.isValidSize() : true;
@@ -154,8 +161,6 @@ export class CFileInput extends CFormQuestion {
      * Set validity state
      */
     setValidityState(){
-        console.log(this.selectedFile);
-
         // the form question is not pristine & there is no selected file
         if (this.isRequired && !this.selectedFile ) {
             this.setErrorText('This field is required');

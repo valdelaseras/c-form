@@ -6,10 +6,12 @@ export class CFileInput extends CFormQuestion {
     constructor() {
         super();
 
-        this.fileName = '';
         this.allowedTypes = [];
+
         this.validType = false;
         this.validSize = false;
+
+        this.selectedFile = null;
     }
 
     /**
@@ -51,16 +53,25 @@ export class CFileInput extends CFormQuestion {
         this.classList.remove('dragover');
 
         if (e.dataTransfer.items[0].kind === 'file'){
-            this.fileName = e.dataTransfer.items[0].getAsFile().name;
-
-            this.validType = this.querySelector('input[type="file"]').hasAttribute('accept') ? this.isValidType(e.dataTransfer.items[0].type) : true;
-            this.validSize = this.hasAttribute('data-max-size') ? this.isValidSize(e.dataTransfer.items[0].getAsFile().size) : true;
-
-            this.displayStep('.file-selected-step');
-            this.setFileName(this.fileName);
+            this.selectedFile = e.dataTransfer.items[0].getAsFile();
+            this.setFileSelectedStep();
         } else {
-            this.fileName = '';
-            this.displayStep('.file-selection-step');
+            this.setFileSelectionStep();
+        }
+
+        this.updateState();
+    }
+
+
+    /**
+     * Handle change
+     */
+    handleChange() {
+        if (this.querySelector('input[type="file"]').files.length) {
+            this.selectedFile = this.querySelector('input[type="file"]').files[0];
+            this.setFileSelectedStep();
+        } else {
+            this.setFileSelectionStep();
         }
 
         this.updateState();
@@ -94,27 +105,6 @@ export class CFileInput extends CFormQuestion {
 
 
     /**
-     * Handle change
-     */
-    handleChange() {
-        if (this.querySelector('input[type="file"]').files.length) {
-            this.fileName = this.querySelector('input[type="file"]').files[0].name;
-
-            this.validType = this.querySelector('input[type="file"]').hasAttribute('accept') ? this.isValidType(this.querySelector('input[type="file"]').files[0].type) : true;
-            this.validSize = this.hasAttribute('data-max-size') ? this.isValidSize(this.querySelector('input[type="file"]').files[0].size) : true;
-
-            this.displayStep('.file-selected-step');
-            this.setFileName(this.fileName);
-        } else {
-            this.fileName = '';
-            this.displayStep('.file-selection-step');
-        }
-
-        this.updateState();
-    }
-
-
-    /**
      * Set asterisks on all .file-input-title for required c-file-input
      */
     setAsterisk() {
@@ -138,11 +128,25 @@ export class CFileInput extends CFormQuestion {
     }
 
 
+    setFileSelectionStep(){
+        this.selectedFile = null;
+        this.displayStep('.file-selection-step');
+    }
+
+    setFileSelectedStep() {
+        this.validType = this.querySelector('input[type="file"]').hasAttribute('accept') ? this.isValidType() : true;
+        this.validSize = this.hasAttribute('data-max-size') ? this.isValidSize() : true;
+
+        this.displayStep('.file-selected-step');
+        this.setFileName();
+    }
+
+
     /**
-     * @param { string } name
+     * Set the file name
      */
-    setFileName(name) {
-        this.querySelector('.file-selected-step .file-input-subtitle').innerText = name;
+    setFileName() {
+        this.querySelector('.file-selected-step .file-input-subtitle').innerText = this.selectedFile.name;
     }
 
 
@@ -150,8 +154,10 @@ export class CFileInput extends CFormQuestion {
      * Set validity state
      */
     setValidityState(){
+        console.log(this.selectedFile);
+
         // the form question is not pristine & there is no selected file
-        if (this.isRequired && this.fileName === '') {
+        if (this.isRequired && !this.selectedFile ) {
             this.setErrorText('This field is required');
         // [data-max-size] was set and the selected file has exceeded that size
         } else if (this.hasAttribute('data-max-size') && this.validSize === false) {
@@ -177,23 +183,21 @@ export class CFileInput extends CFormQuestion {
 
     /**
      * Check if the file size is valid
-     *
-     * @param { number } size
+     * *
      * @return { boolean }
      * */
-    isValidSize(size){
-        return this.validSize = size <= parseInt(this.getAttribute('data-max-size'));
+    isValidSize(){
+        return this.validSize = this.selectedFile.size <= parseInt(this.getAttribute('data-max-size'));
     }
 
 
     /**
      * Check if the file type is valid
      *
-     * @param { string } type
      * @return { boolean }
      */
-    isValidType(type) {
-        return this.allowedTypes.includes(type);
+    isValidType() {
+        return this.allowedTypes.includes(this.selectedFile.type);
     }
 }
 

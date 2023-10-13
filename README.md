@@ -21,36 +21,17 @@
 
 A native web component form module. The components are made to be as flexible, un-opinionated, and as
 close to the native implementation of form fields as possible, while adding a bunch of convenient functionality to
-make form implementation easier:
-
-- pristine and valid state checks
-- display relevant helper texts 
-- fully key event ready
-- dropzone for `input[type="file"]`
-- optionally load & generate `<option>` elements for `c-select` from an external data source
-- optionally let the user duplicate `input[type="text,email,tel,url"]` fields with a cap
-etc.
-
-There are no set templates or styles: there are occasional elements, class names and attributes that are required
-in order for `c-form` to work, these will be marked as such. Other than that, this approach offers a lot of flexibility to
-do what you want.
-
-There is a demo form in `index.html`. Please note that currently the demo is not built for beauty, but purely to demo the 
-components functionalities. 
+make form implementation easier.
 
 ## CFormQuestion components
-
-CFormQuestion is an abstract class that 'normal' form elements extend. You can find all of these in the `scripts/components/c-form-question` directory.
 
 __For all of these components, the following implementation is required:__
 
 - `.form-question`: on the root element ( ! unless a checkbox or radio is part of a group ).
-- `[data-key]`: this will be the key in the FormData object.
+- `[data-key]`: this will be the key in the `FormData` object.
 - `.helper-text`: helper texts ( re invalid values ) will be displayed here. it's up to you to decide which element to use and where etc.
 
 ### Examples
-
-Please find some implementation examples of `CFormQuestion` components below. Any additional required and optional classes or attributes are documented for each specific component.
 
 #### c-checkbox
 
@@ -72,15 +53,13 @@ Please find some implementation examples of `CFormQuestion` components below. An
 
 #### c-choice-group
 
-A choice group is a group of `input[type="radio"]` or `input[type="checkbox"]`
-
 @required
 
-`[data-group]`: add this attribute to the root of each nested choice element ( the radio or checkbox ). This leaves you the freedom to set the native `name` attribute differently if you wish to do so.
+`[data-group]`: on the child elements `<c-checkbox>` or `<c-radio>`
 
 @optional
 
-`[data-required]`: to make this form question required, add this attribute to the root element `<c-choice-group>`
+`[data-required]`: on the root element `<c-choice-group>`
 
 ```html
 <c-choice-group class="form-question"
@@ -124,7 +103,7 @@ A choice group is a group of `input[type="radio"]` or `input[type="checkbox"]`
 </c-choice-group>
 ```
 
-Alternatively, use radio inputs: 
+`c-radio` example:
 
 ```html
 <c-radio data-group="c-choice-group-demo">
@@ -141,7 +120,7 @@ Alternatively, use radio inputs:
 
 #### c-input
 
-Input types may be common types like `text`, `email`, `tel`, `url` etc. 
+For `input[type="text,email,tel,url"]` 
 
 - Use [c-checkbox](#c-checkbox) for type `checkbox`
 - Use [c-radio](#c-choice-group) for type `radio` in a `c-choice-group`
@@ -184,9 +163,9 @@ Input types may be common types like `text`, `email`, `tel`, `url` etc.
 
 ##### With external data options
 
-Another option is to have an external data source render the options of the select element automatically using a JSON 
+Another option is to have an external data source render the options of `c-select` automatically using a JSON 
 or an array defined in some external file. This is useful for when you want to make a use an API to set all the options in
-a select element ( like country calling codes for example ). You have to format the raw data to the following simple structure:
+a `c-select` element ( like country calling codes for example ). You have to format the raw data to the following simple structure:
 
 ```javascript
 [
@@ -208,7 +187,7 @@ or as JSON:
 
 @required
 
-`[data-external-options]`: add this attribute to the root element and set the value to the target exported `DataSource` 
+`[data-external-options]`: to the root element `<c-select>` and set the value to the target exported in `DataSource.js` 
 
 ```html
 <c-select class="form-question"
@@ -229,12 +208,9 @@ or as JSON:
 
 @optional
 
-If you want to display a character counter on a set `textarea[maxlength]`, you can use these classes to display the 
-maximum and current character count. Be sure not to forget to set the native `textarea[maxlength]`!
-
-- `.char-counter`: a parent to the following elements:
-  - `.counter`: the current character count
-  - `.max-length`: the maxlength value will be displayed here
+- `.char-counter`
+  - `.counter`
+  - `.max-length`
 
 ```html
 <c-textarea class="form-question"
@@ -269,7 +245,7 @@ maximum and current character count. Be sure not to forget to set the native `te
 
 @optional
 
-- `[data-max-size]` in bytes, if a maximum size is desired
+- `[data-max-size]`: in bytes, if a maximum size is desired
 
 ```html
 <c-file-input class="form-question"
@@ -305,7 +281,7 @@ maximum and current character count. Be sure not to forget to set the native `te
 
 Components that do not extend `CFormQuestion` but are 'wrapper' components to custom components that do extend `CFormQuestion`.
 Note that these wrapper components to *not* have `[data-key]`, `.form-question` nor `.helper-text`: the nested children
-that are CFormQuestions will have that. 
+that are `CFormQuestions` types will have that. 
 
 ### Examples
 
@@ -313,7 +289,7 @@ that are CFormQuestions will have that.
 
 You can use this wrapper components to duplicate a form question a set number of times. This is useful when you want to
 allow the user to add 1 or more urls to their work in an application form for instance. Unique IDs are automatically generated,
-and the form question in FormData will look like the following:
+and the form question in `FormData` will look like the following:
 
 ```
 { 
@@ -325,12 +301,12 @@ and the form question in FormData will look like the following:
 
 @required
 
-- `.duplicable-element`: indicates which form question should be duplicable.
+- `.duplicable-element`: to the form question that should be duplicable
 
 @optional 
 
-- `[data-max]`: the maximum number of dupes. The default is 4, if you don't set this attribute.  
-- `[data-required]`: if the original form question is required.
+- `[data-max]`: the maximum number of dupes, the default is 4
+- `[data-required]`
 
 ```html
  <c-duplicable-form-question data-max="4">
@@ -361,7 +337,7 @@ we might want to use a calling-code API to populate a `c-select` element, and an
 phone number. 
 
 Note that the individual labels for the `.form-question` elements are rendered in the DOM but will *not* be visible in the UI: it is the `legend` that
-will display one single label for the `c-fieldset`. The FormData for this will look like the following:
+will display one single label for the `c-fieldset`. The `FormData` for this will look like the following:
 
 ```
 { 

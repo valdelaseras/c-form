@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * @todo: update this.formQuestions ( re duplicates etc )
- */
 class CForm extends HTMLElement {
     constructor() {
         super();

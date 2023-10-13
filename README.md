@@ -20,23 +20,23 @@
 # Web component form module
 
 A native web component form module. The components are made to be as flexible, un-opinionated, and as
-close to the standard implementation of form elements as possible, while adding a bunch of convenient functionality to
+close to the native implementation of form fields as possible, while adding a bunch of convenient functionality to
 make form implementation easier:
 
-- basic validation on pristine and valid states
-- display relevant helper texts if the form question is invalid
-- intuitive form filling with key events only if you prefer to do so
-- automatically adds asterisks at the end of labels for required fields in the right places
-- drag and drop files into the file uploader, display relevant steps in the upload process
-- optionally generate options for select elements from external data sources
-- let the user duplicate `input` text fields to add multiple urls for instance
+- pristine and valid state checks
+- display relevant helper texts 
+- fully key event ready
+- dropzone for `input[type="file"]`
+- optionally load & generate `<option>` elements for `c-select` from an external data source
+- optionally let the user duplicate `input[type="text,email,tel,url"]` fields with a cap
 etc.
 
 There are no set templates or styles: there are occasional elements, class names and attributes that are required
-in order for c-form to work, these will be marked as such. Other than that, this approach offers a lot of flexibility to
+in order for `c-form` to work, these will be marked as such. Other than that, this approach offers a lot of flexibility to
 do what you want.
 
-There is a demo form in `index.html`. Please note that currently the demo is not built for beauty ; )
+There is a demo form in `index.html`. Please note that currently the demo is not built for beauty, but purely to demo the 
+components functionalities. 
 
 ## CFormQuestion components
 
@@ -50,7 +50,7 @@ __For all of these components, the following implementation is required:__
 
 ### Examples
 
-Please find some implementation examples of CFormQuestion components below. Any additional required and optional classes or attributes are documented for the specific component.
+Please find some implementation examples of `CFormQuestion` components below. Any additional required and optional classes or attributes are documented for each specific component.
 
 #### c-checkbox
 

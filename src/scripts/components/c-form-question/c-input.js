@@ -15,6 +15,8 @@ export class CInput extends CFormQuestion {
     }
 
     /**
+     * Get value
+     *
      * @returns { string }
      */
     getValue(){

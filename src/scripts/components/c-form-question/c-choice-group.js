@@ -13,6 +13,8 @@ class CChoiceGroup extends CFormQuestion {
     }
 
     /**
+     * Get value
+     *
      * @returns { string[] }
      */
     getValue(){

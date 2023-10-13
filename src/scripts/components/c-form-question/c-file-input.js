@@ -15,6 +15,8 @@ export class CFileInput extends CFormQuestion {
     }
 
     /**
+     * Get value
+     *
      * @returns { File }
      */
     getValue(){

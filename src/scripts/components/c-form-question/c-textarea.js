@@ -8,6 +8,8 @@ class CTextarea extends CFormQuestion {
     }
 
     /**
+     * Get value
+     *
      * @returns { string }
      */
     getValue(){

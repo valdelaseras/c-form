@@ -19,7 +19,7 @@
 
 # Introduction
 
-A headless, native web component form module. The components are made to be as flexible, un-opinionated, and as
+A native web component form module. The components are made to be as flexible, un-opinionated, and as
 close to the native implementation of form fields as possible, while adding a bunch of convenient functionality to
 make form implementation easier. 
 
@@ -27,9 +27,9 @@ make form implementation easier.
 
 __For all of these components, the following implementation is required:__
 
-- `.form-question`: on the root element ( ! unless a checkbox or radio is part of a group ).
-- `[data-key]`: this will be the key in the `FormData` object.
-- `.helper-text`: helper texts ( re invalid values ) will be displayed here. it's up to you to decide which element to use and where etc.
+- `.form-question` on the root element ( ! unless a checkbox or radio is part of a group ).
+- `.helper-text` helper texts ( re invalid values ) will be displayed here. it's up to you to decide which element to use and where etc.
+- `[data-key]` this will be the key in the `FormData` object.
 
 ### Examples
 
@@ -55,11 +55,11 @@ __For all of these components, the following implementation is required:__
 
 @required
 
-`[data-group]`: on the child elements `<c-checkbox>` or `<c-radio>`
+`[data-group]` on the child elements `<c-checkbox>` or `<c-radio>`
 
 @optional
 
-`[data-required]`: on the root element `<c-choice-group>`
+`[data-required]` on the root element `<c-choice-group>`
 
 ```html
 <c-choice-group class="form-question"
@@ -187,7 +187,7 @@ or as JSON:
 
 @required
 
-`[data-external-options]`: to the root element `<c-select>` and set the value to the target exported in `DataSource.js` 
+`[data-external-options]` to the root element `<c-select>` and set the value to the target exported in `DataSource.js` 
 
 ```html
 <c-select class="form-question"
@@ -238,14 +238,14 @@ or as JSON:
 
 @required 
 
-- `.c-file-input-step`: the base class that defines different views in the upload process
-  - `.file-selection-step`: the view before a file is selected
-  - `.file-selected-step`: the view when a file has been selected.
-  - `.hidden`: the class to hide the step that is currently not relevant
+- `.c-file-input-step` the base class that defines different views in the upload process
+  - `.file-selection-step` the view before a file is selected
+  - `.file-selected-step` the view when a file has been selected.
+  - `.hidden` the class to hide the step that is currently not relevant
 
 @optional
 
-- `[data-max-size]`: in bytes, if a maximum size is desired
+- `[data-max-size]` in bytes, if a maximum size is desired
 
 ```html
 <c-file-input class="form-question"
@@ -301,11 +301,11 @@ and the form question in `FormData` will look like the following:
 
 @required
 
-- `.duplicable-element`: to the form question that should be duplicable
+- `.duplicable-element` to the form question that should be duplicable
 
 @optional 
 
-- `[data-max]`: the maximum number of dupes, the default is 4
+- `[data-max]` the maximum number of dupes, the default is 4
 - `[data-required]`
 
 ```html
@@ -332,7 +332,7 @@ and the form question in `FormData` will look like the following:
 
 #### c-fieldset
 
-A c`-fieldset` is a grouping of, for instance, 2 form questions that belong together. Below is an example of a phone number form question where
+A `c-fieldset` is a grouping of, for instance, 2 form questions that belong together. Below is an example of a phone number form question where
 we might want to use a calling-code API to populate a `c-select` element, and an additional `c-input[type="tel"]` for the remaining part of the
 phone number. 
 

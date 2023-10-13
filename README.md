@@ -357,7 +357,7 @@ will display one single label for the `c-fieldset`. The `FormData` for this will
         <c-select class="form-question"
                   data-key="calling-code"
                   data-external-options="getSampleData">
-            <label for="calling-code">country code</label>
+            <label for="calling-code">country code</label> <!-- in the DOM but not visible in the UI -->
             <select id="calling-code"
                     tabindex="0"
                     required>
@@ -367,7 +367,7 @@ will display one single label for the `c-fieldset`. The `FormData` for this will
         </c-select>
         <c-input class="form-question"
                  data-key="tel-number">
-            <label for="c-input-tel-demo">phone number</label>
+            <label for="c-input-tel-demo">phone number</label> <!-- in the DOM but not visible in the UI -->
             <input type="tel"
                    id="c-input-tel-demo"
                    tabindex="0"

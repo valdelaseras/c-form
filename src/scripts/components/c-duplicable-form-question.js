@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * Required CSS classes:
- *
- * .duplicable-element: the ( form-question ) element to allow duplicates for
- * .add-dupe-button: a focusable element, like a button, that will duplicate the 'duplicable-element' on click / keyup
- */
 class CDuplicableFormQuestion extends HTMLElement {
     constructor() {
         super();

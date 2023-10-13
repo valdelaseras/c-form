@@ -2,10 +2,6 @@
 
 import {CFormQuestion} from "../../CFormQuestion.js";
 
-/**
- * Intended for input types[email, url, text, tel]
- * For input type[checkbox, radio], please use c-checkbox / c-radio
- */
 export class CInput extends CFormQuestion {
     constructor() {
         super();

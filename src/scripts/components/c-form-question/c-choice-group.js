@@ -2,9 +2,6 @@
 
 import {CFormQuestion} from "../../CFormQuestion.js";
 
-/**
- * A parent component to a group of checkboxes or radios
- */
 class CChoiceGroup extends CFormQuestion {
     constructor() {
         super();

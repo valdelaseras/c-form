@@ -1,6 +1,6 @@
 # Table of Contents
 
-- [Web component form module](#web-component-form-module)
+- [Web component form module](#introduction)
     - [CFormQuestion components](#cformquestion-components)
         - [Examples](#examples)
             - [c-checkbox](#c-checkbox)
@@ -17,11 +17,11 @@
             - [c-fieldset](#c-fieldset)
             - [c-form](#c-form)
 
-# Web component form module
+# Introduction
 
-A native web component form module. The components are made to be as flexible, un-opinionated, and as
+A headless, native web component form module. The components are made to be as flexible, un-opinionated, and as
 close to the native implementation of form fields as possible, while adding a bunch of convenient functionality to
-make form implementation easier.
+make form implementation easier. 
 
 ## CFormQuestion components
 

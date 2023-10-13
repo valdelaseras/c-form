@@ -13,7 +13,7 @@ class CForm extends HTMLElement {
      * @returns { FormData }
      */
     getFormData() {
-        const formData = Array.from(this.formQuestions).reduce((accumulator, formQuestion) => {
+        return Array.from(this.formQuestions).reduce((accumulator, formQuestion) => {
 
             const value = formQuestion.getValue();
             const key = formQuestion.getKey();
@@ -39,10 +39,6 @@ class CForm extends HTMLElement {
             // Return the accumulator to be used in the next iteration of the reducer
             return accumulator;
         }, {}); // {} is the initial value
-
-        console.log(formData);
-
-        return formData;
     }
 
 

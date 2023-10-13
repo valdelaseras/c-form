@@ -33,361 +33,299 @@
                             <section class="form-section">
                                 <h3 class="form-section-title">A c-form demonstration</h3>
 
-<!--                                <c-file-input class="form-question"-->
-<!--                                             data-key="file-upload"-->
-<!--                                             data-max-size="5242880">-->
-<!--                                    <label tabindex="0" for="upload-demo"></label>-->
-<!--                                    <input type="file"-->
-<!--                                           required-->
-<!--                                           accept=".doc,.docx,application/pdf,application/msword"-->
-<!--                                           id="upload-demo"/>-->
+<!--                                C INPUT TEXT-->
+                                <c-input class="form-question"
+                                         data-key="name">
+                                    <label for="name">
+                                        Your name
+                                    </label>
+                                    <input id="name"
+                                           placeholder="full name"
+                                           type="text"
+                                           class="theme-secondary bordered"
+                                           required/>
+                                    <small class="helper-text"></small>
+                                </c-input>
 
-<!--                                    <div class="c-file-input-step file-selection-step">-->
-<!--                                        <h4 class="file-input-title">Upload</h4>-->
-<!--                                        <span class="file-input-subtitle">.pdf, .doc and .docx</span>-->
-<!--                                    </div>-->
+<!--                                C FIELDSET-->
+                                <c-fieldset data-is-required
+                                            data-key-="phone-number">
+                                    <legend>
+                                        Phone number
+                                    </legend>
+                                    <div class="row">
+<!--                                        C SELECT WITH EXTERNAL JSON DATA SOURCE-->
+                                        <c-select class="form-question"
+                                                  data-key="calling-code"
+                                                  data-external-options="getSampleData">
+                                            <label for="calling-code">
+                                                Country code
+                                            </label>
+                                            <select id="calling-code"
+                                                    tabindex="0"
+                                                    class="theme-secondary bordered"
+                                                    required>
+                                                <option disabled selected>Country code</option>
+                                            </select>
+                                            <small class="helper-text"></small>
+                                        </c-select>
+<!--                                        C INPUT TYPE TEL-->
+                                        <c-input class="form-question"
+                                                 data-key="tel-number">
+                                            <label for="c-input-tel-demo">
+                                                Phone number
+                                            </label>
+                                            <input type="tel"
+                                                   placeholder="phone number"
+                                                   id="c-input-tel-demo"
+                                                   tabindex="0"
+                                                   form="demo-form"
+                                                   class="theme-secondary bordered"
+                                                   required/>
+                                            <small class="helper-text"></small>
+                                        </c-input>
+                                    </div>
+                                </c-fieldset>
 
-<!--                                    <div class="c-file-input-step file-selected-step hidden">-->
-<!--                                        <h4 class="file-input-title">Your file</h4>-->
-<!--                                        <span class="file-input-subtitle"></span>-->
-<!--                                    </div>-->
+<!--                                C INPUT EMAIL-->
+                                <c-input class="form-question"
+                                         data-key="email">
+                                    <label for="email">
+                                        Your email
+                                    </label>
+                                    <input id="email"
+                                           placeholder="email"
+                                           type="email"
+                                           class="theme-secondary bordered"
+                                           required/>
+                                    <small class="helper-text"></small>
+                                </c-input>
 
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-file-input>-->
+<!--                                C SELECT EXTERNAL HARDCODED DATA SOURCE-->
+                                <c-select class="form-question"
+                                          data-key="favourite-insect-order"
+                                          data-external-options="sampleData">
+                                    <label for="favourite-insect-order">
+                                        Select your favourite insect order
+                                    </label>
+                                    <select id="favourite-insect-order"
+                                            tabindex="0"
+                                            class="theme-secondary bordered"
+                                            required>
+                                        <option disabled selected>Choose one</option>
+                                    </select>
+                                    <small class="helper-text"></small>
+                                </c-select>
 
-<!--                                <c-fieldset data-is-required>-->
-<!--                                    <legend>Phone number</legend>-->
+<!--                                C SELECT REGULAR-->
+                                <c-select class="form-question"
+                                          data-key="favourite-butterfly">
+                                    <label for="favourite-butterfly">
+                                        Your favourite (night) butterfly
+                                    </label>
+                                    <select id="favourite-butterfly"
+                                            tabindex="0"
+                                            class="theme-secondary bordered"
+                                            required>
+                                        <option disabled selected>Choose one</option>
+                                        <option value="monarch-butterfly">Monarch butterfly</option>
+                                        <option value="kahukowhai-butterfly">Kahukowhai butterfly</option>
+                                        <option value="kahukura-butterfly">Kahukura butterfly</option>
+                                        <option value="gum-emperor-moth">Gum emperor moth</option>
+                                        <option value="magpie-moth">Magpie moth</option>
+                                        <option value="puriri-moth">Pūriri moth</option>
+                                    </select>
+                                    <small class="helper-text"></small>
+                                </c-select>
 
-<!--                                    <div class="row">-->
-<!--                                        <c-select class="form-question"-->
-<!--                                                  data-key="tel-calling-code"-->
-<!--                                                  data-external-options="getSampleData">-->
-<!--                                            <label for="json-sample-data-demo">JSON data select sample</label>-->
-<!--                                            <select id="json-sample-data-demo"-->
-<!--                                                    tabindex="0"-->
-<!--                                                    required-->
-<!--                                                    class="theme-secondary bordered">-->
-<!--                                            </select>-->
-<!--                                            <small class="helper-text"></small>-->
-<!--                                        </c-select>-->
-<!--                                        <c-input class="form-question"-->
-<!--                                                 data-key="tel">-->
-<!--                                            <label for="tel-demo">Phone number</label>-->
-<!--                                            <input type="tel"-->
-<!--                                                   tabindex="0"-->
-<!--                                                   required-->
-<!--                                                   form="demo-form"-->
-<!--                                                   class="theme-secondary bordered"-->
-<!--                                                   id="tel-demo"/>-->
-<!--                                            <small class="helper-text"></small>-->
-<!--                                        </c-input>-->
-<!--                                    </div>-->
-<!--                                </c-fieldset>-->
-
-<!--                                <c-select class="form-question" data-external-options="sampleData">-->
-<!--                                    <label for="sample-data-demo">Array sample data select</label>-->
-<!--                                    <select id="sample-data-demo"-->
-<!--                                            tabindex="0"-->
-<!--                                            required-->
-<!--                                            class="theme-secondary bordered">-->
-<!--                                    </select>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-select>-->
-<!--                                <c-select class="form-question"-->
-<!--                                          data-key="fxx-select">-->
-<!--                                    <label for="foo-demo">No ext data source select</label>-->
-<!--                                    <select id="foo-demo"-->
-<!--                                            tabindex="0"-->
-<!--                                            required-->
-<!--                                            class="theme-secondary bordered">-->
-<!--                                        <option value="foo">foo</option>-->
-<!--                                        <option value="faa">faa</option>-->
-<!--                                        <option value="fuu">fuu</option>-->
-<!--                                        <option value="fee">fee</option>-->
-<!--                                    </select>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-select>-->
-
+<!--                                C DUPLICABLE FORM QUESTION-->
                                 <c-duplicable-form-question data-max="4">
                                     <a class="button add-dupe-button"
                                        tabindex="0"
                                        role="button">+</a>
-
                                     <c-input class="form-question duplicable-element"
-                                             data-key="dupe-question">
-                                        <label for="dupe-field-demo">Url</label>
-                                        <input id="dupe-field-demo"
+                                             data-key="forums-url">
+                                        <label for="forums-url">
+                                            Your favourite insect forums
+                                        </label>
+                                        <input id="forums-url"
+                                               placeholder="url"
                                                tabindex="0"
                                                type="url"
-                                               name="dupe-fields-demo"
+                                               name="forums-url"
                                                class="theme-secondary bordered"/>
                                         <small class="helper-text"></small>
                                     </c-input>
                                 </c-duplicable-form-question>
 
-<!--                                <c-choice-group class="form-question"-->
-<!--                                                data-key="random-checkboxes"-->
-<!--                                                data-name="checkbox-group-demo"-->
-<!--                                                data-is-required>-->
-<!--                                    <label>-->
-<!--                                        Pick some of these-->
-<!--                                    </label>-->
-<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
-<!--                                        <input type="checkbox"-->
-<!--                                               id="checkbox-a"-->
-<!--                                               class="bordered"-->
-<!--                                               tabindex="0"-->
-<!--                                               checked-->
-<!--                                               name="checkbox-group-demo"-->
-<!--                                               value="checkbox-a"/>-->
-<!--                                        <label for="checkbox-a">-->
-<!--                                            Checkbox A-->
-<!--                                        </label>-->
-<!--                                    </c-checkbox>-->
-<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
-<!--                                        <input type="checkbox"-->
-<!--                                               id="checkbox-b"-->
-<!--                                               class="bordered"-->
-<!--                                               checked-->
-<!--                                               name="checkbox-group-demo"-->
-<!--                                               tabindex="0"-->
-<!--                                               value="checkbox-b"/>-->
-<!--                                        <label for="checkbox-b">-->
-<!--                                            Checkbox B-->
-<!--                                        </label>-->
-<!--                                    </c-checkbox>-->
-<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
-<!--                                        <input type="checkbox"-->
-<!--                                               id="checkbox-c"-->
-<!--                                               class="bordered"-->
-<!--                                               name="checkbox-group-demo"-->
-<!--                                               tabindex="0"-->
-<!--                                               value="checkbox-c"/>-->
-<!--                                        <label for="checkbox-c">-->
-<!--                                            Checkbox C-->
-<!--                                        </label>-->
-<!--                                    </c-checkbox>-->
-<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
-<!--                                        <input type="checkbox"-->
-<!--                                               id="checkbox-d"-->
-<!--                                               class="bordered"-->
-<!--                                               tabindex="0"-->
-<!--                                               name="checkbox-group-demo"-->
-<!--                                               value="checkbox-d"/>-->
-<!--                                        <label for="checkbox-d">-->
-<!--                                            Checkbox D-->
-<!--                                        </label>-->
-<!--                                    </c-checkbox>-->
+<!--                                C CHOICE GROUP CHECKBOXES-->
+                                <c-choice-group class="form-question"
+                                                data-key="insects-in-garden"
+                                                data-name="insects-in-garden">
+                                    <label>
+                                        Check the insects you have seen in your garden
+                                    </label>
+                                    <c-checkbox data-group="insects-in-garden">
+                                        <input type="checkbox"
+                                               id="stick-insect"
+                                               class="bordered"
+                                               tabindex="0"
+                                               name="insects-in-garden"
+                                               value="stick-insect"/>
+                                        <label for="stick-insect">
+                                            Stick insect
+                                        </label>
+                                    </c-checkbox>
+                                    <c-checkbox data-group="insects-in-garden">
+                                        <input type="checkbox"
+                                               id="native-mantis"
+                                               class="bordered"
+                                               name="insects-in-garden"
+                                               tabindex="0"
+                                               value="native-mantis"/>
+                                        <label for="native-mantis">
+                                            Native mantis
+                                        </label>
+                                    </c-checkbox>
+                                    <c-checkbox data-group="insects-in-garden">
+                                        <input type="checkbox"
+                                               id="vegetable-bug"
+                                               class="bordered"
+                                               name="insects-in-garden"
+                                               tabindex="0"
+                                               value="vegetable-bug"/>
+                                        <label for="vegetable-bug">
+                                            Vegetable bug
+                                        </label>
+                                    </c-checkbox>
+                                    <c-checkbox data-group="insects-in-garden">
+                                        <input type="checkbox"
+                                               id="dragonfly"
+                                               class="bordered"
+                                               tabindex="0"
+                                               name="insects-in-garden"
+                                               value="dragonfly"/>
+                                        <label for="dragonfly">
+                                            Dragonfly
+                                        </label>
+                                    </c-checkbox>
+                                    <small class="helper-text"></small>
+                                </c-choice-group>
 
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-choice-group>-->
-<!--                                <c-choice-group class="form-question"-->
-<!--                                                data-key="random-radios"-->
-<!--                                                data-name="radio-group-demo"-->
-<!--                                                data-is-required>-->
-<!--                                    <label>-->
-<!--                                        Choose one-->
-<!--                                    </label>-->
-<!--                                    <c-radio data-group="radio-group-demo">-->
-<!--                                        <input type="radio"-->
-<!--                                               id="radio-a"-->
-<!--                                               class="bordered"-->
-<!--                                               tabindex="0"-->
-<!--                                               name="radio-group-demo"-->
-<!--                                               value="radio-a"/>-->
-<!--                                        <label for="radio-a">-->
-<!--                                            Radio A-->
-<!--                                        </label>-->
-<!--                                    </c-radio>-->
-<!--                                    <c-radio data-group="radio-group-demo">-->
-<!--                                        <input type="radio"-->
-<!--                                               id="radio-b"-->
-<!--                                               class="bordered"-->
-<!--                                               name="radio-group-demo"-->
-<!--                                               tabindex="0"-->
-<!--                                               value="radio-b"/>-->
-<!--                                        <label for="radio-b">-->
-<!--                                            Radio B-->
-<!--                                        </label>-->
-<!--                                    </c-radio>-->
-<!--                                    <c-radio data-group="radio-group-demo">-->
-<!--                                        <input type="radio"-->
-<!--                                               id="radio-c"-->
-<!--                                               class="bordered"-->
-<!--                                               name="radio-group-demo"-->
-<!--                                               tabindex="0"-->
-<!--                                               value="radio-c"/>-->
-<!--                                        <label for="radio-c">-->
-<!--                                            Radio C-->
-<!--                                        </label>-->
-<!--                                    </c-radio>-->
-<!--                                    <c-radio data-group="radio-group-demo">-->
-<!--                                        <input type="radio"-->
-<!--                                               id="radio-d"-->
-<!--                                               class="bordered"-->
-<!--                                               tabindex="0"-->
-<!--                                               name="radio-group-demo"-->
-<!--                                               value="radio-d"/>-->
-<!--                                        <label for="radio-d">-->
-<!--                                            Radio D-->
-<!--                                        </label>-->
-<!--                                    </c-radio>-->
+<!--                                C CHOICE GROUP RADIO-->
+                                <c-choice-group class="form-question"
+                                                data-key="favourite-season"
+                                                data-name="favourite-season"
+                                                data-is-required>
+                                    <label>
+                                        Your favourite season
+                                    </label>
+                                    <c-radio data-group="favourite-season">
+                                        <input type="radio"
+                                               id="summer"
+                                               class="bordered"
+                                               tabindex="0"
+                                               name="favourite-season"
+                                               value="summer"/>
+                                        <label for="summer">
+                                            Summer
+                                        </label>
+                                    </c-radio>
+                                    <c-radio data-group="favourite-season">
+                                        <input type="radio"
+                                               id="autumn"
+                                               class="bordered"
+                                               name="favourite-season"
+                                               tabindex="0"
+                                               value="autumn"/>
+                                        <label for="autumn">
+                                            Autumn
+                                        </label>
+                                    </c-radio>
+                                    <c-radio data-group="favourite-season">
+                                        <input type="radio"
+                                               id="winter"
+                                               class="bordered"
+                                               name="favourite-season"
+                                               tabindex="0"
+                                               value="winter"/>
+                                        <label for="winter">
+                                            Winter
+                                        </label>
+                                    </c-radio>
+                                    <c-radio data-group="favourite-season">
+                                        <input type="radio"
+                                               id="spring"
+                                               class="bordered"
+                                               name="favourite-season"
+                                               tabindex="0"
+                                               value="spring"/>
+                                        <label for="spring">
+                                            Spring
+                                        </label>
+                                    </c-radio>
+                                    <small class="helper-text"></small>
+                                </c-choice-group>
 
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-choice-group>-->
-<!--                                <c-choice-group class="form-question"-->
-<!--                                               data-name="radio-group-demo-two"-->
-<!--                                               data-is-required>-->
-<!--                                    <label>-->
-<!--                                        Choose one-->
-<!--                                    </label>-->
-<!--                                    <c-radio data-group="radio-group-demo-two">-->
-<!--                                        <input type="radio"-->
-<!--                                               id="radio-two-a"-->
-<!--                                               class="bordered"-->
-<!--                                               tabindex="0"-->
-<!--                                               checked-->
-<!--                                               name="radio-group-demo-two"-->
-<!--                                               value="radio-two-a"/>-->
-<!--                                        <label for="radio-two-a">-->
-<!--                                            Radio A-->
-<!--                                        </label>-->
-<!--                                    </c-radio>-->
-<!--                                    <c-radio data-group="radio-group-demo-two">-->
-<!--                                        <input type="radio"-->
-<!--                                               id="radio-two-b"-->
-<!--                                               class="bordered"-->
-<!--                                               name="radio-group-demo-two"-->
-<!--                                               tabindex="0"-->
-<!--                                               value="radio-two-b"/>-->
-<!--                                        <label for="radio-two-b">-->
-<!--                                            Radio B-->
-<!--                                        </label>-->
-<!--                                    </c-radio>-->
+<!--                                C TEXTAREA-->
+                                <c-textarea class="form-question"
+                                            data-key="motivation">
+                                    <label for="motivation">
+                                        Your motivation
+                                    </label>
+                                    <textarea id="motivation"
+                                              tabindex="0"
+                                              placeholder="a bugs life story"
+                                              class="theme-secondary bordered"
+                                              maxlength="500"
+                                              rows="4"
+                                              required></textarea>
+                                    <div class="char-counter">
+                                        <span class="counter"></span> /  <span class="maxlength"></span>
+                                    </div>
+                                    <small class="helper-text"></small>
+                                </c-textarea>
 
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-choice-group>-->
+<!--                                C FILE INPUT-->
+                                <c-file-input class="form-question"
+                                              data-key="research-paper"
+                                              data-max-size="5242880">
+                                    <label tabindex="0" for="research-paper"></label>
+                                    <input type="file"
+                                           id="research-paper"
+                                           accept=".doc,.docx,application/pdf,application/msword"
+                                           required/>
+                                    <!--file selection view-->
+                                    <div class="c-file-input-step file-selection-step">
+                                        <h4 class="file-input-title">Upload your research paper</h4>
+                                        <span class="file-input-subtitle">
+                                            .pdf, .doc and .docx
+                                        </span>
+                                    </div>
+                                    <!--file selected view-->
+                                    <div class="c-file-input-step file-selected-step hidden">
+                                        <h4 class="file-input-title">Your file</h4>
+                                        <span class="file-input-subtitle"></span>
+                                    </div>
+                                    <small class="helper-text"></small>
+                                </c-file-input>
 
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="required-url-input-demo">A required url c-input</label>-->
-<!--                                    <input id="required-url-input-demo"-->
-<!--                                           type="url"-->
-<!--                                           tabindex="0"-->
-<!--                                           required-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="url-input-demo">A url c-input</label>-->
-<!--                                    <input id="url-input-demo"-->
-<!--                                           type="url"-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="required-email-input-demo">A required email c-input</label>-->
-<!--                                    <input id="required-email-input-demo"-->
-<!--                                           type="email"-->
-<!--                                           required-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="email-input-demo">An email c-input</label>-->
-<!--                                    <input id="email-input-demo"-->
-<!--                                           type="email"-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="required-text-input-demo">A required text c-input</label>-->
-<!--                                    <input id="required-text-input-demo"-->
-<!--                                           type="text"-->
-<!--                                           required-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question"-->
-<!--                                         data-key="random-text">-->
-<!--                                    <label for="text-input-demo">A text c-input</label>-->
-<!--                                    <input id="text-input-demo"-->
-<!--                                           type="text"-->
-<!--                                           required-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="required-tel-input-demo">A required tel c-input</label>-->
-<!--                                    <input id="required-tel-input-demo"-->
-<!--                                           type="tel"-->
-<!--                                           required-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
-<!--                                <c-input class="form-question">-->
-<!--                                    <label for="tel-input-demo">A tel c-input</label>-->
-<!--                                    <input id="tel-input-demo"-->
-<!--                                           type="tel"-->
-<!--                                           class="theme-secondary bordered"/>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-input>-->
+<!--                                C CHECKBOX-->
+                                <c-checkbox class="form-question"
+                                            data-key="tos-agreement">
+                                    <input type="checkbox"
+                                           id="tos-agreement"
+                                           class="bordered"
+                                           tabindex="0"
+                                           name="tos-agreement"
+                                           value="tos-agreed"
+                                           required/>
+                                    <label for="tos-agreement">
+                                        I agree to the ToS
+                                    </label>
+                                    <small class="helper-text"></small>
+                                </c-checkbox>
 
-<!--                                <c-select class="form-question">-->
-<!--                                    <label for="select-demo">A select element</label>-->
-<!--                                    <select id="select-demo"-->
-<!--                                            tabindex="0"-->
-<!--                                            class="theme-secondary bordered">-->
-<!--                                        <option value="select-a">Select A</option>-->
-<!--                                        <option value="select-b">Select B</option>-->
-<!--                                        <option value="select-c">Select C</option>-->
-<!--                                        <option value="select-d">Select D</option>-->
-<!--                                    </select>-->
-<!--                                </c-select>-->
-<!--                                <c-select class="form-question"-->
-<!--                                          data-key="select-x">-->
-<!--                                    <label for="required-select-demo">A required select element</label>-->
-<!--                                    <select id="required-select-demo"-->
-<!--                                            tabindex="0"-->
-<!--                                            required-->
-<!--                                            class="theme-secondary bordered">-->
-<!--                                        <option selected disabled>Choose one</option>-->
-<!--                                        <option value="select-a">Select A</option>-->
-<!--                                        <option value="select-b">Select B</option>-->
-<!--                                        <option value="select-c">Select C</option>-->
-<!--                                        <option value="select-d">Select D</option>-->
-<!--                                    </select>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-select>-->
-
-<!--                                <c-checkbox class="form-question"-->
-<!--                                            data-key="obligatory-checkbox">-->
-<!--                                    <input type="checkbox"-->
-<!--                                           id="checkbox-solo"-->
-<!--                                           class="bordered"-->
-<!--                                           tabindex="0"-->
-<!--                                           required-->
-<!--                                           name="foo"-->
-<!--                                           value="tos-checkbox"/>-->
-<!--                                    <label for="checkbox-solo">I agree to the ToS</label>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-checkbox>-->
-
-<!--                                <c-textarea class="form-question"-->
-<!--                                            data-key="short-story">-->
-<!--                                    <label for="textarea-demo">-->
-<!--                                        A textarea-->
-<!--                                    </label>-->
-<!--                                    <textarea id="textarea-demo"-->
-<!--                                              tabindex="0"-->
-<!--                                              required-->
-<!--                                              class="theme-secondary bordered"-->
-<!--                                              maxlength="200"-->
-<!--                                              rows="4"></textarea>-->
-<!--                                    <div class="char-counter">-->
-<!--                                        <span class="counter"></span> /  <span class="maxlength"></span>-->
-<!--                                    </div>-->
-<!--                                    <small class="helper-text"></small>-->
-<!--                                </c-textarea>-->
                             </section>
 
                             <footer class="form-footer" role="contentinfo">
@@ -395,7 +333,8 @@
                                    tabindex="-1"
                                    aria-label="submit form"
                                    role="button"
-                                   id="demo-form-submit-btn">Submit
+                                   id="insect-specialist-application">
+                                    Submit
                                 </a>
                             </footer>
                         </form>

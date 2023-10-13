@@ -57,6 +57,8 @@ class CDuplicableFormQuestion extends HTMLElement {
         } else if (this.querySelector('.add-dupe-button.button-disabled')) {
             this.querySelector('.add-dupe-button').classList.remove('button-disabled');
         }
+
+        this.dispatchEvent(new Event('duplicateCountUpdated', {bubbles: true}));
     }
 
 

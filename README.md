@@ -28,12 +28,12 @@ do what you want.
 <c-checkbox class="form-question"
             data-key="">
     <input type="checkbox"
-           id="checkbox-demo"
+           id="c-checkbox-demo"
            tabindex="0"
            required
            name="checkbox-demo"
            value="checkbox-solo"/>
-    <label for="checkbox-demo">
+    <label for="c-checkbox-demo">
         Label
     </label>
     <small class="helper-text"></small>

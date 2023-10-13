@@ -1,9 +1,9 @@
 // sample data as an array that is already formatted
 export const sampleData = [
-    { label: 'a', value: 'a' },
-    { label: 'b', value: 'b' },
-    { label: 'c', value: 'c' },
-    { label: 'd', value: 'd' },
-    { label: 'e', value: 'e' },
-    { label: 'f', value: 'f' },
+    { label: 'Butterflies & moths', value: 'butterflies-and-moths' },
+    { label: 'Beetles', value: 'beetles' },
+    { label: 'True bugs', value: 'true-bugs' },
+    { label: 'Mantises', value: 'mantises' },
+    { label: 'Grasshoppers', value: 'grasshoppers' },
+    { label: 'Bees', value: 'bees' },
 ];

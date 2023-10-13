@@ -1,11 +1,19 @@
 'use strict';
 
-import {CFormQuestion} from "../CFormQuestion.js";
+import {CFormQuestion} from "../../CFormQuestion.js";
 
 class CCheckbox extends CFormQuestion {
     constructor() {
         super();
     }
+
+    /**
+     * @returns { string }
+     */
+    getValue(){
+        return this.querySelector('input').value;
+    }
+
 
     /**
      * Connected callback

@@ -93,7 +93,7 @@ class CDuplicableFormQuestion extends HTMLElement {
     /**
      * Get the element to duplicate
      *
-     * @return { HTMLElement }
+     * @returns { HTMLElement }
      */
     getDuplicableElement(){
         return this.querySelector('.duplicable-element');
@@ -122,7 +122,7 @@ class CDuplicableFormQuestion extends HTMLElement {
     /**
      * Clone the 'duplicable-element' and attach a button to remove it
      *
-     * @return { HTMLElement } clonedNode
+     * @returns { HTMLElement } clonedNode
      */
     buildDuplicate() {
         const clonedNode = this.duplicableElement.createDupe();
@@ -137,7 +137,7 @@ class CDuplicableFormQuestion extends HTMLElement {
     /**
      * Build a simple dupe removal button
      *
-     * @return { HTMLAnchorElement }
+     * @returns { HTMLAnchorElement }
      */
     buildRemovalButton() {
         const button = document.createElement('a');

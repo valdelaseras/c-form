@@ -1,6 +1,6 @@
 'use strict';
 
-import {CFormQuestion} from "../CFormQuestion.js";
+import {CFormQuestion} from "../../CFormQuestion.js";
 
 /**
  * Intended for input types[email, url, text, tel]
@@ -12,6 +12,13 @@ export class CInput extends CFormQuestion {
 
         this.requiredFieldHelperText = 'This field is required';
         this.invalidFieldHelperText = '';
+    }
+
+    /**
+     * @returns { string }
+     */
+    getValue(){
+        return this.querySelector('input').value;
     }
 
 
@@ -99,7 +106,7 @@ export class CInput extends CFormQuestion {
      * Set a "unique" id for input and label ( @todo: perhaps later look into generating actual UIDs )
      * Clear any potential input value
      *
-     * @return { CInput }
+     * @returns { CInput }
      */
     createDupe() {
         const clonedNode = super.createDupe();

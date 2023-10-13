@@ -1,6 +1,6 @@
 'use strict';
 
-import {CFormQuestion} from "../CFormQuestion.js";
+import {CFormQuestion} from "../../CFormQuestion.js";
 
 export class CFileInput extends CFormQuestion {
     constructor() {
@@ -13,6 +13,14 @@ export class CFileInput extends CFormQuestion {
 
         this.selectedFile = null;
     }
+
+    /**
+     * @returns { File }
+     */
+    getValue(){
+        return this.selectedFile;
+    }
+
 
     /**
      * Connected callback
@@ -189,7 +197,7 @@ export class CFileInput extends CFormQuestion {
     /**
      * Check if the file size is valid
      * *
-     * @return { boolean }
+     * @returns { boolean }
      * */
     isValidSize(){
         return this.validSize = this.selectedFile.size <= parseInt(this.getAttribute('data-max-size'));
@@ -199,7 +207,7 @@ export class CFileInput extends CFormQuestion {
     /**
      * Check if the file type is valid
      *
-     * @return { boolean }
+     * @returns { boolean }
      */
     isValidType() {
         return this.allowedTypes.includes(this.selectedFile.type);

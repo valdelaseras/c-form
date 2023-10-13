@@ -1,10 +1,17 @@
 'use strict';
 
-import {CFormQuestion} from "../CFormQuestion.js";
+import {CFormQuestion} from "../../CFormQuestion.js";
 
 class CTextarea extends CFormQuestion {
     constructor() {
         super();
+    }
+
+    /**
+     * @returns { string }
+     */
+    getValue(){
+        return this.querySelector('textarea').value;
     }
 
     /**

@@ -7,6 +7,19 @@ class CForm extends HTMLElement {
         this.formQuestions = [];
     }
 
+    /**
+     * Get form data
+     *
+     * @returns { FormData }
+     */
+    getFormData() {
+        let formData = {};
+
+        this.formQuestions.forEach(formQuestion => formData[formQuestion.getKey()] = formQuestion.getValue());
+
+        return formData;
+    }
+
 
     /**
      * Connected callback
@@ -20,6 +33,8 @@ class CForm extends HTMLElement {
         this.formQuestions.forEach((formQuestion) => {
             formQuestion.addEventListener('onValidityChange', this.setValidityState.bind(this));
         });
+
+        this.setValidityState();
     }
 
 
@@ -41,7 +56,7 @@ class CForm extends HTMLElement {
      */
     handleClick(e){
         if (e.target === this.querySelector('.form-submit-button')) {
-            this.getFormValues();
+            this.getFormData();
         }
     }
 
@@ -55,26 +70,14 @@ class CForm extends HTMLElement {
         if (e.code === 'Enter'){
             if (e.target === this.querySelector('.form-submit-button')) {
                 if (!this.querySelector('.form-submit-button.button-disabled')) {
-                    this.getFormValues();
+                    this.getFormData();
                 }
             }
         }
     }
 
 
-    /**
-     * Get form values
-     */
-    getFormValues() {
-        console.log(this.formQuestions);
-
-        this.formQuestions.forEach((question) => {
-            console.log(question)
-        })
-    }
-
-
-    // @todo: temp, properly validate
+    // @todo: temp, properly validate.
     /**
      * Update overall form validity
      */

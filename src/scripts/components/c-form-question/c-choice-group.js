@@ -1,6 +1,6 @@
 'use strict';
 
-import {CFormQuestion} from "../CFormQuestion.js";
+import {CFormQuestion} from "../../CFormQuestion.js";
 
 /**
  * A parent component to a group of checkboxes or radios
@@ -10,6 +10,21 @@ class CChoiceGroup extends CFormQuestion {
         super();
 
         this.checkedInputs = [];
+    }
+
+    /**
+     * @returns { string[] }
+     */
+    getValue(){
+        const checkedInputs = [];
+
+        this.querySelectorAll('input').forEach((input) => {
+            if (input.checked) {
+                checkedInputs.push(input.value);
+            }
+        });
+
+        return checkedInputs;
     }
 
 

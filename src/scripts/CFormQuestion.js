@@ -13,6 +13,14 @@ export class CFormQuestion extends HTMLElement {
 
 
     /**
+     * @returns { string }
+     */
+    getKey () {
+        return this.getAttribute('data-key');
+    }
+
+
+    /**
      * Connected callback
      */
     connectedCallback(){
@@ -78,7 +86,7 @@ export class CFormQuestion extends HTMLElement {
     /**
      * Create a duplicate of the target '.duplicable-element'
      *
-     * @return { HTMLElement } clonedNode
+     * @returns { HTMLElement } clonedNode
      */
     createDupe() {
         const clonedNode = this.cloneNode(true);
@@ -107,7 +115,7 @@ export class CFormQuestion extends HTMLElement {
     /**
      * Check if this has 'data-is-pristine' attribute
      *
-     * @return { boolean }
+     * @returns { boolean }
      */
     getIsPristine(){
         return this.hasAttribute('data-is-pristine');
@@ -117,7 +125,7 @@ export class CFormQuestion extends HTMLElement {
     /**
      * Check if this has 'data-is-valid' attribute
      *
-     * @return { boolean }
+     * @returns { boolean }
      */
     getIsValid(){
         return this.hasAttribute('data-is-valid');

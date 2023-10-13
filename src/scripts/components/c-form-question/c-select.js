@@ -1,7 +1,7 @@
 'use strict';
 
-import {CFormQuestion} from "../CFormQuestion.js";
-import {DataSource} from "../DataSource.js";
+import {CFormQuestion} from "../../CFormQuestion.js";
+import {DataSource} from "../../DataSource.js";
 
 /**
  * Add optional data-attribute 'data-external-options' to build, populate and append
@@ -14,6 +14,13 @@ import {DataSource} from "../DataSource.js";
 class CSelect extends CFormQuestion {
     constructor() {
         super();
+    }
+
+    /**
+     * @returns { string }
+     */
+    getValue(){
+        return this.querySelector('select').value;
     }
 
 
@@ -106,7 +113,7 @@ class CSelect extends CFormQuestion {
      * @param { string } label
      * @param { string } value
      *
-     * @return { HTMLOptionElement }
+     * @returns { HTMLOptionElement }
      */
     buildOption(label, value) {
         const option = document.createElement('option');

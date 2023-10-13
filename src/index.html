@@ -7,16 +7,17 @@
 
     <link rel="stylesheet" href="/styles/css/index.css"/>
 
+    <script type="module" src="/scripts/components/c-form-question/c-choice-group.js" defer></script>
+    <script type="module" src="/scripts/components/c-form-question/c-select.js" defer></script>
+    <script type="module" src="/scripts/components/c-form-question/c-checkbox.js" defer></script>
+    <script type="module" src="/scripts/components/c-form-question/c-radio.js" defer></script>
+    <script type="module" src="/scripts/components/c-form-question/c-textarea.js" defer></script>
+    <script type="module" src="/scripts/components/c-form-question/c-input.js" defer></script>
+    <script type="module" src="/scripts/components/c-form-question/c-file-input.js" defer></script>
+
     <script type="module" src="/scripts/components/c-duplicable-form-question.js" defer></script>
-    <script type="module" src="/scripts/components/c-choice-group.js" defer></script>
-    <script type="module" src="/scripts/components/c-select.js" defer></script>
-    <script type="module" src="/scripts/components/c-checkbox.js" defer></script>
-    <script type="module" src="/scripts/components/c-radio.js" defer></script>
-    <script type="module" src="/scripts/components/c-textarea.js" defer></script>
     <script type="module" src="/scripts/components/c-form.js" defer></script>
-    <script type="module" src="/scripts/components/c-input.js" defer></script>
     <script type="module" src="/scripts/components/c-fieldset.js" defer></script>
-    <script type="module" src="/scripts/components/c-file-input.js" defer></script>
 </head>
 <body>
 <main>
@@ -27,56 +28,61 @@
                     <c-form>
                         <form class="c-form theme-secondary" id="demo-form">
                             <header class="form-header">
-                                <h2 class="form-title">Form title</h2>
+                                <h2 class="form-title">Demo form</h2>
                             </header>
                             <section class="form-section">
-                                <h3 class="form-section-title">Form section title</h3>
+                                <h3 class="form-section-title">A c-form demonstration</h3>
 
-                                <c-file-input class="form-question" data-max-size="5242880">
-                                    <label tabindex="0" for="upload-demo"></label>
-                                    <input type="file"
-                                           required
-                                           accept=".doc,.docx,application/pdf,application/msword"
-                                           id="upload-demo"/>
+<!--                                <c-file-input class="form-question"-->
+<!--                                             data-key="file-upload"-->
+<!--                                             data-max-size="5242880">-->
+<!--                                    <label tabindex="0" for="upload-demo"></label>-->
+<!--                                    <input type="file"-->
+<!--                                           required-->
+<!--                                           accept=".doc,.docx,application/pdf,application/msword"-->
+<!--                                           id="upload-demo"/>-->
 
-                                    <div class="c-file-input-step file-selection-step">
-                                        <h4 class="file-input-title">Upload</h4>
-                                        <span class="file-input-subtitle">.pdf, .doc and .docx</span>
-                                    </div>
+<!--                                    <div class="c-file-input-step file-selection-step">-->
+<!--                                        <h4 class="file-input-title">Upload</h4>-->
+<!--                                        <span class="file-input-subtitle">.pdf, .doc and .docx</span>-->
+<!--                                    </div>-->
 
-                                    <div class="c-file-input-step file-selected-step hidden">
-                                        <h4 class="file-input-title">Your file</h4>
-                                        <span class="file-input-subtitle"></span>
-                                    </div>
+<!--                                    <div class="c-file-input-step file-selected-step hidden">-->
+<!--                                        <h4 class="file-input-title">Your file</h4>-->
+<!--                                        <span class="file-input-subtitle"></span>-->
+<!--                                    </div>-->
 
-                                    <small class="helper-text"></small>
-                                </c-file-input>
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-file-input>-->
 
-                                <c-fieldset data-is-required>
-                                    <legend>Phone number</legend>
+<!--                                <c-fieldset data-is-required>-->
+<!--                                    <legend>Phone number</legend>-->
 
-                                    <div class="row">
-                                        <c-select class="form-question" data-external-options="getSampleData">
-                                            <label for="json-sample-data-demo">JSON data select sample</label>
-                                            <select id="json-sample-data-demo"
-                                                    tabindex="0"
-                                                    required
-                                                    class="theme-secondary bordered">
-                                            </select>
-                                            <small class="helper-text"></small>
-                                        </c-select>
-                                        <c-input class="form-question">
-                                            <label for="tel-demo">Phone number</label>
-                                            <input type="tel"
-                                                   tabindex="0"
-                                                   required
-                                                   form="demo-form"
-                                                   class="theme-secondary bordered"
-                                                   id="tel-demo"/>
-                                            <small class="helper-text"></small>
-                                        </c-input>
-                                    </div>
-                                </c-fieldset>
+<!--                                    <div class="row">-->
+<!--                                        <c-select class="form-question"-->
+<!--                                                  data-key="tel-calling-code"-->
+<!--                                                  data-external-options="getSampleData">-->
+<!--                                            <label for="json-sample-data-demo">JSON data select sample</label>-->
+<!--                                            <select id="json-sample-data-demo"-->
+<!--                                                    tabindex="0"-->
+<!--                                                    required-->
+<!--                                                    class="theme-secondary bordered">-->
+<!--                                            </select>-->
+<!--                                            <small class="helper-text"></small>-->
+<!--                                        </c-select>-->
+<!--                                        <c-input class="form-question"-->
+<!--                                                 data-key="tel">-->
+<!--                                            <label for="tel-demo">Phone number</label>-->
+<!--                                            <input type="tel"-->
+<!--                                                   tabindex="0"-->
+<!--                                                   required-->
+<!--                                                   form="demo-form"-->
+<!--                                                   class="theme-secondary bordered"-->
+<!--                                                   id="tel-demo"/>-->
+<!--                                            <small class="helper-text"></small>-->
+<!--                                        </c-input>-->
+<!--                                    </div>-->
+<!--                                </c-fieldset>-->
 
 <!--                                <c-select class="form-question" data-external-options="sampleData">-->
 <!--                                    <label for="sample-data-demo">Array sample data select</label>-->
@@ -87,26 +93,28 @@
 <!--                                    </select>-->
 <!--                                    <small class="helper-text"></small>-->
 <!--                                </c-select>-->
-                                <c-select class="form-question">
-                                    <label for="foo-demo">No ext data source select</label>
-                                    <select id="foo-demo"
-                                            tabindex="0"
-                                            required
-                                            class="theme-secondary bordered">
-                                        <option value="foo">foo</option>
-                                        <option value="faa">faa</option>
-                                        <option value="fuu">fuu</option>
-                                        <option value="fee">fee</option>
-                                    </select>
-                                    <small class="helper-text"></small>
-                                </c-select>
+<!--                                <c-select class="form-question"-->
+<!--                                          data-key="fxx-select">-->
+<!--                                    <label for="foo-demo">No ext data source select</label>-->
+<!--                                    <select id="foo-demo"-->
+<!--                                            tabindex="0"-->
+<!--                                            required-->
+<!--                                            class="theme-secondary bordered">-->
+<!--                                        <option value="foo">foo</option>-->
+<!--                                        <option value="faa">faa</option>-->
+<!--                                        <option value="fuu">fuu</option>-->
+<!--                                        <option value="fee">fee</option>-->
+<!--                                    </select>-->
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-select>-->
 
                                 <c-duplicable-form-question data-max="4">
                                     <a class="button add-dupe-button"
                                        tabindex="0"
                                        role="button">+</a>
 
-                                    <c-input class="form-question duplicable-element">
+                                    <c-input class="form-question duplicable-element"
+                                             data-key="dupe-question">
                                         <label for="dupe-field-demo">Url</label>
                                         <input id="dupe-field-demo"
                                                tabindex="0"
@@ -117,114 +125,116 @@
                                     </c-input>
                                 </c-duplicable-form-question>
 
-                                <c-choice-group class="form-question"
-                                               data-name="checkbox-group-demo"
-                                               data-is-required>
-                                    <label>
-                                        Pick some of these
-                                    </label>
-                                    <c-checkbox data-group="checkbox-group-demo">
-                                        <input type="checkbox"
-                                               id="checkbox-a"
-                                               class="bordered"
-                                               tabindex="0"
-                                               checked
-                                               name="checkbox-group-demo"
-                                               value="checkbox-a"/>
-                                        <label for="checkbox-a">
-                                            Checkbox A
-                                        </label>
-                                    </c-checkbox>
-                                    <c-checkbox data-group="checkbox-group-demo">
-                                        <input type="checkbox"
-                                               id="checkbox-b"
-                                               class="bordered"
-                                               checked
-                                               name="checkbox-group-demo"
-                                               tabindex="0"
-                                               value="checkbox-b"/>
-                                        <label for="checkbox-b">
-                                            Checkbox B
-                                        </label>
-                                    </c-checkbox>
-                                    <c-checkbox data-group="checkbox-group-demo">
-                                        <input type="checkbox"
-                                               id="checkbox-c"
-                                               class="bordered"
-                                               name="checkbox-group-demo"
-                                               tabindex="0"
-                                               value="checkbox-c"/>
-                                        <label for="checkbox-c">
-                                            Checkbox C
-                                        </label>
-                                    </c-checkbox>
-                                    <c-checkbox data-group="checkbox-group-demo">
-                                        <input type="checkbox"
-                                               id="checkbox-d"
-                                               class="bordered"
-                                               tabindex="0"
-                                               name="checkbox-group-demo"
-                                               value="checkbox-d"/>
-                                        <label for="checkbox-d">
-                                            Checkbox D
-                                        </label>
-                                    </c-checkbox>
+<!--                                <c-choice-group class="form-question"-->
+<!--                                                data-key="random-checkboxes"-->
+<!--                                                data-name="checkbox-group-demo"-->
+<!--                                                data-is-required>-->
+<!--                                    <label>-->
+<!--                                        Pick some of these-->
+<!--                                    </label>-->
+<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
+<!--                                        <input type="checkbox"-->
+<!--                                               id="checkbox-a"-->
+<!--                                               class="bordered"-->
+<!--                                               tabindex="0"-->
+<!--                                               checked-->
+<!--                                               name="checkbox-group-demo"-->
+<!--                                               value="checkbox-a"/>-->
+<!--                                        <label for="checkbox-a">-->
+<!--                                            Checkbox A-->
+<!--                                        </label>-->
+<!--                                    </c-checkbox>-->
+<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
+<!--                                        <input type="checkbox"-->
+<!--                                               id="checkbox-b"-->
+<!--                                               class="bordered"-->
+<!--                                               checked-->
+<!--                                               name="checkbox-group-demo"-->
+<!--                                               tabindex="0"-->
+<!--                                               value="checkbox-b"/>-->
+<!--                                        <label for="checkbox-b">-->
+<!--                                            Checkbox B-->
+<!--                                        </label>-->
+<!--                                    </c-checkbox>-->
+<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
+<!--                                        <input type="checkbox"-->
+<!--                                               id="checkbox-c"-->
+<!--                                               class="bordered"-->
+<!--                                               name="checkbox-group-demo"-->
+<!--                                               tabindex="0"-->
+<!--                                               value="checkbox-c"/>-->
+<!--                                        <label for="checkbox-c">-->
+<!--                                            Checkbox C-->
+<!--                                        </label>-->
+<!--                                    </c-checkbox>-->
+<!--                                    <c-checkbox data-group="checkbox-group-demo">-->
+<!--                                        <input type="checkbox"-->
+<!--                                               id="checkbox-d"-->
+<!--                                               class="bordered"-->
+<!--                                               tabindex="0"-->
+<!--                                               name="checkbox-group-demo"-->
+<!--                                               value="checkbox-d"/>-->
+<!--                                        <label for="checkbox-d">-->
+<!--                                            Checkbox D-->
+<!--                                        </label>-->
+<!--                                    </c-checkbox>-->
 
-                                    <small class="helper-text"></small>
-                                </c-choice-group>
-                                <c-choice-group class="form-question"
-                                               data-name="radio-group-demo"
-                                               data-is-required>
-                                    <label>
-                                        Choose one
-                                    </label>
-                                    <c-radio data-group="radio-group-demo">
-                                        <input type="radio"
-                                               id="radio-a"
-                                               class="bordered"
-                                               tabindex="0"
-                                               name="radio-group-demo"
-                                               value="radio-a"/>
-                                        <label for="radio-a">
-                                            Radio A
-                                        </label>
-                                    </c-radio>
-                                    <c-radio data-group="radio-group-demo">
-                                        <input type="radio"
-                                               id="radio-b"
-                                               class="bordered"
-                                               name="radio-group-demo"
-                                               tabindex="0"
-                                               value="radio-b"/>
-                                        <label for="radio-b">
-                                            Radio B
-                                        </label>
-                                    </c-radio>
-                                    <c-radio data-group="radio-group-demo">
-                                        <input type="radio"
-                                               id="radio-c"
-                                               class="bordered"
-                                               name="radio-group-demo"
-                                               tabindex="0"
-                                               value="radio-c"/>
-                                        <label for="radio-c">
-                                            Radio C
-                                        </label>
-                                    </c-radio>
-                                    <c-radio data-group="radio-group-demo">
-                                        <input type="radio"
-                                               id="radio-d"
-                                               class="bordered"
-                                               tabindex="0"
-                                               name="radio-group-demo"
-                                               value="radio-d"/>
-                                        <label for="radio-d">
-                                            Radio D
-                                        </label>
-                                    </c-radio>
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-choice-group>-->
+<!--                                <c-choice-group class="form-question"-->
+<!--                                                data-key="random-radios"-->
+<!--                                                data-name="radio-group-demo"-->
+<!--                                                data-is-required>-->
+<!--                                    <label>-->
+<!--                                        Choose one-->
+<!--                                    </label>-->
+<!--                                    <c-radio data-group="radio-group-demo">-->
+<!--                                        <input type="radio"-->
+<!--                                               id="radio-a"-->
+<!--                                               class="bordered"-->
+<!--                                               tabindex="0"-->
+<!--                                               name="radio-group-demo"-->
+<!--                                               value="radio-a"/>-->
+<!--                                        <label for="radio-a">-->
+<!--                                            Radio A-->
+<!--                                        </label>-->
+<!--                                    </c-radio>-->
+<!--                                    <c-radio data-group="radio-group-demo">-->
+<!--                                        <input type="radio"-->
+<!--                                               id="radio-b"-->
+<!--                                               class="bordered"-->
+<!--                                               name="radio-group-demo"-->
+<!--                                               tabindex="0"-->
+<!--                                               value="radio-b"/>-->
+<!--                                        <label for="radio-b">-->
+<!--                                            Radio B-->
+<!--                                        </label>-->
+<!--                                    </c-radio>-->
+<!--                                    <c-radio data-group="radio-group-demo">-->
+<!--                                        <input type="radio"-->
+<!--                                               id="radio-c"-->
+<!--                                               class="bordered"-->
+<!--                                               name="radio-group-demo"-->
+<!--                                               tabindex="0"-->
+<!--                                               value="radio-c"/>-->
+<!--                                        <label for="radio-c">-->
+<!--                                            Radio C-->
+<!--                                        </label>-->
+<!--                                    </c-radio>-->
+<!--                                    <c-radio data-group="radio-group-demo">-->
+<!--                                        <input type="radio"-->
+<!--                                               id="radio-d"-->
+<!--                                               class="bordered"-->
+<!--                                               tabindex="0"-->
+<!--                                               name="radio-group-demo"-->
+<!--                                               value="radio-d"/>-->
+<!--                                        <label for="radio-d">-->
+<!--                                            Radio D-->
+<!--                                        </label>-->
+<!--                                    </c-radio>-->
 
-                                    <small class="helper-text"></small>
-                                </c-choice-group>
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-choice-group>-->
 <!--                                <c-choice-group class="form-question"-->
 <!--                                               data-name="radio-group-demo-two"-->
 <!--                                               data-is-required>-->
@@ -297,14 +307,15 @@
 <!--                                           class="theme-secondary bordered"/>-->
 <!--                                    <small class="helper-text"></small>-->
 <!--                                </c-input>-->
-                                <c-input class="form-question">
-                                    <label for="text-input-demo">A text c-input</label>
-                                    <input id="text-input-demo"
-                                           type="text"
-                                           required
-                                           class="theme-secondary bordered"/>
-                                    <small class="helper-text"></small>
-                                </c-input>
+<!--                                <c-input class="form-question"-->
+<!--                                         data-key="random-text">-->
+<!--                                    <label for="text-input-demo">A text c-input</label>-->
+<!--                                    <input id="text-input-demo"-->
+<!--                                           type="text"-->
+<!--                                           required-->
+<!--                                           class="theme-secondary bordered"/>-->
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-input>-->
 <!--                                <c-input class="form-question">-->
 <!--                                    <label for="required-tel-input-demo">A required tel c-input</label>-->
 <!--                                    <input id="required-tel-input-demo"-->
@@ -332,48 +343,51 @@
 <!--                                        <option value="select-d">Select D</option>-->
 <!--                                    </select>-->
 <!--                                </c-select>-->
-                                <c-select class="form-question">
-                                    <label for="required-select-demo">A required select element</label>
-                                    <select id="required-select-demo"
-                                            tabindex="0"
-                                            required
-                                            class="theme-secondary bordered">
-                                        <option selected disabled>Choose one</option>
-                                        <option value="select-a">Select A</option>
-                                        <option value="select-b">Select B</option>
-                                        <option value="select-c">Select C</option>
-                                        <option value="select-d">Select D</option>
-                                    </select>
-                                    <small class="helper-text"></small>
-                                </c-select>
+<!--                                <c-select class="form-question"-->
+<!--                                          data-key="select-x">-->
+<!--                                    <label for="required-select-demo">A required select element</label>-->
+<!--                                    <select id="required-select-demo"-->
+<!--                                            tabindex="0"-->
+<!--                                            required-->
+<!--                                            class="theme-secondary bordered">-->
+<!--                                        <option selected disabled>Choose one</option>-->
+<!--                                        <option value="select-a">Select A</option>-->
+<!--                                        <option value="select-b">Select B</option>-->
+<!--                                        <option value="select-c">Select C</option>-->
+<!--                                        <option value="select-d">Select D</option>-->
+<!--                                    </select>-->
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-select>-->
 
-                                <c-checkbox class="form-question">
-                                    <input type="checkbox"
-                                           id="checkbox-solo"
-                                           class="bordered"
-                                           tabindex="0"
-                                           required
-                                           name="foo"
-                                           value="checkbox-solo"/>
-                                    <label for="checkbox-solo">Solo checkbox</label>
-                                    <small class="helper-text"></small>
-                                </c-checkbox>
+<!--                                <c-checkbox class="form-question"-->
+<!--                                            data-key="obligatory-checkbox">-->
+<!--                                    <input type="checkbox"-->
+<!--                                           id="checkbox-solo"-->
+<!--                                           class="bordered"-->
+<!--                                           tabindex="0"-->
+<!--                                           required-->
+<!--                                           name="foo"-->
+<!--                                           value="tos-checkbox"/>-->
+<!--                                    <label for="checkbox-solo">I agree to the ToS</label>-->
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-checkbox>-->
 
-                                <c-textarea class="form-question">
-                                    <label for="textarea-demo">
-                                        A textarea
-                                    </label>
-                                    <textarea id="textarea-demo"
-                                              tabindex="0"
-                                              required
-                                              class="theme-secondary bordered"
-                                              maxlength="200"
-                                              rows="4"></textarea>
-                                    <div class="char-counter">
-                                        <span class="counter"></span> /  <span class="maxlength"></span>
-                                    </div>
-                                    <small class="helper-text"></small>
-                                </c-textarea>
+<!--                                <c-textarea class="form-question"-->
+<!--                                            data-key="short-story">-->
+<!--                                    <label for="textarea-demo">-->
+<!--                                        A textarea-->
+<!--                                    </label>-->
+<!--                                    <textarea id="textarea-demo"-->
+<!--                                              tabindex="0"-->
+<!--                                              required-->
+<!--                                              class="theme-secondary bordered"-->
+<!--                                              maxlength="200"-->
+<!--                                              rows="4"></textarea>-->
+<!--                                    <div class="char-counter">-->
+<!--                                        <span class="counter"></span> /  <span class="maxlength"></span>-->
+<!--                                    </div>-->
+<!--                                    <small class="helper-text"></small>-->
+<!--                                </c-textarea>-->
                             </section>
 
                             <footer class="form-footer" role="contentinfo">

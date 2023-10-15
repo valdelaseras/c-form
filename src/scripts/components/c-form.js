@@ -7,6 +7,40 @@ class CForm extends HTMLElement {
         this.formQuestions = [];
     }
 
+
+    /**
+     * Connected callback
+     */
+    connectedCallback(){
+        this.formQuestions = this.getFormQuestions();
+
+        this.addEventListener('click', this.handleClick.bind(this));
+        this.addEventListener('keyup', this.handleKeyup.bind(this));
+
+        this.addEventListener('duplicateCountUpdated', this.handleDuplicateCountUpdated.bind(this));
+
+        this.formQuestions.forEach((formQuestion) => {
+            formQuestion.addEventListener('onValidityChange', this.setValidityState.bind(this));
+        });
+
+        this.setValidityState();
+    }
+
+
+    /**
+     * Disconnected callback
+     */
+    disconnectedCallback(){
+        this.removeEventListener('click', this.handleClick.bind(this));
+        this.removeEventListener('keyup', this.handleKeyup.bind(this));
+
+        this.removeEventListener('duplicateCountUpdated', this.handleDuplicateCountUpdated.bind(this));
+
+        this.formQuestions.forEach((formQuestion) => {
+            formQuestion.removeEventListener('onValidityChange', this.setValidityState.bind(this));
+        })
+    }
+
     /**
      * Get form data
      *
@@ -53,36 +87,10 @@ class CForm extends HTMLElement {
 
 
     /**
-     * Connected callback
+     * Update overall form validity
      */
-    connectedCallback(){
-        this.formQuestions = this.getFormQuestions();
-
-        this.addEventListener('click', this.handleClick.bind(this));
-        this.addEventListener('keyup', this.handleKeyup.bind(this));
-
-        this.addEventListener('duplicateCountUpdated', this.handleDuplicateCountUpdated.bind(this));
-
-        this.formQuestions.forEach((formQuestion) => {
-            formQuestion.addEventListener('onValidityChange', this.setValidityState.bind(this));
-        });
-
-        this.setValidityState();
-    }
-
-
-    /**
-     * Disconnected callback
-     */
-    disconnectedCallback(){
-        this.removeEventListener('click', this.handleClick.bind(this));
-        this.removeEventListener('keyup', this.handleKeyup.bind(this));
-
-        this.removeEventListener('duplicateCountUpdated', this.handleDuplicateCountUpdated.bind(this));
-
-        this.formQuestions.forEach((formQuestion) => {
-            formQuestion.removeEventListener('onValidityChange', this.setValidityState.bind(this));
-        })
+    setValidityState() {
+        this.updateSubmitButtonState(this.formQuestions.length === this.querySelectorAll('.form-question[data-is-valid]').length);
     }
 
 
@@ -121,19 +129,11 @@ class CForm extends HTMLElement {
 
 
     /**
-     * Update overall form validity
-     */
-    setValidityState() {
-        this.setSubmitButtonState(this.formQuestions.length === this.querySelectorAll('.form-question[data-is-valid]').length);
-    }
-
-
-    /**
-     * Set submit button state
+     * Update submit button state
      *
      * @param { boolean } isValid
      */
-    setSubmitButtonState(isValid) {
+    updateSubmitButtonState(isValid) {
         if (isValid) {
             this.querySelector('.form-submit-button').classList.remove('button-disabled');
             this.querySelector('.form-submit-button').setAttribute('tabindex', '0');

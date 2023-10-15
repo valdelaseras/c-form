@@ -52,20 +52,18 @@ class CTextarea extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-is-valid' attribute
+     * Add and remove the custom 'data-is-valid' attribute, update helper texts accordingly
      */
     setValidityState() {
         if (this.isRequired){
             if (this.querySelector('textarea').value) {
-                this.setAttribute('data-is-valid', '');
+                this.setIsValid(true);
             } else {
-                this.removeAttribute('data-is-valid');
-                if (this.querySelector('.helper-text')) {
-                    this.setHelperText('error', 'This field is required');
-                }
+                this.setIsValid(false);
+                this.setHelperText('error', 'This field is required');
             }
         } else {
-            this.setAttribute('data-is-valid', '');
+            this.setIsValid(true);
         }
     }
 

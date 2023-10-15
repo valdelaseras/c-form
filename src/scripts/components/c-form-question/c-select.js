@@ -56,27 +56,25 @@ class CSelect extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-is-valid' attribute
+     * Add and remove the custom 'data-is-valid' attribute, update helper texts accordingly
      */
     setValidityState() {
         if (this.isRequired) {
             // if there is a disabled option...
             if (!!this.querySelector('option[disabled]')){
                 // if there were to be no check for a pristine state...
-                if (this.querySelector('.helper-text')){
-                    this.setHelperText('error', 'This field is required');
-                }
+                this.setHelperText('error', 'This field is required');
                 // when the value is no longer the disabled option value, a selection has been made
                 if (this.querySelector('select').value !== this.querySelector('option[disabled]').value){
-                    this.setAttribute('data-is-valid', '');
+                    this.setIsValid(true);
                 }
 
                 // if no disabled option is present, even if the select is required, there already is a valid value selected
             } else {
-                this.setAttribute('data-is-valid', '');
+                this.setIsValid(true);
             }
         } else {
-            this.setAttribute('data-is-valid', '');
+            this.setIsValid(true);
         }
     }
 

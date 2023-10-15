@@ -106,7 +106,7 @@ export class CFileInput extends CFormQuestion {
         } else if (this.allowedTypes.length && this.validType === false) {
             this.setErrorText(`This file type is not allowed. Please select a file with any of the following types: ${this.allowedTypes}`);
         } else {
-            this.setAttribute('data-is-valid', '');
+            this.setIsValid(true);
         }
     }
 
@@ -116,7 +116,7 @@ export class CFileInput extends CFormQuestion {
      * @param { string } message
      */
     setErrorText(message){
-        this.removeAttribute('data-is-valid');
+        this.setIsValid(false);
         super.setHelperText('error', message);
     }
 

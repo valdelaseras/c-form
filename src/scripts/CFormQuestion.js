@@ -77,6 +77,16 @@ export class CFormQuestion extends HTMLElement {
 
 
     /**
+     * Set or remove 'data-is-valid' attribute
+     *
+     * @param { boolean } isValid
+     */
+    setIsValid(isValid){
+        isValid ? this.setAttribute('data-is-valid', '') : this.removeAttribute('data-is-valid');
+    }
+
+
+    /**
      * Set 'data-is-pristine'
      *
      * Currently, a CFormQuestion is only ever pristine at the start
@@ -102,8 +112,10 @@ export class CFormQuestion extends HTMLElement {
      * @param { string } message - the message to display
      */
     setHelperText(status, message) {
-        this.querySelector('.helper-text').classList.add(`font-color-${status}`);
-        this.querySelector('.helper-text').innerText = message;
+        if (this.querySelector('.helper-text')) {
+            this.querySelector('.helper-text').classList.add(`font-color-${status}`);
+            this.querySelector('.helper-text').innerText = message;
+        }
     }
 
 
@@ -113,7 +125,9 @@ export class CFormQuestion extends HTMLElement {
      * @param { boolean } isVisible
      */
     setHelperTextVisibility(isVisible){
-        this.querySelector('.helper-text').style.visibility = isVisible ? 'visible' : 'hidden';
+        if (this.querySelector('.helper-text')) {
+            this.querySelector('.helper-text').style.visibility = isVisible ? 'visible' : 'hidden';
+        }
     }
 
 

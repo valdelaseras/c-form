@@ -52,7 +52,7 @@ class CChoiceGroup extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-is-valid' attribute
+     * Add and remove the custom 'data-is-valid' attribute, update helper texts accordingly
      */
     setValidityState() {
         // if the form group is required...
@@ -60,18 +60,16 @@ class CChoiceGroup extends CFormQuestion {
             // ...at least one selection must have been made, so this.checkedInputs.length will have to be true
             // whether they are checkboxes or radios
             if (this.checkedInputs.length) {
-                this.setAttribute('data-is-valid', '');
+                this.setIsValid(true);
             } else {
-                this.removeAttribute('data-is-valid');
-                if (this.querySelector('.helper-text')){
-                    this.setHelperText('error', 'This field is required');
-                }
+                this.setIsValid(false);
+                this.setHelperText('error', 'This field is required');
             }
         }
 
         // if the form group is not required, it is valid
         else {
-            this.setAttribute('data-is-valid', '');
+            this.setIsValid(true);
         }
     }
 

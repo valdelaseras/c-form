@@ -42,7 +42,7 @@ export class CInput extends CFormQuestion {
 
 
     /**
-     * Add and remove the custom 'data-is-valid' attribute, update helper texts
+     * Add and remove the custom 'data-is-valid' attribute, update helper texts accordingly
      */
     setValidityState() {
         const isValid = this.querySelector('input').validity.valid;
@@ -50,25 +50,19 @@ export class CInput extends CFormQuestion {
 
         if (this.isRequired) {
             if (!hasValue) {
-                this.removeAttribute('data-is-valid');
-                if (this.querySelector('.helper-text')){
-                    this.setHelperText('error', this.requiredFieldHelperText);
-                }
+                this.setIsValid(false);
+                this.setHelperText('error', this.requiredFieldHelperText);
             } else if (!isValid) {
-                this.removeAttribute('data-is-valid');
-                if (this.querySelector('.helper-text')){
-                    this.setHelperText('error', this.invalidFieldHelperText);
-                }
+                this.setIsValid(false);
+                this.setHelperText('error', this.invalidFieldHelperText);
             } else {
-                this.setAttribute('data-is-valid', '');
+                this.setIsValid(true);
             }
         } else if (hasValue && !isValid) {
-            this.removeAttribute('data-is-valid');
-            if (this.querySelector('.helper-text')){
-                this.setHelperText('error', this.invalidFieldHelperText);
-            }
+            this.setIsValid(false);
+            this.setHelperText('error', this.invalidFieldHelperText);
         } else {
-            this.setAttribute('data-is-valid', '');
+            this.setIsValid(true);
         }
     }
 

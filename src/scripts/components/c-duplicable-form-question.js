@@ -57,6 +57,26 @@ class CDuplicableFormQuestion extends HTMLElement {
 
 
     /**
+     * Get the element to duplicate
+     *
+     * @returns { HTMLElement }
+     */
+    getDuplicableElement(){
+        return this.querySelector('.duplicable-element');
+    }
+
+
+
+    /**
+     * Set this.count and data-count
+     */
+    setCount() {
+        this.count = this.querySelectorAll('.dupe').length;
+        this.setAttribute('data-count', this.count);
+    }
+
+
+    /**
      * Handle click events
      *
      * @param { Event } e
@@ -83,16 +103,6 @@ class CDuplicableFormQuestion extends HTMLElement {
                 }
             }
         }
-    }
-
-
-    /**
-     * Get the element to duplicate
-     *
-     * @returns { HTMLElement }
-     */
-    getDuplicableElement(){
-        return this.querySelector('.duplicable-element');
     }
 
 
@@ -149,15 +159,6 @@ class CDuplicableFormQuestion extends HTMLElement {
         button.addEventListener('keyup', this.removeDuplicate.bind(this));
 
         return button;
-    }
-
-
-    /**
-     * Set this.count and data-count
-     */
-    setCount() {
-        this.count = this.querySelectorAll('.dupe').length;
-        this.setAttribute('data-count', this.count);
     }
 }
 

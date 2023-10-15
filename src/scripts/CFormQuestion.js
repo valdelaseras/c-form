@@ -7,16 +7,9 @@ export class CFormQuestion extends HTMLElement {
         this.isRequired = false;
     }
 
+
     static get observedAttributes() {
         return ['data-is-valid', 'data-is-pristine'];
-    }
-
-
-    /**
-     * @returns { string }
-     */
-    getKey () {
-        return this.getAttribute('data-key');
     }
 
 
@@ -51,6 +44,47 @@ export class CFormQuestion extends HTMLElement {
 
         if (name === 'data-is-valid') {
             this.dispatchEvent(new Event('onValidityChange'));
+        }
+    }
+
+
+    /**
+     * @returns { string }
+     */
+    getKey () {
+        return this.getAttribute('data-key');
+    }
+
+
+    /**
+     * Get 'data-is-pristine' value
+     *
+     * @returns { boolean }
+     */
+    getIsPristine(){
+        return this.hasAttribute('data-is-pristine');
+    }
+
+
+    /**
+     * Get 'data-is-valid' value
+     *
+     * @returns { boolean }
+     */
+    getIsValid(){
+        return this.hasAttribute('data-is-valid');
+    }
+
+
+    /**
+     * Set 'data-is-pristine'
+     *
+     * Currently, a CFormQuestion is only ever pristine at the start
+     * and is not ever reset to a pristine state. This may change later on.
+     */
+    setPristineState(){
+        if (this.getIsPristine()) {
+            this.removeAttribute('data-is-pristine');
         }
     }
 
@@ -99,42 +133,8 @@ export class CFormQuestion extends HTMLElement {
 
 
     /**
-     * Set 'data-is-pristine'
-     *
-     * It only removes the attribute now, but later on we might want
-     * an option to reset a form element to pristine state, hence
-     * 'update'
-     */
-    setPristineState(){
-        if (this.getIsPristine()){
-            this.removeAttribute('data-is-pristine');
-        }
-    }
-
-
-    /**
-     * Check if this has 'data-is-pristine' attribute
-     *
-     * @returns { boolean }
-     */
-    getIsPristine(){
-        return this.hasAttribute('data-is-pristine');
-    }
-
-
-    /**
-     * Check if this has 'data-is-valid' attribute
-     *
-     * @returns { boolean }
-     */
-    getIsValid(){
-        return this.hasAttribute('data-is-valid');
-    }
-
-
-    /**
      * Update state
-     * @todo: need a better name for this
+     * @todo: rename
      */
     updateState() {
         this.setPristineState();

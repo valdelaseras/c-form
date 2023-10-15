@@ -8,16 +8,6 @@ class CCheckbox extends CFormQuestion {
     }
 
     /**
-     * Get value
-     *
-     * @returns { string }
-     */
-    getValue(){
-        return this.querySelector('input').value;
-    }
-
-
-    /**
      * Connected callback
      */
     connectedCallback() {
@@ -34,6 +24,37 @@ class CCheckbox extends CFormQuestion {
     disconnectedCallback() {
         this.removeEventListener('keyup', this.handleKeyup.bind(this));
         this.removeEventListener('click', this.handleClick.bind(this));
+    }
+
+
+    /**
+     * Get value
+     *
+     * @returns { string }
+     */
+    getValue(){
+        return this.querySelector('input').value;
+    }
+
+
+    /**
+     * Add and remove the custom 'data-is-valid' attribute
+     */
+    setValidityState() {
+        if (!this.hasAttribute('data-group')){
+            if (this.isRequired){
+                if (this.querySelector('input').checked) {
+                    this.setAttribute('data-is-valid', '');
+                } else {
+                    this.removeAttribute('data-is-valid');
+                    if (this.querySelector('.helper-text')) {
+                        this.setHelperText('error', 'This field is required');
+                    }
+                }
+            } else {
+                this.setAttribute('data-is-valid', '');
+            }
+        }
     }
 
 
@@ -55,27 +76,6 @@ class CCheckbox extends CFormQuestion {
             if (e.code === 'Space') {
                 this.querySelector('input[type="checkbox"]').checked = !this.querySelector('input[type="checkbox"]').checked;
                 this.updateState();
-            }
-        }
-    }
-
-
-    /**
-     * Add and remove the custom 'data-is-valid' attribute
-     */
-    setValidityState() {
-        if (!this.hasAttribute('data-group')){
-            if (this.isRequired){
-                if (this.querySelector('input').checked) {
-                    this.setAttribute('data-is-valid', '');
-                } else {
-                    this.removeAttribute('data-is-valid');
-                    if (this.querySelector('.helper-text')) {
-                        this.setHelperText('error', 'This field is required');
-                    }
-                }
-            } else {
-                this.setAttribute('data-is-valid', '');
             }
         }
     }

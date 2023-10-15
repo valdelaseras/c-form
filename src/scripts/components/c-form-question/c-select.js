@@ -8,15 +8,6 @@ class CSelect extends CFormQuestion {
         super();
     }
 
-    /**
-     * Get value
-     *
-     * @returns { string }
-     */
-    getValue(){
-        return this.querySelector('select').value;
-    }
-
 
     /**
      * Connected callback
@@ -55,10 +46,12 @@ class CSelect extends CFormQuestion {
 
 
     /**
-     * Handle change events
+     * Get value
+     *
+     * @returns { string }
      */
-    handleChange(){
-        this.updateState();
+    getValue(){
+        return this.querySelector('select').value;
     }
 
 
@@ -85,6 +78,14 @@ class CSelect extends CFormQuestion {
         } else {
             this.setAttribute('data-is-valid', '');
         }
+    }
+
+
+    /**
+     * Handle change events
+     */
+    handleChange(){
+        this.updateState();
     }
 
 

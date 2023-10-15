@@ -10,15 +10,6 @@ export class CInput extends CFormQuestion {
         this.invalidFieldHelperText = '';
     }
 
-    /**
-     * Get value
-     *
-     * @returns { string }
-     */
-    getValue(){
-        return this.querySelector('input').value;
-    }
-
 
     /**
      * Connected callback
@@ -41,10 +32,12 @@ export class CInput extends CFormQuestion {
 
 
     /**
-     * Handle input event
+     * Get value
+     *
+     * @returns { string }
      */
-    handleInput() {
-        this.updateState();
+    getValue(){
+        return this.querySelector('input').value;
     }
 
 
@@ -97,6 +90,14 @@ export class CInput extends CFormQuestion {
             default:
                 this.invalidFieldHelperText = '';
         }
+    }
+
+
+    /**
+     * Handle input event
+     */
+    handleInput() {
+        this.updateState();
     }
 
 

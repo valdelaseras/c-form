@@ -9,23 +9,6 @@ class CChoiceGroup extends CFormQuestion {
         this.checkedInputs = [];
     }
 
-    /**
-     * Get value
-     *
-     * @returns { string[] }
-     */
-    getValue(){
-        const checkedInputs = [];
-
-        this.querySelectorAll('input').forEach((input) => {
-            if (input.checked) {
-                checkedInputs.push(input.value);
-            }
-        });
-
-        return checkedInputs;
-    }
-
 
     /**
      * Connected callback
@@ -49,25 +32,22 @@ class CChoiceGroup extends CFormQuestion {
     }
 
 
-    /**
-     * Handle click events
-     */
-    handleClick(){
-        this.updateCheckedInputs();
-        this.updateState();
-    }
-
 
     /**
-     * Handle keyup events
+     * Get value
      *
-     * @param { KeyboardEvent } e
-     * */
-    handleKeyup(e){
-        if (e.code === 'Space') {
-            this.updateCheckedInputs();
-            this.updateState();
-        }
+     * @returns { string[] }
+     */
+    getValue(){
+        const checkedInputs = [];
+
+        this.querySelectorAll('input').forEach((input) => {
+            if (input.checked) {
+                checkedInputs.push(input.value);
+            }
+        });
+
+        return checkedInputs;
     }
 
 
@@ -92,6 +72,28 @@ class CChoiceGroup extends CFormQuestion {
         // if the form group is not required, it is valid
         else {
             this.setAttribute('data-is-valid', '');
+        }
+    }
+
+
+    /**
+     * Handle click events
+     */
+    handleClick(){
+        this.updateCheckedInputs();
+        this.updateState();
+    }
+
+
+    /**
+     * Handle keyup events
+     *
+     * @param { KeyboardEvent } e
+     * */
+    handleKeyup(e){
+        if (e.code === 'Space') {
+            this.updateCheckedInputs();
+            this.updateState();
         }
     }
 

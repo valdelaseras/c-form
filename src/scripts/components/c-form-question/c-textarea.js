@@ -8,15 +8,6 @@ class CTextarea extends CFormQuestion {
     }
 
     /**
-     * Get value
-     *
-     * @returns { string }
-     */
-    getValue(){
-        return this.querySelector('textarea').value;
-    }
-
-    /**
      * Connected callback
      */
     connectedCallback() {
@@ -40,14 +31,12 @@ class CTextarea extends CFormQuestion {
 
 
     /**
-     * Handle input event
+     * Get value
+     *
+     * @returns { string }
      */
-    handleInput() {
-        if (this.querySelector('.char-counter')) {
-            this.setCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
-        }
-
-        this.updateState();
+    getValue(){
+        return this.querySelector('textarea').value;
     }
 
 
@@ -78,6 +67,18 @@ class CTextarea extends CFormQuestion {
         } else {
             this.setAttribute('data-is-valid', '');
         }
+    }
+
+
+    /**
+     * Handle input event
+     */
+    handleInput() {
+        if (this.querySelector('.char-counter')) {
+            this.setCounter('.counter', (this.querySelector('textarea').getAttribute('maxlength') - this.querySelector('textarea').value.length).toString());
+        }
+
+        this.updateState();
     }
 }
 

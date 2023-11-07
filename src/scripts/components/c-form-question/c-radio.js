@@ -4,6 +4,8 @@ class CRadio extends CFormQuestion {
     constructor() {
         super();
     }
+
+    setValidityState(){}
 }
 
 customElements.define('c-radio', CRadio);

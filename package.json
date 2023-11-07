@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Flexible vanilla JS forms, build with native web components",
   "scripts": {
-    "serve": "http-server ./src",
+    "start": "http-server ./src",
     "sass-watch": "sass --watch ./src/styles/scss/index.scss ./src/styles/css/index.css",
     "test": "jest"
   },

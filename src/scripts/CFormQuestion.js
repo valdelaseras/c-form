@@ -51,7 +51,7 @@ export class CFormQuestion extends HTMLElement {
     /**
      * @returns { string }
      */
-    getKey () {
+    getKey() {
         return this.getAttribute('data-key');
     }
 
